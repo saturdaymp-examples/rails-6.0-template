@@ -1,0 +1,46 @@
+stages:
+  - build-docker-image
+  - run-type-checking
+  - run-tests
+
+build-docker-image:
+  stage: build-docker-image
+  image: docker:18.09.7
+
+  services:
+    - docker:dind
+ 
+  variables:
+    DOCKER_DRIVER: overlay2
+
+  before_script:
+    - docker info
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+  script:
+    - docker build -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+
+run-type-checking:
+  stage: run-type-checking
+  image: 
+    name: $CI_REGISTRY_IMAGE
+    entrypoint: [""]
+
+  script:
+    - srb tc
+
+run-tests:
+  stage: run-tests
+  image: 
+    name: $CI_REGISTRY_IMAGE
+    entrypoint: [""]
+
+  services:
+    - name: postgres:12
+      alias: db
+
+  script:
+    - bundle exec rails db:create
+    - bundle exec rails db:schema:load RAILS_ENV=test
+    - bundle exec rails test
