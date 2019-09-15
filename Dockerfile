@@ -44,6 +44,8 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     bundle install --without development test ; \
     fi
 
+RUN yarn install --check-files
+
 # Add the code.
 COPY . .
 
