@@ -34,9 +34,8 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     apk add --no-cache "glibc-2.30-r0.apk" ; \
     fi
 
-# Install the gems and yarn files
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+# Install the gems.
+COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.0.2
 RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     bundle install ; \
@@ -44,9 +43,13 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     bundle install --without development test ; \
     fi
 
-COPY package.json package.json
-COPY yarn.lock yarn.lock
-RUN yarn install --check-files
+# Yarn packages.
+COPY package.json yarn.lock ./
+RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
+    yarn install --check-files --frozen-lockfile ; \
+    else \
+    yarn install --check-files --frozen-lockfile --no-cache --production ; \
+    fi
 
 # Add the code.
 COPY . .

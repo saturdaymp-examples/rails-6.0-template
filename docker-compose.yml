@@ -17,11 +17,11 @@ services:
     #command: tail -f /dev/null
     volumes:
       - .:/app
+      - /app/node_modules
       - bundle-volume:/usr/local/bundle
-    # Port 1234 for debugging via RubyMine.
     ports:
       - "3000:3000"
-      - "1234:1234"
+      - "1234:1234" # RubyMine
     depends_on:
       - db
 
