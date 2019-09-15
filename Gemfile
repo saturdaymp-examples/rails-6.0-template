@@ -35,6 +35,7 @@ group :development, :test do
   # Type checking
   gem 'sorbet'
   gem 'sorbet-runtime'
+  gem 'sorbet-rails'
 end
 
 group :development do
