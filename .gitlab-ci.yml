@@ -41,9 +41,6 @@ run-tests:
       alias: db
 
   script:
-    - pwd
-    - ls
-    - yarn check
     - bundle exec rails db:create
     - bundle exec rails db:schema:load RAILS_ENV=test
     - bundle exec rails test
