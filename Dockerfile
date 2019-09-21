@@ -1,7 +1,7 @@
-FROM ruby:2.6.4-alpine
+FROM ruby:2.6.4-alpine3.10
 
 # If true then development gems and libraries are included
-# in the build.
+# in the container.
 ARG INCLUDE_DEV_ITEMS=true
 
 # Environment and port when running the container.
@@ -9,7 +9,7 @@ ENV RAILS_ENV=development
 ENV RAILS_PORT=3000
 
 # Expose the port.
-EXPOSE 3000
+EXPOSE $RAILS_PORT
 
 # Working directory.
 RUN mkdir /app
@@ -19,14 +19,17 @@ WORKDIR /app
 # postgressql-dev: Connect to Postgres DB.
 # nodejs: Used by Rails.
 # tzdata: Used by Rails.
-RUN apk add --no-cache "build-base=0.5-r1" \
+# yarn: Used by Rails to manage node packages.
+RUN apk update && \
+    apk add --no-cache "build-base=0.5-r1" \
                        "postgresql-dev=11.5-r1" \
                        "nodejs=10.16.3-r0" \
                        "tzdata=2019b-r0" \
                        "yarn=1.16.0-r0"
 
-# Sorbet items, not needed for production.
-# glibc is required for Sorbet but there is not Alpine Linux package for it.
+# Sorbet type checker is only required for development.
+# There is no glibc Alpine Linux package so it must be
+# installed manually.
 RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     apk add --no-cache "bash=5.0.0-r0" "git=2.22.0-r0" "wget=1.20.3-r0" "chromium=73.0.3683.103-r0" && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
@@ -44,7 +47,10 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     fi
 
 # Yarn packages.
-COPY package.json yarn.lock ./
+# RUN mkdir /usr/local/node_modules && \
+#     ln -s /usr/local/node_modules node_modules
+
+COPY package.json yarn.lock .yarnrc ./
 RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
     yarn install --check-files --frozen-lockfile ; \
     else \

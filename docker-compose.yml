@@ -17,8 +17,8 @@ services:
     #command: tail -f /dev/null
     volumes:
       - .:/app
-      - /app/node_modules
       - bundle-volume:/usr/local/bundle
+      - yarn-volume:/usr/local/node_modules
     ports:
       - "3000:3000"
       - "1234:1234" # RubyMine
@@ -27,4 +27,5 @@ services:
 
 volumes:
   bundle-volume:
+  yarn-volume:
   db-volume:
