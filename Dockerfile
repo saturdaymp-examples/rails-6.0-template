@@ -6,10 +6,10 @@ ARG INCLUDE_DEV_ITEMS=true
 
 # Environment and port when running the container.
 ENV RAILS_ENV=development
-ENV RAILS_PORT=3000
+ENV PORT=3000
 
 # Expose the port.
-EXPOSE $RAILS_PORT
+EXPOSE $PORT
 
 # Working directory.
 RUN mkdir /app
@@ -63,7 +63,7 @@ COPY . .
 # Run the Rails server when the docker container starts.
 # Need to run in "sh -c" so the environment substitution of
 # the port will work.
-CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "'0.0.0.0'"]
+#CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "'0.0.0.0'"]
 
 # Rubymine does not respect the working directory
 # so can't find the entrypoint if you don't put
