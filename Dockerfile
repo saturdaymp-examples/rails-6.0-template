@@ -4,12 +4,10 @@ FROM ruby:2.6.4-alpine3.10
 # in the container.
 ARG INCLUDE_DEV_ITEMS=true
 
-# Environment and port when running the container.
+# Environment and port when running the container.  Override
+# for other envrionments other then development.
 ENV RAILS_ENV=development
 ENV PORT=3000
-
-# Expose the port.
-EXPOSE $PORT
 
 # Working directory.
 RUN mkdir /app
@@ -47,9 +45,6 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     fi
 
 # Yarn packages.
-# RUN mkdir /usr/local/node_modules && \
-#     ln -s /usr/local/node_modules node_modules
-
 COPY package.json yarn.lock .yarnrc ./
 RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
     yarn install --check-files --frozen-lockfile ; \
@@ -60,10 +55,8 @@ RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
 # Add the code.
 COPY . .
 
-# Run the Rails server when the docker container starts.
-# Need to run in "sh -c" so the environment substitution of
-# the port will work.
-#CMD ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "'0.0.0.0'"]
+# Expose the port.
+EXPOSE $PORT
 
 # Rubymine does not respect the working directory
 # so can't find the entrypoint if you don't put
