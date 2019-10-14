@@ -1,24 +1,51 @@
-# README
+# Rails 6 Template
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A template for starting a new Rails 6 application.  The default settings are   Since it uses Docker the only thing you need installed on your machine, aside from Docker, is your IDE.
 
-Things you may want to cover:
+Created for for my development environment, which is outlined below.  If you tried it and have any suggestions or imporvements please let know by opening an [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
 
-* Ruby version
+## Development Environment Setup
 
-* System dependencies
+Assuming you have [Docker](https://www.docker.com/) installed you need too:
 
-* Configuration
+1) Fork/Checkout of the repository to you local machine.
 
-* Database creation
+2) In the repository root directly run the below command build the Docker container:
 
-* Database initialization
+```
+docker-compose build
+```
 
-* How to run the test suite
+3) Once the container is built we need to initialize the database.  First run your new container:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+docker-compose run web sh
+```
 
-* Deployment instructions
+The Docker image base is Alpine Linux so we use sh instead of bash.  Also when you first run this command it will pull down the Postgres Docker image.
 
-* ...
+Now that you are inside the Docker container create the test databases:
+
+```
+rails db:create
+```
+
+Now run the tests.  There are currently no tests setup but this is a good smoke test to make sure everything is setup correcty:
+
+```
+rails test
+```
+
+Assuming there are no issues with the above exist the Docker container:
+
+```
+exit
+```
+
+5) Now test that the website will actually run.  On your host machine run 
+
+```
+docker-compose up web
+```
+
+Then open up your favorite browser and navigate to `localhost:3000` and you should see the home page.
