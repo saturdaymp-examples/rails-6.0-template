@@ -7,7 +7,7 @@ rm -f /app/tmp/pids/server.pid
 # If no command is supplied, usually in produciton,
 # then just start the server.  If a command is supplied,
 # usually in development, use it instead.
-if [[ -z $@ ]]; then 
+if [ "$#" -eq 0 ]; then 
   bundle exec rails s -p $PORT -b 0.0.0.0
 else
   exec "$@"
