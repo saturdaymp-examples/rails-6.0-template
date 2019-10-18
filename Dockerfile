@@ -22,14 +22,14 @@ RUN apk update && \
     apk add --no-cache "build-base=0.5-r1" \
                        "postgresql-dev=11.5-r1" \
                        "nodejs=10.16.3-r0" \
-                       "tzdata=2019b-r0" \
+                       "tzdata=2019c-r0" \
                        "yarn=1.16.0-r0"
 
 # Sorbet type checker is only required for development.
 # There is no glibc Alpine Linux package so it must be
 # installed manually.
 RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
-    apk add --no-cache "bash=5.0.0-r0" "git=2.22.0-r0" "wget=1.20.3-r0" "chromium=73.0.3683.103-r0" && \
+    apk add --no-cache "bash=5.0.0-r0" "git=2.22.0-r0" "wget=1.20.3-r0" "chromium=77.0.3865.120-r0" && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-2.30-r0.apk && \
     apk add --no-cache "glibc-2.30-r0.apk" ; \
