@@ -1,8 +1,10 @@
 # Rails 6 Template
 
-A template for starting a new Rails 6 application.  The default settings are   Since it uses Docker the only thing you need installed on your machine, aside from Docker, is your IDE.
+A template for starting a new Rails 6 application.  It includes a empty [Rails](https://rubyonrails.org/) 6 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
-Created for for my development environment, which is outlined below.  If you tried it and have any suggestions or imporvements please let know by opening an [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
+Since it uses Docker the only thing you need installed on your development machine is Docker and your favorite Rails IDE.  No need to install Ruby, Yarn, etc.  Tested in my development environments of Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04/) and Macos [Mojave (10.14)](https://www.apple.com/ca/macos).
+
+If you tried it and have any suggestions or imporvements please let know by opening an [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
 
 ## Development Environment Setup
 
@@ -30,22 +32,45 @@ Now that you are inside the Docker container create the test databases:
 rails db:create
 ```
 
-Now run the tests.  There are currently no tests setup but this is a good smoke test to make sure everything is setup correcty:
+4) Now run the tests.  There are currently no tests setup but this is a good smoke test to make sure everything is setup correcty:
 
 ```
 rails test
 ```
 
-Assuming there are no issues with the above exist the Docker container:
+5) Run the Sorbet type checker:
+
+```
+srb tc
+```
+
+6) Assuming there are no issues with the above exist the Docker container:
 
 ```
 exit
 ```
 
-5) Now test that the website will actually run.  On your host machine run 
+7) Now test that the website will actually run.  On your host machine run 
 
 ```
 docker-compose up web
 ```
 
 Then open up your favorite browser and navigate to `localhost:3000` and you should see the home page.
+
+### RubyMine IDE Setup
+Open up the project in RubyMine then navigate to the Settings->Languages & Frameworks->[Ruby SDK and Gems](https://www.jetbrains.com/help/ruby/ruby-sdk-and-gems.html).  Then click the plus sign and add a new Remote Interperter.  Choose Docker Compose with the following settings:
+
+```
+Server: Docker (create a new one if emtpy)
+Configuration file(s): ./docker-compose.yml
+Service: web
+Environment variables: <leave blank>
+Ruby of version manager path: ruby
+```
+
+Now you should be able to run/debug the application.  If something is not working let me know by opening and [issue](https://github.com/saturdaymp-examples/rails-6-template/issues).
+
+## GitLab Automated Build
+
+There is a base GitLab automated build [script](.gitlab-ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-6-template/pipelines).
