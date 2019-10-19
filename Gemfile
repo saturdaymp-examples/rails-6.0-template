@@ -28,15 +28,15 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Type checking
+gem 'sorbet', :group => :development
+gem 'sorbet-runtime'
+gem 'sorbet-rails'
+
 group :development, :test do
   # RubyMine debugging.
   gem 'ruby-debug-ide'
   gem 'debase'
-
-  # Type checking
-  gem 'sorbet'
-  gem 'sorbet-runtime'
-  gem 'sorbet-rails'
 end
 
 group :development do
