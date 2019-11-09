@@ -18,22 +18,21 @@ WORKDIR /app
 # nodejs: Used by Rails.
 # tzdata: Used by Rails.
 # yarn: Used by Rails to manage node packages.
+# bash, git, wget, chromium: Required by Sorbet and Rails Sorbet
+# glibc: Required by Sorbet but there is no Alpine package so it must be installed manullay.
 RUN apk update && \
     apk add --no-cache "build-base" \
                        "postgresql-dev" \
                        "nodejs" \
                        "tzdata" \
-                       "yarn"
-
-# Sorbet type checker is only required for development.
-# There is no glibc Alpine Linux package so it must be
-# installed manually.
-RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
-    apk add --no-cache "bash" "git" "wget" "chromium" && \
+                       "yarn" \
+                       "bash" \
+                       "git" \
+                       "wget" \
+                       "chromium" && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-2.30-r0.apk && \
-    apk add --no-cache "glibc-2.30-r0.apk" ; \
-    fi
+    apk add --no-cache "glibc-2.30-r0.apk"
 
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
