@@ -1,4 +1,4 @@
-# typed: strict
+# typed: strong
 
 require 'sorbet-runtime'
 
