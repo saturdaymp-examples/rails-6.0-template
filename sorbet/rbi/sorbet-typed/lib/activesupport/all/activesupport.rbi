@@ -425,38 +425,6 @@ module ActiveSupport::NumberHelper
   def number_to_rounded(number, locale: :en, precision: 3, significant: false, separator: ".", delimiter: "", strip_insignificant_zeros: false); end
 end
 
-class Hash
-  sig { returns(T.self_type) }
-  def deep_stringify_keys; end
-
-  sig { returns(T.self_type) }
-  def deep_stringify_keys!; end
-
-  sig { returns(T.self_type) }
-  def deep_symbolize_keys; end
-
-  sig { returns(T.self_type) }
-  def deep_symbolize_keys!; end
-
-  sig { returns(T.self_type) }
-  def deep_transform_keys; end
-
-  sig { returns(T.self_type) }
-  def deep_transform_keys!; end
-
-  sig { returns(T.self_type) }
-  def stringify_keys; end
-
-  sig { returns(T.self_type) }
-  def stringify_keys!; end
-
-  sig { returns(T.self_type) }
-  def symbolize_keys; end
-
-  sig { returns(T.self_type) }
-  def symbolize_keys!; end
-end
-
 module ActiveSupport::Inflector
   sig do
     params(
@@ -540,4 +508,118 @@ module ActiveSupport::Inflector
 
   sig { params(string: String).returns(String) }
   def upcase_first(string); end
+end
+
+
+# defines some of the methods at https://github.com/rails/rails/blob/v6.0.0/activesupport/lib/active_support/core_ext/time/calculations.rb
+# these get added to Time, but are available on TimeWithZone thanks to https://github.com/rails/rails/blob/v6.0.0/activesupport/lib/active_support/time_with_zone.rb#L520
+# this is not a complete definition!
+class ActiveSupport::TimeWithZone
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def midnight; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def beginning_of_day; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def at_midnight; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def at_beginning_of_day; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def middle_of_day; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def midday; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def noon; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def at_midday; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def at_noon; end
+
+  sig { returns(ActiveSupport::TimeWithZone) }
+  def at_middle_of_day; end
+end
+
+# defines some of the methods at https://github.com/rails/rails/blob/v6.0.0/activesupport/lib/active_support/core_ext/time
+# this is not a complete definition!
+class Time
+  sig { returns(Time) }
+  def midnight; end
+
+  sig { returns(Time) }
+  def beginning_of_day; end
+
+  sig { returns(Time) }
+  def at_midnight; end
+
+  sig { returns(Time) }
+  def at_beginning_of_day; end
+
+  sig { returns(Time) }
+  def middle_of_day; end
+
+  sig { returns(Time) }
+  def midday; end
+
+  sig { returns(Time) }
+  def noon; end
+
+  sig { returns(Time) }
+  def at_midday; end
+
+  sig { returns(Time) }
+  def at_noon; end
+
+  sig { returns(Time) }
+  def at_middle_of_day; end
+
+  # https://github.com/rails/rails/blob/v6.0.0/activesupport/lib/active_support/core_ext/date_and_time/zones.rb
+  sig { params(zone: String).returns(T.any(Time, ActiveSupport::TimeWithZone)) }
+  def in_time_zone(zone = ::Time.zone); end
+end
+
+# defines some of the methods at https://github.com/rails/rails/tree/v6.0.0/activesupport/lib/active_support/core_ext/hash
+# this is not a complete definition!
+class Hash
+  sig { returns(T::Hash[String, T.untyped]) }
+  def stringify_keys; end
+
+  sig { returns(T::Hash[String, T.untyped]) }
+  def stringify_keys!; end
+
+  sig { returns(T::Hash[String, T.untyped]) }
+  def deep_stringify_keys; end
+
+  sig { returns(T::Hash[String, T.untyped]) }
+  def deep_stringify_keys!; end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def symbolize_keys; end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def symbolize_keys!; end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def deep_symbolize_keys; end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def deep_symbolize_keys!; end
+
+  # in an ideal world, `arg` would be the type of all keys, the 1st `T.untyped` would be
+  # the type of keys your block returns, and the 2nd `T.untyped` would be the type of values
+  # that the hash had.
+  sig { params(block: T.proc.params(arg: T.untyped).void).returns(T::Hash[T.untyped, T.untyped]) }
+  def deep_transform_keys(&block); end
+
+  sig { params(block: T.proc.params(arg: T.untyped).void).returns(T::Hash[T.untyped, T.untyped]) }
+  def deep_transform_keys!(&block); end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_options; end
 end

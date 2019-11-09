@@ -104,8 +104,8 @@ class ActionController::Parameters
   sig { params(key: T.any(String, Symbol)).returns(T::Boolean) }
   def key?(key); end
 
-  sig { params(key: T.any(String, Symbol)).returns(T.untyped) }
-  def keys(key); end
+  sig { returns(T::Array[T.untyped]) }
+  def keys; end
 
   sig { params(other_hash: T.untyped).returns(ActionController::Parameters) }
   def merge!(other_hash); end
@@ -239,10 +239,10 @@ class ActionController::Parameters
   sig { params(keys: T.any(String, Symbol)).returns(ActionController::Parameters) }
   def slice(*keys); end
 
-  sig { returns(T.nilable(ActiveSupport::HashWithIndifferentAccess)) }
+  sig { returns(ActiveSupport::HashWithIndifferentAccess) }
   def to_h; end
 
-  sig { returns(T.nilable(T::Hash[T.untyped, T.untyped])) }
+  sig { returns(T::Hash[T.untyped, T.untyped]) }
   def to_hash; end
 
   # to_param is an alias of to_query

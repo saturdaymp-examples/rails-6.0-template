@@ -1,4 +1,4 @@
-FROM ruby:2.6.4-alpine3.10
+FROM ruby:2.6.5-alpine3.10
 
 # If true then development gems and libraries are included
 # in the container.

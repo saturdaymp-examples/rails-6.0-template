@@ -5,24 +5,9 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/activerecord/all/activerecord.rbi
 #
-# typed: strong
+# typed: ignore
 
-VariadicUntypedFunction = T.type_alias(
-  T.any(
-    T.proc.returns(T.untyped),
-    T.proc.params(arg0: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped, arg5: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped, arg5: T.untyped, arg6: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped, arg5: T.untyped, arg6: T.untyped, arg7: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped, arg5: T.untyped, arg6: T.untyped, arg7: T.untyped, arg8: T.untyped).returns(T.untyped),
-    T.proc.params(arg0: T.untyped, arg1: T.untyped, arg2: T.untyped, arg3: T.untyped, arg4: T.untyped, arg5: T.untyped, arg6: T.untyped, arg7: T.untyped, arg8: T.untyped, arg9: T.untyped).returns(T.untyped)
-    # Currently Sorbet is limited to procs with 9 args: https://github.com/sorbet/sorbet/blob/df6085e6ae9846f033064513ea14f069c68b0bf9/core/SymbolRef.h#L387
-  )
-)
+VariadicUntypedFunction = T.type_alias { Proc }
 
 module ActiveRecord::Associations::ClassMethods
   sig do
@@ -519,6 +504,9 @@ class ActiveRecord::Base
     unless: nil,
     on: nil
   ); end
+
+  sig { params(comparison_object: T.untyped).returns(T::Boolean) }
+  def ==(comparison_object); end
 end
 
 module ActiveRecord::Inheritance::ClassMethods
@@ -920,6 +908,12 @@ module ActiveRecord::Validations
   include ActiveModel::Validations
 
   mixes_in_class_methods(ActiveModel::Validations::ClassMethods)
+
+  sig { params(options: T.untyped).returns(T::Boolean) }
+  def save(options = nil); end
+
+  sig { params(options: T.untyped).returns(TrueClass) }
+  def save!(options = nil); end
 end
 
 # Represents the schema of an SQL table in an abstract way. This class

@@ -9333,6 +9333,12 @@ module ActionView::Helpers::UrlHelper
 
   def button_to(name=T.unsafe(nil), options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 
+  def current_page?(options, check_parameters: T.unsafe(nil)); end
+
+  def link_to(name=T.unsafe(nil), options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
+
+  def link_to_if(condition, name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
+
   def link_to_unless(condition, name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 
   def link_to_unless_current(name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
@@ -11241,9 +11247,17 @@ module ActiveModel::Conversion
 end
 
 module ActiveModel::Dirty
+  def attribute_changed?(attr_name, **options); end
+
+  def attribute_changed_in_place?(attr_name); end
+
+  def attribute_previously_changed?(attr_name); end
+
   def attribute_was(attr_name); end
 
   def changed(); end
+
+  def changed?(); end
 
   def changed_attributes(); end
 
@@ -11603,6 +11617,9 @@ end
 module ActiveModel::Translation
 end
 
+module ActiveModel::Type
+end
+
 class ActiveModel::Type::BigInteger
 end
 
@@ -11631,6 +11648,9 @@ end
 
 class ActiveModel::Type::Boolean
   FALSE_VALUES = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveModel::Type::Boolean
 end
 
 class ActiveModel::Type::Date
@@ -11876,6 +11896,28 @@ module ActiveModel::Validations::Callbacks
   extend ::ActiveSupport::Concern
 end
 
+module ActiveModel::Validations::HelperMethods
+  def validates_absence_of(*attr_names); end
+
+  def validates_acceptance_of(*attr_names); end
+
+  def validates_confirmation_of(*attr_names); end
+
+  def validates_exclusion_of(*attr_names); end
+
+  def validates_format_of(*attr_names); end
+
+  def validates_inclusion_of(*attr_names); end
+
+  def validates_length_of(*attr_names); end
+
+  def validates_numericality_of(*attr_names); end
+
+  def validates_presence_of(*attr_names); end
+
+  def validates_size_of(*attr_names); end
+end
+
 module ActiveModel::Validations
   extend ::ActiveSupport::Concern
 end
@@ -11901,6 +11943,24 @@ module ActiveModel
   def self.version(); end
 end
 
+class ActiveRecord::ActiveRecordError
+end
+
+class ActiveRecord::ActiveRecordError
+end
+
+class ActiveRecord::AdapterNotFound
+end
+
+class ActiveRecord::AdapterNotFound
+end
+
+class ActiveRecord::AdapterNotSpecified
+end
+
+class ActiveRecord::AdapterNotSpecified
+end
+
 module ActiveRecord::Aggregations
   def reload(*_); end
 end
@@ -11919,8 +11979,14 @@ class ActiveRecord::AmbiguousSourceReflectionForThroughAssociation
   def initialize(klass, macro, association_name, options, possible_sources); end
 end
 
+class ActiveRecord::AmbiguousSourceReflectionForThroughAssociation
+end
+
 class ActiveRecord::AssociationNotFoundError
   def initialize(record=T.unsafe(nil), association_name=T.unsafe(nil)); end
+end
+
+class ActiveRecord::AssociationNotFoundError
 end
 
 class ActiveRecord::AssociationRelation
@@ -11938,6 +12004,12 @@ class ActiveRecord::AssociationRelation
 end
 
 class ActiveRecord::AssociationRelation
+end
+
+class ActiveRecord::AssociationTypeMismatch
+end
+
+class ActiveRecord::AssociationTypeMismatch
 end
 
 module ActiveRecord::Associations
@@ -12244,6 +12316,9 @@ class ActiveRecord::AttributeAssignmentError
   def initialize(message=T.unsafe(nil), exception=T.unsafe(nil), attribute=T.unsafe(nil)); end
 end
 
+class ActiveRecord::AttributeAssignmentError
+end
+
 module ActiveRecord::AttributeDecorators
 end
 
@@ -12301,6 +12376,8 @@ module ActiveRecord::AttributeMethods::Dirty
 
   def saved_change_to_attribute(attr_name); end
 
+  def saved_change_to_attribute?(attr_name, **options); end
+
   def saved_changes(); end
 
   def saved_changes?(); end
@@ -12348,6 +12425,9 @@ end
 
 module ActiveRecord::AttributeMethods::Read
   extend ::ActiveSupport::Concern
+end
+
+module ActiveRecord::AttributeMethods::Serialization
 end
 
 module ActiveRecord::AttributeMethods::Serialization
@@ -12403,23 +12483,32 @@ end
 
 class ActiveRecord::Base
   include ::ActiveRecord::Core
+  include ::ActiveRecord::Persistence
   include ::ActiveRecord::ReadonlyAttributes
   include ::ActiveRecord::ModelSchema
+  include ::ActiveRecord::Inheritance
+  include ::ActiveRecord::Scoping
+  include ::ActiveRecord::Scoping::Default
+  include ::ActiveRecord::Scoping::Named
   include ::ActiveRecord::Sanitization
   include ::ActiveRecord::AttributeAssignment
   include ::ActiveModel::AttributeAssignment
   include ::ActiveModel::ForbiddenAttributesProtection
   include ::ActiveModel::Conversion
   include ::ActiveRecord::Integration
+  include ::ActiveModel::Validations
   include ::ActiveSupport::Callbacks
   include ::ActiveModel::Validations::HelperMethods
+  include ::ActiveRecord::Validations
   include ::ActiveRecord::CounterCache
   include ::ActiveRecord::Attributes
   include ::ActiveRecord::AttributeDecorators
   include ::ActiveRecord::Locking::Optimistic
+  include ::ActiveRecord::Locking::Pessimistic
   include ::ActiveRecord::DefineCallbacks
   include ::ActiveModel::Validations::Callbacks
   include ::ActiveModel::AttributeMethods
+  include ::ActiveRecord::AttributeMethods
   include ::ActiveRecord::Base::GeneratedAttributeMethods
   include ::ActiveRecord::Base::GeneratedAssociationMethods
   include ::ActiveRecord::AttributeMethods::Read
@@ -12429,10 +12518,14 @@ class ActiveRecord::Base
   include ::ActiveRecord::AttributeMethods::PrimaryKey
   include ::ActiveRecord::AttributeMethods::TimeZoneConversion
   include ::ActiveModel::Dirty
+  include ::ActiveRecord::AttributeMethods::Dirty
+  include ::ActiveRecord::AttributeMethods::Serialization
   include ::ActiveRecord::Callbacks
   include ::ActiveRecord::Timestamp
+  include ::ActiveRecord::Associations
   include ::ActiveModel::SecurePassword
   include ::ActiveRecord::AutosaveAssociation
+  include ::ActiveRecord::NestedAttributes
   include ::ActiveRecord::Transactions
   include ::ActiveRecord::TouchLater
   include ::ActiveRecord::NoTouching
@@ -12753,11 +12846,19 @@ class ActiveRecord::Base
 
   def self._validators?(); end
 
+  def self.after_create(*args, **options, &block); end
+
+  def self.after_destroy(*args, **options, &block); end
+
   def self.after_find(*args, **options, &block); end
 
   def self.after_initialize(*args, **options, &block); end
 
+  def self.after_save(*args, **options, &block); end
+
   def self.after_touch(*args, **options, &block); end
+
+  def self.after_update(*args, **options, &block); end
 
   def self.aggregate_reflections(); end
 
@@ -12768,6 +12869,14 @@ class ActiveRecord::Base
   def self.allow_unsafe_raw_sql(); end
 
   def self.allow_unsafe_raw_sql=(obj); end
+
+  def self.around_create(*args, **options, &block); end
+
+  def self.around_destroy(*args, **options, &block); end
+
+  def self.around_save(*args, **options, &block); end
+
+  def self.around_update(*args, **options, &block); end
 
   def self.attachment_reflections(); end
 
@@ -12798,6 +12907,14 @@ class ActiveRecord::Base
   def self.attributes_to_define_after_schema_loads=(val); end
 
   def self.attributes_to_define_after_schema_loads?(); end
+
+  def self.before_create(*args, **options, &block); end
+
+  def self.before_destroy(*args, **options, &block); end
+
+  def self.before_save(*args, **options, &block); end
+
+  def self.before_update(*args, **options, &block); end
 
   def self.belongs_to_required_by_default(); end
 
@@ -13087,6 +13204,18 @@ end
 class ActiveRecord::ConcurrentMigrationError
   DEFAULT_MESSAGE = ::T.let(nil, ::T.untyped)
   RELEASE_LOCK_FAILED_MESSAGE = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveRecord::ConcurrentMigrationError
+end
+
+class ActiveRecord::ConfigurationError
+end
+
+class ActiveRecord::ConfigurationError
+end
+
+module ActiveRecord::ConnectionAdapters
 end
 
 class ActiveRecord::ConnectionAdapters::AbstractAdapter
@@ -13490,6 +13619,10 @@ class ActiveRecord::ConnectionAdapters::ColumnDefinition
   def self.[](*_); end
 
   def self.members(); end
+end
+
+module ActiveRecord::ConnectionAdapters::ColumnMethods
+  def primary_key(name, type=T.unsafe(nil), **options); end
 end
 
 module ActiveRecord::ConnectionAdapters::ColumnMethods::ClassMethods
@@ -15013,11 +15146,22 @@ class ActiveRecord::ConnectionAdapters::StatementPool
 end
 
 class ActiveRecord::ConnectionAdapters::Table
+  include ::ActiveRecord::ConnectionAdapters::ColumnMethods
+  def belongs_to(*args, **options); end
+
   def bigint(*names, **options); end
 
   def binary(*names, **options); end
 
   def boolean(*names, **options); end
+
+  def change(column_name, type, options=T.unsafe(nil)); end
+
+  def change_default(column_name, default_or_changes); end
+
+  def column(column_name, type, **options); end
+
+  def column_exists?(column_name, type=T.unsafe(nil), options=T.unsafe(nil)); end
 
   def date(*names, **options); end
 
@@ -15026,6 +15170,14 @@ class ActiveRecord::ConnectionAdapters::Table
   def decimal(*names, **options); end
 
   def float(*names, **options); end
+
+  def foreign_key(*args); end
+
+  def foreign_key_exists?(*args); end
+
+  def index(column_name, options=T.unsafe(nil)); end
+
+  def index_exists?(column_name, options=T.unsafe(nil)); end
 
   def initialize(table_name, base); end
 
@@ -15037,6 +15189,24 @@ class ActiveRecord::ConnectionAdapters::Table
 
   def numeric(*names, **options); end
 
+  def references(*args, **options); end
+
+  def remove(*column_names); end
+
+  def remove_belongs_to(*args, **options); end
+
+  def remove_foreign_key(*args); end
+
+  def remove_index(options=T.unsafe(nil)); end
+
+  def remove_references(*args, **options); end
+
+  def remove_timestamps(options=T.unsafe(nil)); end
+
+  def rename(column_name, new_column_name); end
+
+  def rename_index(index_name, new_index_name); end
+
   def string(*names, **options); end
 
   def text(*names, **options); end
@@ -15044,6 +15214,8 @@ class ActiveRecord::ConnectionAdapters::Table
   def time(*names, **options); end
 
   def timestamp(*names, **options); end
+
+  def timestamps(options=T.unsafe(nil)); end
 
   def virtual(*names, **options); end
 end
@@ -15053,13 +15225,22 @@ class ActiveRecord::ConnectionAdapters::Table
 end
 
 class ActiveRecord::ConnectionAdapters::TableDefinition
+  include ::ActiveRecord::ConnectionAdapters::ColumnMethods
+  def [](name); end
+
   def as(); end
+
+  def belongs_to(*args, **options); end
 
   def bigint(*names, **options); end
 
   def binary(*names, **options); end
 
   def boolean(*names, **options); end
+
+  def column(name, type, **options); end
+
+  def columns(); end
 
   def comment(); end
 
@@ -15076,6 +15257,8 @@ class ActiveRecord::ConnectionAdapters::TableDefinition
   def foreign_keys(); end
 
   def if_not_exists(); end
+
+  def index(column_name, options=T.unsafe(nil)); end
 
   def indexes(); end
 
@@ -15095,6 +15278,10 @@ class ActiveRecord::ConnectionAdapters::TableDefinition
 
   def primary_keys(name=T.unsafe(nil)); end
 
+  def references(*args, **options); end
+
+  def remove_column(name); end
+
   def string(*names, **options); end
 
   def temporary(); end
@@ -15104,6 +15291,8 @@ class ActiveRecord::ConnectionAdapters::TableDefinition
   def time(*names, **options); end
 
   def timestamp(*names, **options); end
+
+  def timestamps(**options); end
 
   def virtual(*names, **options); end
 end
@@ -15269,6 +15458,18 @@ end
 module ActiveRecord::ConnectionHandling
 end
 
+class ActiveRecord::ConnectionNotEstablished
+end
+
+class ActiveRecord::ConnectionNotEstablished
+end
+
+class ActiveRecord::ConnectionTimeoutError
+end
+
+class ActiveRecord::ConnectionTimeoutError
+end
+
 module ActiveRecord::Core
   def ==(comparison_object); end
 
@@ -15314,6 +15515,12 @@ end
 
 module ActiveRecord::CounterCache
   extend ::ActiveSupport::Concern
+end
+
+class ActiveRecord::DangerousAttributeError
+end
+
+class ActiveRecord::DangerousAttributeError
 end
 
 class ActiveRecord::DatabaseConfigurations
@@ -15388,6 +15595,12 @@ class ActiveRecord::DatabaseConfigurations::UrlConfig
 end
 
 class ActiveRecord::DatabaseConfigurations
+end
+
+class ActiveRecord::Deadlocked
+end
+
+class ActiveRecord::Deadlocked
 end
 
 module ActiveRecord::DefineCallbacks
@@ -15466,12 +15679,21 @@ class ActiveRecord::DeleteRestrictionError
   def initialize(name=T.unsafe(nil)); end
 end
 
+class ActiveRecord::DeleteRestrictionError
+end
+
 class ActiveRecord::DuplicateMigrationNameError
   def initialize(name=T.unsafe(nil)); end
 end
 
+class ActiveRecord::DuplicateMigrationNameError
+end
+
 class ActiveRecord::DuplicateMigrationVersionError
   def initialize(version=T.unsafe(nil)); end
+end
+
+class ActiveRecord::DuplicateMigrationVersionError
 end
 
 module ActiveRecord::DynamicMatchers
@@ -15522,6 +15744,9 @@ class ActiveRecord::EagerLoadPolymorphicError
   def initialize(reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::EagerLoadPolymorphicError
+end
+
 module ActiveRecord::Enum
   def enum(*args, **kwargs); end
 
@@ -15547,6 +15772,15 @@ end
 
 class ActiveRecord::EnvironmentMismatchError
   def initialize(current: T.unsafe(nil), stored: T.unsafe(nil)); end
+end
+
+class ActiveRecord::EnvironmentMismatchError
+end
+
+class ActiveRecord::ExclusiveConnectionTimeoutError
+end
+
+class ActiveRecord::ExclusiveConnectionTimeoutError
 end
 
 module ActiveRecord::Explain
@@ -15678,6 +15912,12 @@ class ActiveRecord::Fixture::FormatError
 end
 
 class ActiveRecord::Fixture
+end
+
+class ActiveRecord::FixtureClassNotFound
+end
+
+class ActiveRecord::FixtureClassNotFound
 end
 
 class ActiveRecord::FixtureSet
@@ -15835,36 +16075,96 @@ class ActiveRecord::HasManyThroughAssociationNotFoundError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::HasManyThroughAssociationNotFoundError
+end
+
 class ActiveRecord::HasManyThroughAssociationPointlessSourceTypeError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil), source_reflection=T.unsafe(nil)); end
+end
+
+class ActiveRecord::HasManyThroughAssociationPointlessSourceTypeError
 end
 
 class ActiveRecord::HasManyThroughAssociationPolymorphicSourceError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil), source_reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::HasManyThroughAssociationPolymorphicSourceError
+end
+
 class ActiveRecord::HasManyThroughAssociationPolymorphicThroughError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil)); end
+end
+
+class ActiveRecord::HasManyThroughAssociationPolymorphicThroughError
+end
+
+class ActiveRecord::HasManyThroughCantAssociateThroughHasOneOrManyReflection
+end
+
+class ActiveRecord::HasManyThroughCantAssociateThroughHasOneOrManyReflection
+end
+
+class ActiveRecord::HasManyThroughNestedAssociationsAreReadonly
+end
+
+class ActiveRecord::HasManyThroughNestedAssociationsAreReadonly
 end
 
 class ActiveRecord::HasManyThroughOrderError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil), through_reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::HasManyThroughOrderError
+end
+
 class ActiveRecord::HasManyThroughSourceAssociationNotFoundError
   def initialize(reflection=T.unsafe(nil)); end
+end
+
+class ActiveRecord::HasManyThroughSourceAssociationNotFoundError
 end
 
 class ActiveRecord::HasOneAssociationPolymorphicThroughError
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::HasOneAssociationPolymorphicThroughError
+end
+
 class ActiveRecord::HasOneThroughCantAssociateThroughCollection
   def initialize(owner_class_name=T.unsafe(nil), reflection=T.unsafe(nil), through_reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::HasOneThroughCantAssociateThroughCollection
+end
+
+class ActiveRecord::HasOneThroughCantAssociateThroughHasOneOrManyReflection
+end
+
+class ActiveRecord::HasOneThroughCantAssociateThroughHasOneOrManyReflection
+end
+
+class ActiveRecord::HasOneThroughNestedAssociationsAreReadonly
+end
+
+class ActiveRecord::HasOneThroughNestedAssociationsAreReadonly
+end
+
 class ActiveRecord::IllegalMigrationNameError
   def initialize(name=T.unsafe(nil)); end
+end
+
+class ActiveRecord::IllegalMigrationNameError
+end
+
+class ActiveRecord::ImmutableRelation
+end
+
+class ActiveRecord::ImmutableRelation
+end
+
+module ActiveRecord::Inheritance
 end
 
 module ActiveRecord::Inheritance
@@ -15944,6 +16244,7 @@ module ActiveRecord::Integration
 end
 
 class ActiveRecord::InternalMetadata
+  include ::ActiveRecord::InternalMetadata::GeneratedAttributeMethods
   include ::ActiveRecord::InternalMetadata::GeneratedAssociationMethods
 end
 
@@ -15969,6 +16270,9 @@ module ActiveRecord::InternalMetadata::GeneratedAssociationMethods
 end
 
 module ActiveRecord::InternalMetadata::GeneratedAttributeMethods
+end
+
+module ActiveRecord::InternalMetadata::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
@@ -15989,10 +16293,31 @@ class ActiveRecord::InternalMetadata
   def self.drop_table(); end
 end
 
+class ActiveRecord::InvalidForeignKey
+end
+
+class ActiveRecord::InvalidForeignKey
+end
+
 class ActiveRecord::InverseOfAssociationNotFoundError
   def initialize(reflection=T.unsafe(nil), associated_class=T.unsafe(nil)); end
 end
 
+class ActiveRecord::InverseOfAssociationNotFoundError
+end
+
+class ActiveRecord::IrreversibleMigration
+end
+
+class ActiveRecord::IrreversibleMigration
+end
+
+class ActiveRecord::IrreversibleOrderError
+end
+
+class ActiveRecord::IrreversibleOrderError
+end
+
 module ActiveRecord::LegacyYamlAdapter
 end
 
@@ -16012,6 +16337,15 @@ end
 
 module ActiveRecord::LegacyYamlAdapter
   def self.convert(klass, coder); end
+end
+
+class ActiveRecord::LockWaitTimeout
+end
+
+class ActiveRecord::LockWaitTimeout
+end
+
+module ActiveRecord::Locking
 end
 
 class ActiveRecord::Locking::LockingType
@@ -16037,6 +16371,11 @@ end
 
 module ActiveRecord::Locking::Pessimistic
   def lock!(lock=T.unsafe(nil)); end
+
+  def with_lock(lock=T.unsafe(nil)); end
+end
+
+module ActiveRecord::Locking::Pessimistic
 end
 
 module ActiveRecord::Locking
@@ -16507,6 +16846,9 @@ class ActiveRecord::MigrationError
   def initialize(message=T.unsafe(nil)); end
 end
 
+class ActiveRecord::MigrationError
+end
+
 class ActiveRecord::MigrationProxy
   def announce(*args, &block); end
 
@@ -16582,6 +16924,9 @@ class ActiveRecord::MismatchedForeignKey
   def initialize(message: T.unsafe(nil), sql: T.unsafe(nil), binds: T.unsafe(nil), table: T.unsafe(nil), foreign_key: T.unsafe(nil), target_table: T.unsafe(nil), primary_key: T.unsafe(nil), primary_key_column: T.unsafe(nil)); end
 end
 
+class ActiveRecord::MismatchedForeignKey
+end
+
 module ActiveRecord::ModelSchema
 end
 
@@ -16596,6 +16941,9 @@ class ActiveRecord::MultiparameterAssignmentErrors
   def initialize(errors=T.unsafe(nil)); end
 end
 
+class ActiveRecord::MultiparameterAssignmentErrors
+end
+
 module ActiveRecord::NestedAttributes
   def _destroy(); end
   UNASSIGNABLE_KEYS = ::T.let(nil, ::T.untyped)
@@ -16605,8 +16953,17 @@ module ActiveRecord::NestedAttributes
   extend ::ActiveSupport::Concern
 end
 
+class ActiveRecord::NoDatabaseError
+end
+
+class ActiveRecord::NoDatabaseError
+end
+
 class ActiveRecord::NoEnvironmentInSchemaError
   def initialize(); end
+end
+
+class ActiveRecord::NoEnvironmentInSchemaError
 end
 
 module ActiveRecord::NoTouching
@@ -16622,6 +16979,12 @@ module ActiveRecord::NoTouching
   def self.applied_to?(klass); end
 
   def self.apply_to(klass); end
+end
+
+class ActiveRecord::NotNullViolation
+end
+
+class ActiveRecord::NotNullViolation
 end
 
 class ActiveRecord::NullMigration
@@ -16680,11 +17043,55 @@ class ActiveRecord::PendingMigrationError
 end
 
 module ActiveRecord::Persistence
+  def becomes(klass); end
+
+  def becomes!(klass); end
+
+  def decrement(attribute, by=T.unsafe(nil)); end
+
+  def decrement!(attribute, by=T.unsafe(nil), touch: T.unsafe(nil)); end
+
   def delete(); end
 
   def destroy(); end
 
   def destroy!(); end
+
+  def destroyed?(); end
+
+  def increment(attribute, by=T.unsafe(nil)); end
+
+  def increment!(attribute, by=T.unsafe(nil), touch: T.unsafe(nil)); end
+
+  def new_record?(); end
+
+  def persisted?(); end
+
+  def reload(options=T.unsafe(nil)); end
+
+  def save(*args, &block); end
+
+  def save!(*args, &block); end
+
+  def toggle(attribute); end
+
+  def toggle!(attribute); end
+
+  def touch(*names, time: T.unsafe(nil)); end
+
+  def update(attributes); end
+
+  def update!(attributes); end
+
+  def update_attribute(name, value); end
+
+  def update_attributes(*args, &block); end
+
+  def update_attributes!(*args, &block); end
+
+  def update_column(name, value); end
+
+  def update_columns(attributes); end
 end
 
 module ActiveRecord::Persistence
@@ -16813,8 +17220,23 @@ class ActiveRecord::PredicateBuilder
   def self.references(attributes); end
 end
 
+class ActiveRecord::PreparedStatementCacheExpired
+end
+
+class ActiveRecord::PreparedStatementCacheExpired
+end
+
+class ActiveRecord::PreparedStatementInvalid
+end
+
+class ActiveRecord::PreparedStatementInvalid
+end
+
 class ActiveRecord::ProtectedEnvironmentError
   def initialize(env=T.unsafe(nil)); end
+end
+
+class ActiveRecord::ProtectedEnvironmentError
 end
 
 class ActiveRecord::QueryCache
@@ -16835,6 +17257,12 @@ class ActiveRecord::QueryCache
   def self.install_executor_hooks(executor=T.unsafe(nil)); end
 
   def self.run(); end
+end
+
+class ActiveRecord::QueryCanceled
+end
+
+class ActiveRecord::QueryCanceled
 end
 
 module ActiveRecord::QueryMethods
@@ -17293,10 +17721,22 @@ end
 module ActiveRecord::Railties
 end
 
+class ActiveRecord::RangeError
+end
+
+class ActiveRecord::RangeError
+end
+
 class ActiveRecord::ReadOnlyError
 end
 
 class ActiveRecord::ReadOnlyError
+end
+
+class ActiveRecord::ReadOnlyRecord
+end
+
+class ActiveRecord::ReadOnlyRecord
 end
 
 module ActiveRecord::ReadonlyAttributes
@@ -17312,10 +17752,16 @@ class ActiveRecord::RecordInvalid
   def record(); end
 end
 
+class ActiveRecord::RecordInvalid
+end
+
 class ActiveRecord::RecordNotDestroyed
   def initialize(message=T.unsafe(nil), record=T.unsafe(nil)); end
 
   def record(); end
+end
+
+class ActiveRecord::RecordNotDestroyed
 end
 
 class ActiveRecord::RecordNotFound
@@ -17328,10 +17774,22 @@ class ActiveRecord::RecordNotFound
   def primary_key(); end
 end
 
+class ActiveRecord::RecordNotFound
+end
+
 class ActiveRecord::RecordNotSaved
   def initialize(message=T.unsafe(nil), record=T.unsafe(nil)); end
 
   def record(); end
+end
+
+class ActiveRecord::RecordNotSaved
+end
+
+class ActiveRecord::RecordNotUnique
+end
+
+class ActiveRecord::RecordNotUnique
 end
 
 module ActiveRecord::Reflection
@@ -17614,6 +18072,15 @@ class ActiveRecord::Result
   def to_hash(); end
 end
 
+class ActiveRecord::Result
+end
+
+class ActiveRecord::Rollback
+end
+
+class ActiveRecord::Rollback
+end
+
 class ActiveRecord::RuntimeRegistry
   def connection_handler(); end
 
@@ -17646,6 +18113,10 @@ class ActiveRecord::Schema
   def define(info, &block); end
 end
 
+class ActiveRecord::Schema
+  def self.define(info=T.unsafe(nil), &block); end
+end
+
 class ActiveRecord::SchemaDumper
   def dump(stream); end
 
@@ -17673,6 +18144,7 @@ class ActiveRecord::SchemaDumper
 end
 
 class ActiveRecord::SchemaMigration
+  include ::ActiveRecord::SchemaMigration::GeneratedAttributeMethods
   include ::ActiveRecord::SchemaMigration::GeneratedAssociationMethods
   def version(); end
 end
@@ -17696,6 +18168,9 @@ module ActiveRecord::SchemaMigration::GeneratedAssociationMethods
 end
 
 module ActiveRecord::SchemaMigration::GeneratedAssociationMethods
+end
+
+module ActiveRecord::SchemaMigration::GeneratedAttributeMethods
 end
 
 module ActiveRecord::SchemaMigration::GeneratedAttributeMethods
@@ -17728,7 +18203,13 @@ module ActiveRecord::Scoping
 end
 
 module ActiveRecord::Scoping::Default
+end
+
+module ActiveRecord::Scoping::Default
   extend ::ActiveSupport::Concern
+end
+
+module ActiveRecord::Scoping::Named
 end
 
 module ActiveRecord::Scoping::Named
@@ -17755,6 +18236,18 @@ module ActiveRecord::Serialization
   extend ::ActiveSupport::Concern
 end
 
+class ActiveRecord::SerializationFailure
+end
+
+class ActiveRecord::SerializationFailure
+end
+
+class ActiveRecord::SerializationTypeMismatch
+end
+
+class ActiveRecord::SerializationTypeMismatch
+end
+
 module ActiveRecord::SpawnMethods
   def except(*skips); end
 
@@ -17776,6 +18269,9 @@ class ActiveRecord::StaleObjectError
   def initialize(record=T.unsafe(nil), attempted_action=T.unsafe(nil)); end
 
   def record(); end
+end
+
+class ActiveRecord::StaleObjectError
 end
 
 class ActiveRecord::StatementCache
@@ -17853,11 +18349,26 @@ class ActiveRecord::StatementInvalid
   def sql(); end
 end
 
+class ActiveRecord::StatementInvalid
+end
+
+class ActiveRecord::StatementTimeout
+end
+
+class ActiveRecord::StatementTimeout
+end
+
 module ActiveRecord::Store
 end
 
 module ActiveRecord::Store
   extend ::ActiveSupport::Concern
+end
+
+class ActiveRecord::SubclassNotFound
+end
+
+class ActiveRecord::SubclassNotFound
 end
 
 module ActiveRecord::Suppressor
@@ -18160,8 +18671,14 @@ class ActiveRecord::ThroughCantAssociateThroughHasOneOrManyReflection
   def initialize(owner=T.unsafe(nil), reflection=T.unsafe(nil)); end
 end
 
+class ActiveRecord::ThroughCantAssociateThroughHasOneOrManyReflection
+end
+
 class ActiveRecord::ThroughNestedAssociationsAreReadonly
   def initialize(owner=T.unsafe(nil), reflection=T.unsafe(nil)); end
+end
+
+class ActiveRecord::ThroughNestedAssociationsAreReadonly
 end
 
 module ActiveRecord::Timestamp
@@ -18179,6 +18696,18 @@ end
 
 module ActiveRecord::TouchLater
   extend ::ActiveSupport::Concern
+end
+
+class ActiveRecord::TransactionIsolationError
+end
+
+class ActiveRecord::TransactionIsolationError
+end
+
+class ActiveRecord::TransactionRollbackError
+end
+
+class ActiveRecord::TransactionRollbackError
 end
 
 module ActiveRecord::Transactions
@@ -18219,6 +18748,9 @@ end
 module ActiveRecord::Translation
 end
 
+module ActiveRecord::Type
+end
+
 class ActiveRecord::Type::AdapterSpecificRegistry
   def add_modifier(options, klass, **args); end
 end
@@ -18229,6 +18761,8 @@ end
 ActiveRecord::Type::BigInteger = ActiveModel::Type::BigInteger
 
 ActiveRecord::Type::Binary = ActiveModel::Type::Binary
+
+ActiveRecord::Type::Boolean = ActiveModel::Type::Boolean
 
 class ActiveRecord::Type::Date
   include ::ActiveRecord::Type::Internal::Timezone
@@ -18392,6 +18926,8 @@ end
 class ActiveRecord::Type::UnsignedInteger
 end
 
+ActiveRecord::Type::Value = ActiveModel::Type::Value
+
 module ActiveRecord::Type
   def self.add_modifier(*args, &block); end
 
@@ -18432,14 +18968,34 @@ end
 module ActiveRecord::TypeCaster
 end
 
+class ActiveRecord::TypeConflictError
+end
+
+class ActiveRecord::TypeConflictError
+end
+
+ActiveRecord::UnknownAttributeError = ActiveModel::UnknownAttributeError
+
+class ActiveRecord::UnknownAttributeReference
+end
+
+class ActiveRecord::UnknownAttributeReference
+end
+
 class ActiveRecord::UnknownMigrationVersionError
   def initialize(version=T.unsafe(nil)); end
+end
+
+class ActiveRecord::UnknownMigrationVersionError
 end
 
 class ActiveRecord::UnknownPrimaryKey
   def initialize(model=T.unsafe(nil), description=T.unsafe(nil)); end
 
   def model(); end
+end
+
+class ActiveRecord::UnknownPrimaryKey
 end
 
 module ActiveRecord::VERSION
@@ -18465,6 +19021,18 @@ end
 
 module ActiveRecord::Validations
   extend ::ActiveSupport::Concern
+end
+
+class ActiveRecord::ValueTooLong
+end
+
+class ActiveRecord::ValueTooLong
+end
+
+class ActiveRecord::WrappedDatabaseException
+end
+
+class ActiveRecord::WrappedDatabaseException
 end
 
 module ActiveRecord
@@ -22338,9 +22906,6 @@ class ActiveSupport::TimeWithZone
   PRECISIONS = ::T.let(nil, ::T.untyped)
 end
 
-class ActiveSupport::TimeWithZone
-end
-
 class ActiveSupport::TimeZone
   include ::Comparable
   def =~(re); end
@@ -24664,8 +25229,6 @@ class Array
 
   def pack(*_); end
 
-  def quote(); end
-
   def replace(_); end
 
   def shelljoin(); end
@@ -25864,1713 +26427,6 @@ module Bundler::VersionRanges
   def self.for(requirement); end
 
   def self.for_many(requirements); end
-end
-
-module Byebug
-  include ::Byebug::Helpers::ReflectionHelper
-  def displays(); end
-
-  def displays=(displays); end
-
-  def init_file(); end
-
-  def init_file=(init_file); end
-
-  def mode(); end
-
-  def mode=(mode); end
-
-  def run_init_script(); end
-  PORT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::AutoirbSetting
-  def banner(); end
-
-  def value=(val); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::AutoirbSetting
-end
-
-class Byebug::AutolistSetting
-  def banner(); end
-
-  def value=(val); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::AutolistSetting
-end
-
-class Byebug::AutoprySetting
-  def banner(); end
-
-  def value=(val); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::AutoprySetting
-end
-
-class Byebug::AutosaveSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::AutosaveSetting
-end
-
-class Byebug::BasenameSetting
-  def banner(); end
-end
-
-class Byebug::BasenameSetting
-end
-
-class Byebug::BreakCommand
-  include ::Byebug::Helpers::EvalHelper
-  include ::Byebug::Helpers::FileHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::BreakCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Breakpoint
-  def enabled=(enabled); end
-
-  def enabled?(); end
-
-  def expr(); end
-
-  def expr=(expr); end
-
-  def hit_condition(); end
-
-  def hit_condition=(hit_condition); end
-
-  def hit_count(); end
-
-  def hit_value(); end
-
-  def hit_value=(hit_value); end
-
-  def id(); end
-
-  def initialize(_, _1, _2); end
-
-  def pos(); end
-
-  def source(); end
-end
-
-class Byebug::Breakpoint
-  def self.add(file, line, expr=T.unsafe(nil)); end
-
-  def self.first(); end
-
-  def self.last(); end
-
-  def self.none?(); end
-
-  def self.potential_line?(filename, lineno); end
-
-  def self.potential_lines(filename); end
-
-  def self.remove(id); end
-end
-
-class Byebug::CallstyleSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::CallstyleSetting
-end
-
-class Byebug::CatchCommand
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::CatchCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Command
-  def arguments(); end
-
-  def confirm(*args, &block); end
-
-  def context(); end
-
-  def errmsg(*args, &block); end
-
-  def frame(); end
-
-  def help(*args, &block); end
-
-  def initialize(processor, input=T.unsafe(nil)); end
-
-  def match(*args, &block); end
-
-  def pr(*args, &block); end
-
-  def prc(*args, &block); end
-
-  def print(*args, &block); end
-
-  def processor(); end
-
-  def prv(*args, &block); end
-
-  def puts(*args, &block); end
-end
-
-class Byebug::Command
-  extend ::Forwardable
-  extend ::Byebug::Helpers::StringHelper
-  def self.allow_in_control(); end
-
-  def self.allow_in_control=(allow_in_control); end
-
-  def self.allow_in_post_mortem(); end
-
-  def self.allow_in_post_mortem=(allow_in_post_mortem); end
-
-  def self.always_run(); end
-
-  def self.always_run=(always_run); end
-
-  def self.columnize(width); end
-
-  def self.help(); end
-
-  def self.match(input); end
-end
-
-class Byebug::CommandList
-  include ::Enumerable
-  def each(&blk); end
-
-  def initialize(commands); end
-
-  def match(input); end
-end
-
-class Byebug::CommandList
-end
-
-class Byebug::CommandNotFound
-  def initialize(input, parent=T.unsafe(nil)); end
-end
-
-class Byebug::CommandNotFound
-end
-
-class Byebug::CommandProcessor
-  include ::Byebug::Helpers::EvalHelper
-  def after_repl(); end
-
-  def at_breakpoint(brkpt); end
-
-  def at_catchpoint(exception); end
-
-  def at_end(); end
-
-  def at_line(); end
-
-  def at_return(return_value); end
-
-  def at_tracing(); end
-
-  def before_repl(); end
-
-  def command_list(); end
-
-  def commands(*args, &block); end
-
-  def confirm(*args, &block); end
-
-  def context(); end
-
-  def errmsg(*args, &block); end
-
-  def frame(*args, &block); end
-
-  def initialize(context, interface=T.unsafe(nil)); end
-
-  def interface(); end
-
-  def pr(*args, &block); end
-
-  def prc(*args, &block); end
-
-  def prev_line(); end
-
-  def prev_line=(prev_line); end
-
-  def printer(); end
-
-  def proceed!(); end
-
-  def process_commands(); end
-
-  def prompt(); end
-
-  def prv(*args, &block); end
-
-  def puts(*args, &block); end
-
-  def repl(); end
-end
-
-class Byebug::CommandProcessor
-  extend ::Forwardable
-end
-
-class Byebug::ConditionCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::ConditionCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Context
-  include ::Byebug::Helpers::FileHelper
-  def at_breakpoint(breakpoint); end
-
-  def at_catchpoint(exception); end
-
-  def at_end(); end
-
-  def at_line(); end
-
-  def at_return(return_value); end
-
-  def at_tracing(); end
-
-  def backtrace(); end
-
-  def dead?(); end
-
-  def file(*args, &block); end
-
-  def frame(); end
-
-  def frame=(pos); end
-
-  def frame_binding(*_); end
-
-  def frame_class(*_); end
-
-  def frame_file(*_); end
-
-  def frame_line(*_); end
-
-  def frame_method(*_); end
-
-  def frame_self(*_); end
-
-  def full_location(); end
-
-  def ignored?(); end
-
-  def interrupt(); end
-
-  def line(*args, &block); end
-
-  def location(); end
-
-  def resume(); end
-
-  def stack_size(); end
-
-  def step_into(*_); end
-
-  def step_out(*_); end
-
-  def step_over(*_); end
-
-  def stop_reason(); end
-
-  def suspend(); end
-
-  def suspended?(); end
-
-  def switch(); end
-
-  def thnum(); end
-
-  def thread(); end
-
-  def tracing(); end
-
-  def tracing=(tracing); end
-end
-
-class Byebug::Context
-  extend ::Byebug::Helpers::PathHelper
-  extend ::Forwardable
-  def self.ignored_files(); end
-
-  def self.ignored_files=(ignored_files); end
-
-  def self.interface(); end
-
-  def self.interface=(interface); end
-
-  def self.processor(); end
-
-  def self.processor=(processor); end
-end
-
-class Byebug::ContinueCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::ContinueCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ControlProcessor
-  def commands(); end
-end
-
-class Byebug::ControlProcessor
-end
-
-class Byebug::DebugCommand
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::DebugCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DebugThread
-end
-
-class Byebug::DebugThread
-end
-
-class Byebug::DeleteCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::DeleteCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DisableCommand
-  include ::Byebug::Subcommands
-end
-
-class Byebug::DisableCommand::BreakpointsCommand
-  include ::Byebug::Helpers::ToggleHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::DisableCommand::BreakpointsCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DisableCommand::DisplayCommand
-  include ::Byebug::Helpers::ToggleHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::DisableCommand::DisplayCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DisableCommand
-  extend ::Byebug::Subcommands::ClassMethods
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DisplayCommand
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::DisplayCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::DownCommand
-  include ::Byebug::Helpers::FrameHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::DownCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::EditCommand
-  def execute(); end
-end
-
-class Byebug::EditCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::EnableCommand
-  include ::Byebug::Subcommands
-end
-
-class Byebug::EnableCommand::BreakpointsCommand
-  include ::Byebug::Helpers::ToggleHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::EnableCommand::BreakpointsCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::EnableCommand::DisplayCommand
-  include ::Byebug::Helpers::ToggleHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::EnableCommand::DisplayCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::EnableCommand
-  extend ::Byebug::Subcommands::ClassMethods
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::FinishCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::FinishCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Frame
-  include ::Byebug::Helpers::FileHelper
-  def _binding(); end
-
-  def _class(); end
-
-  def _method(); end
-
-  def _self(); end
-
-  def args(); end
-
-  def c_frame?(); end
-
-  def current?(); end
-
-  def deco_args(); end
-
-  def deco_block(); end
-
-  def deco_call(); end
-
-  def deco_class(); end
-
-  def deco_file(); end
-
-  def deco_method(); end
-
-  def deco_pos(); end
-
-  def file(); end
-
-  def initialize(context, pos); end
-
-  def line(); end
-
-  def locals(); end
-
-  def mark(); end
-
-  def pos(); end
-
-  def to_hash(); end
-end
-
-class Byebug::Frame
-end
-
-class Byebug::FrameCommand
-  include ::Byebug::Helpers::FrameHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::FrameCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::FullpathSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::FullpathSetting
-end
-
-class Byebug::HelpCommand
-  def execute(); end
-end
-
-class Byebug::HelpCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-module Byebug::Helpers
-end
-
-module Byebug::Helpers::BinHelper
-  def executable_file_extensions(); end
-
-  def find_executable(path, cmd); end
-
-  def real_executable?(file); end
-
-  def search_paths(); end
-
-  def which(cmd); end
-end
-
-module Byebug::Helpers::BinHelper
-end
-
-module Byebug::Helpers::EvalHelper
-  def error_eval(str, binding=T.unsafe(nil)); end
-
-  def multiple_thread_eval(expression); end
-
-  def separate_thread_eval(expression); end
-
-  def silent_eval(str, binding=T.unsafe(nil)); end
-
-  def warning_eval(str, binding=T.unsafe(nil)); end
-end
-
-module Byebug::Helpers::EvalHelper
-end
-
-module Byebug::Helpers::FileHelper
-  def get_line(filename, lineno); end
-
-  def get_lines(filename); end
-
-  def n_lines(filename); end
-
-  def normalize(filename); end
-
-  def shortpath(fullpath); end
-
-  def virtual_file?(name); end
-end
-
-module Byebug::Helpers::FileHelper
-end
-
-module Byebug::Helpers::FrameHelper
-  def jump_frames(steps); end
-
-  def switch_to_frame(frame); end
-end
-
-module Byebug::Helpers::FrameHelper
-end
-
-module Byebug::Helpers::ParseHelper
-  def get_int(str, cmd, min=T.unsafe(nil), max=T.unsafe(nil)); end
-
-  def parse_steps(str, cmd); end
-
-  def syntax_valid?(code); end
-end
-
-module Byebug::Helpers::ParseHelper
-end
-
-module Byebug::Helpers::PathHelper
-  def all_files(); end
-
-  def bin_file(); end
-
-  def gem_files(); end
-
-  def lib_files(); end
-
-  def root_path(); end
-
-  def test_files(); end
-end
-
-module Byebug::Helpers::PathHelper
-end
-
-module Byebug::Helpers::ReflectionHelper
-  def commands(); end
-end
-
-module Byebug::Helpers::ReflectionHelper
-end
-
-module Byebug::Helpers::StringHelper
-  def camelize(str); end
-
-  def deindent(str, leading_spaces: T.unsafe(nil)); end
-
-  def prettify(str); end
-end
-
-module Byebug::Helpers::StringHelper
-end
-
-module Byebug::Helpers::ThreadHelper
-  def context_from_thread(thnum); end
-
-  def current_thread?(ctx); end
-
-  def display_context(ctx); end
-
-  def thread_arguments(ctx); end
-end
-
-module Byebug::Helpers::ThreadHelper
-end
-
-module Byebug::Helpers::ToggleHelper
-  include ::Byebug::Helpers::ParseHelper
-  def enable_disable_breakpoints(is_enable, args); end
-
-  def enable_disable_display(is_enable, args); end
-end
-
-module Byebug::Helpers::ToggleHelper
-end
-
-module Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def var_args(); end
-
-  def var_global(); end
-
-  def var_instance(str); end
-
-  def var_list(ary, binding=T.unsafe(nil)); end
-
-  def var_local(); end
-end
-
-module Byebug::Helpers::VarHelper
-end
-
-module Byebug::Helpers
-end
-
-class Byebug::HistfileSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::HistfileSetting
-end
-
-class Byebug::History
-  def buffer(); end
-
-  def clear(); end
-
-  def default_max_size(); end
-
-  def ignore?(buf); end
-
-  def last_ids(number); end
-
-  def pop(); end
-
-  def push(cmd); end
-
-  def restore(); end
-
-  def save(); end
-
-  def size(); end
-
-  def size=(size); end
-
-  def specific_max_size(number); end
-
-  def to_s(n_cmds); end
-end
-
-class Byebug::History
-end
-
-class Byebug::HistoryCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::HistoryCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::HistsizeSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::HistsizeSetting
-end
-
-class Byebug::InfoCommand
-  include ::Byebug::Subcommands
-end
-
-class Byebug::InfoCommand::BreakpointsCommand
-  def execute(); end
-end
-
-class Byebug::InfoCommand::BreakpointsCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::InfoCommand::DisplayCommand
-  def execute(); end
-end
-
-class Byebug::InfoCommand::DisplayCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::InfoCommand::FileCommand
-  include ::Byebug::Helpers::FileHelper
-  include ::Byebug::Helpers::StringHelper
-  def execute(); end
-end
-
-class Byebug::InfoCommand::FileCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::InfoCommand::LineCommand
-  def execute(); end
-end
-
-class Byebug::InfoCommand::LineCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::InfoCommand::ProgramCommand
-  def execute(); end
-end
-
-class Byebug::InfoCommand::ProgramCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::InfoCommand
-  extend ::Byebug::Subcommands::ClassMethods
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Interface
-  include ::Byebug::Helpers::FileHelper
-  def autorestore(); end
-
-  def autosave(); end
-
-  def close(); end
-
-  def command_queue(); end
-
-  def command_queue=(command_queue); end
-
-  def confirm(prompt); end
-
-  def errmsg(message); end
-
-  def error(); end
-
-  def history(); end
-
-  def history=(history); end
-
-  def input(); end
-
-  def last_if_empty(input); end
-
-  def output(); end
-
-  def prepare_input(prompt); end
-
-  def print(message); end
-
-  def puts(message); end
-
-  def read_command(prompt); end
-
-  def read_file(filename); end
-
-  def read_input(prompt, save_hist=T.unsafe(nil)); end
-end
-
-class Byebug::Interface
-end
-
-class Byebug::InterruptCommand
-  def execute(); end
-end
-
-class Byebug::InterruptCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::IrbCommand
-  def execute(); end
-end
-
-class Byebug::IrbCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::KillCommand
-  def execute(); end
-end
-
-class Byebug::KillCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::LinetraceSetting
-  def banner(); end
-
-  def value=(val); end
-end
-
-class Byebug::LinetraceSetting
-end
-
-class Byebug::ListCommand
-  include ::Byebug::Helpers::FileHelper
-  include ::Byebug::Helpers::ParseHelper
-  def amend_final(*args, &block); end
-
-  def execute(); end
-
-  def max_line(*args, &block); end
-
-  def size(*args, &block); end
-end
-
-class Byebug::ListCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ListsizeSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::ListsizeSetting
-end
-
-class Byebug::LocalInterface
-  def readline(prompt); end
-
-  def with_repl_like_sigint(); end
-  EOF_ALIAS = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::LocalInterface
-end
-
-class Byebug::MethodCommand
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::MethodCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::NextCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::NextCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::PostMortemProcessor
-  def commands(); end
-end
-
-class Byebug::PostMortemProcessor
-end
-
-class Byebug::PostMortemSetting
-  def banner(); end
-
-  def value=(val); end
-end
-
-class Byebug::PostMortemSetting
-end
-
-module Byebug::Printers
-end
-
-class Byebug::Printers::Base
-  def type(); end
-  SEPARATOR = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::Printers::Base::MissedArgument
-end
-
-class Byebug::Printers::Base::MissedArgument
-end
-
-class Byebug::Printers::Base::MissedPath
-end
-
-class Byebug::Printers::Base::MissedPath
-end
-
-class Byebug::Printers::Base
-end
-
-class Byebug::Printers::Plain
-  def print(path, args=T.unsafe(nil)); end
-
-  def print_collection(path, collection, &block); end
-
-  def print_variables(variables, *_unused); end
-end
-
-class Byebug::Printers::Plain
-end
-
-module Byebug::Printers
-end
-
-class Byebug::PryCommand
-  def execute(); end
-end
-
-class Byebug::PryCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::QuitCommand
-  def execute(); end
-end
-
-class Byebug::QuitCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-module Byebug::Remote
-end
-
-class Byebug::Remote::Client
-  def initialize(interface); end
-
-  def interface(); end
-
-  def socket(); end
-
-  def start(host=T.unsafe(nil), port=T.unsafe(nil)); end
-
-  def started?(); end
-end
-
-class Byebug::Remote::Client
-end
-
-class Byebug::Remote::Server
-  def actual_port(); end
-
-  def initialize(wait_connection:, &block); end
-
-  def start(host, port); end
-
-  def wait_connection(); end
-end
-
-class Byebug::Remote::Server
-end
-
-module Byebug::Remote
-end
-
-class Byebug::RemoteInterface
-  def initialize(socket); end
-
-  def readline(prompt); end
-end
-
-class Byebug::RemoteInterface
-end
-
-class Byebug::RestartCommand
-  include ::Byebug::Helpers::BinHelper
-  include ::Byebug::Helpers::PathHelper
-  def execute(); end
-end
-
-class Byebug::RestartCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::SaveCommand
-  def execute(); end
-end
-
-class Byebug::SaveCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::SavefileSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::SavefileSetting
-end
-
-class Byebug::ScriptInterface
-  def initialize(file, verbose=T.unsafe(nil)); end
-end
-
-class Byebug::ScriptInterface
-end
-
-class Byebug::ScriptProcessor
-  def commands(); end
-end
-
-class Byebug::ScriptProcessor
-end
-
-class Byebug::SetCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::SetCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::Setting
-  def boolean?(); end
-
-  def help(); end
-
-  def integer?(); end
-
-  def to_sym(); end
-
-  def value(); end
-
-  def value=(value); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::Setting
-  def self.[](name); end
-
-  def self.[]=(name, value); end
-
-  def self.find(shortcut); end
-
-  def self.help_all(); end
-
-  def self.settings(); end
-end
-
-class Byebug::ShowCommand
-  def execute(); end
-end
-
-class Byebug::ShowCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::SkipCommand
-  include ::Byebug::Helpers::ParseHelper
-  def auto_run(); end
-
-  def execute(); end
-
-  def initialize_attributes(); end
-
-  def keep_execution(); end
-
-  def reset_attributes(); end
-end
-
-class Byebug::SkipCommand
-  def self.description(); end
-
-  def self.file_line(); end
-
-  def self.file_line=(file_line); end
-
-  def self.file_path(); end
-
-  def self.file_path=(file_path); end
-
-  def self.previous_autolist(); end
-
-  def self.regexp(); end
-
-  def self.restore_autolist(); end
-
-  def self.setup_autolist(value); end
-
-  def self.short_description(); end
-end
-
-class Byebug::SourceCommand
-  def execute(); end
-end
-
-class Byebug::SourceCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::SourceFileFormatter
-  include ::Byebug::Helpers::FileHelper
-  def amend(line, ceiling); end
-
-  def amend_final(line); end
-
-  def amend_initial(line); end
-
-  def annotator(); end
-
-  def file(); end
-
-  def initialize(file, annotator); end
-
-  def lines(min, max); end
-
-  def lines_around(center); end
-
-  def max_initial_line(); end
-
-  def max_line(); end
-
-  def range_around(center); end
-
-  def range_from(min); end
-
-  def size(); end
-end
-
-class Byebug::SourceFileFormatter
-end
-
-class Byebug::StackOnErrorSetting
-  def banner(); end
-end
-
-class Byebug::StackOnErrorSetting
-end
-
-class Byebug::StepCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::StepCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-module Byebug::Subcommands
-  def execute(); end
-
-  def subcommand_list(*args, &block); end
-end
-
-module Byebug::Subcommands::ClassMethods
-  include ::Byebug::Helpers::ReflectionHelper
-  def help(); end
-
-  def subcommand_list(); end
-end
-
-module Byebug::Subcommands::ClassMethods
-end
-
-module Byebug::Subcommands
-  extend ::Forwardable
-  def self.included(command); end
-end
-
-class Byebug::ThreadCommand
-  include ::Byebug::Subcommands
-end
-
-class Byebug::ThreadCommand::CurrentCommand
-  include ::Byebug::Helpers::ThreadHelper
-  def execute(); end
-end
-
-class Byebug::ThreadCommand::CurrentCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadCommand::ListCommand
-  include ::Byebug::Helpers::ThreadHelper
-  def execute(); end
-end
-
-class Byebug::ThreadCommand::ListCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadCommand::ResumeCommand
-  include ::Byebug::Helpers::ThreadHelper
-  def execute(); end
-end
-
-class Byebug::ThreadCommand::ResumeCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadCommand::StopCommand
-  include ::Byebug::Helpers::ThreadHelper
-  def execute(); end
-end
-
-class Byebug::ThreadCommand::StopCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadCommand::SwitchCommand
-  include ::Byebug::Helpers::ThreadHelper
-  def execute(); end
-end
-
-class Byebug::ThreadCommand::SwitchCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadCommand
-  extend ::Byebug::Subcommands::ClassMethods
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::ThreadsTable
-end
-
-class Byebug::ThreadsTable
-end
-
-class Byebug::TracevarCommand
-  def execute(); end
-end
-
-class Byebug::TracevarCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::UndisplayCommand
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::UndisplayCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::UntracevarCommand
-  def execute(); end
-end
-
-class Byebug::UntracevarCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::UpCommand
-  include ::Byebug::Helpers::FrameHelper
-  include ::Byebug::Helpers::ParseHelper
-  def execute(); end
-end
-
-class Byebug::UpCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand
-  include ::Byebug::Subcommands
-end
-
-class Byebug::VarCommand::AllCommand
-  include ::Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::AllCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand::ArgsCommand
-  include ::Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::ArgsCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand::ConstCommand
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::ConstCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand::GlobalCommand
-  include ::Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::GlobalCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand::InstanceCommand
-  include ::Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::InstanceCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand::LocalCommand
-  include ::Byebug::Helpers::VarHelper
-  include ::Byebug::Helpers::EvalHelper
-  def execute(); end
-end
-
-class Byebug::VarCommand::LocalCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::VarCommand
-  extend ::Byebug::Subcommands::ClassMethods
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::WhereCommand
-  include ::Byebug::Helpers::FrameHelper
-  def execute(); end
-end
-
-class Byebug::WhereCommand
-  def self.description(); end
-
-  def self.regexp(); end
-
-  def self.short_description(); end
-end
-
-class Byebug::WidthSetting
-  def banner(); end
-  DEFAULT = ::T.let(nil, ::T.untyped)
-end
-
-class Byebug::WidthSetting
-end
-
-module Byebug
-  extend ::Byebug
-  extend ::Byebug::Helpers::ReflectionHelper
-  def self.actual_control_port(); end
-
-  def self.actual_port(); end
-
-  def self.attach(); end
-
-  def self.handle_post_mortem(); end
-
-  def self.interrupt(); end
-
-  def self.load_settings(); end
-
-  def self.parse_host_and_port(host_port_spec); end
-
-  def self.spawn(host=T.unsafe(nil), port=T.unsafe(nil)); end
-
-  def self.start_client(host=T.unsafe(nil), port=T.unsafe(nil)); end
-
-  def self.start_control(host=T.unsafe(nil), port=T.unsafe(nil)); end
-
-  def self.start_server(host=T.unsafe(nil), port=T.unsafe(nil)); end
-
-  def self.wait_connection(); end
-
-  def self.wait_connection=(wait_connection); end
 end
 
 class CGI
@@ -33567,6 +32423,1238 @@ class DateTime
   def self.civil_from_format(utc_or_local, year, month=T.unsafe(nil), day=T.unsafe(nil), hour=T.unsafe(nil), min=T.unsafe(nil), sec=T.unsafe(nil)); end
 end
 
+module Debase
+  FRONT_END = ::T.let(nil, ::T.untyped)
+  IDE_VERSION = ::T.let(nil, ::T.untyped)
+  VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Debase::AddBreakpoint
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::AddBreakpoint
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::Breakpoint
+  def enabled(); end
+
+  def enabled=(enabled); end
+
+  def expr(); end
+
+  def expr=(expr); end
+
+  def id(); end
+
+  def initialize(_, _1, _2); end
+
+  def pos(); end
+
+  def source(); end
+end
+
+class Debase::Breakpoint
+  def self.find(_, _1, _2, _3); end
+
+  def self.remove(_, _1); end
+end
+
+class Debase::BreakpointsCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::BreakpointsCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::CatchCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::CatchCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::Command
+  include ::Debase::EnableDisableFunctions
+  include ::Debase::ParseFunctions
+  include ::Debase::FrameFunctions
+  def debug_eval(str, b=T.unsafe(nil)); end
+
+  def debug_silent_eval(str); end
+
+  def errmsg(*args); end
+
+  def find(subcmds, param); end
+
+  def get_binding(); end
+
+  def get_context(thnum); end
+
+  def initialize(state, printer); end
+
+  def line_at(file, line); end
+
+  def match(input); end
+
+  def print(*args); end
+
+  def realpath(filename); end
+
+  def timeout(sec); end
+end
+
+class Debase::Command::SubcmdStruct
+  def long_help(); end
+
+  def long_help=(_); end
+
+  def min(); end
+
+  def min=(_); end
+
+  def name(); end
+
+  def name=(_); end
+
+  def short_help(); end
+
+  def short_help=(_); end
+end
+
+class Debase::Command::SubcmdStruct
+  def self.[](*_); end
+
+  def self.members(); end
+end
+
+class Debase::Command
+  def self.commands(); end
+
+  def self.file_filter_supported?(); end
+
+  def self.inherited(klass); end
+
+  def self.load_commands(); end
+
+  def self.method_missing(meth, *args, &block); end
+
+  def self.options(); end
+
+  def self.unescape_incoming(str); end
+end
+
+class Debase::ConditionCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ConditionCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::Context
+  def at_breakpoint(breakpoint); end
+
+  def at_catchpoint(excpt); end
+
+  def at_line(file, line); end
+
+  def at_return(file, line); end
+
+  def at_tracing(file, line); end
+
+  def dead?(); end
+
+  def frame_args_info(frame_no=T.unsafe(nil)); end
+
+  def frame_binding(*_); end
+
+  def frame_class(frame_no=T.unsafe(nil)); end
+
+  def frame_file(*_); end
+
+  def frame_line(*_); end
+
+  def frame_locals(frame_no=T.unsafe(nil)); end
+
+  def frame_self(*_); end
+
+  def handler(); end
+
+  def ignored?(); end
+
+  def pause(); end
+
+  def stack_size(); end
+
+  def step(*_); end
+
+  def step_over(*_); end
+
+  def stop_frame=(stop_frame); end
+
+  def stop_next=(*stop_next); end
+
+  def stop_reason(); end
+
+  def thnum(); end
+
+  def thread(); end
+end
+
+class Debase::Context
+end
+
+class Debase::ContinueCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ContinueCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ControlState
+  def context(); end
+
+  def file(); end
+
+  def initialize(interface); end
+
+  def print(*args); end
+
+  def proceed(); end
+end
+
+class Debase::ControlState
+end
+
+class Debase::DebugThread
+end
+
+class Debase::DebugThread
+  def self.inherited(); end
+end
+
+class Debase::DeleteBreakpointCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::DeleteBreakpointCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::DetachCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::DetachCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::DisableCommand
+  def disable_breakpoints(args); end
+
+  def disable_display(args); end
+
+  def execute(); end
+
+  def regexp(); end
+  Subcommands = ::T.let(nil, ::T.untyped)
+end
+
+class Debase::DisableCommand
+  def self.help(args); end
+
+  def self.help_command(); end
+end
+
+class Debase::DownCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::DownCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::EnableCommand
+  def enable_breakpoints(args); end
+
+  def enable_display(args); end
+
+  def execute(); end
+
+  def regexp(); end
+  Subcommands = ::T.let(nil, ::T.untyped)
+end
+
+class Debase::EnableCommand
+  def self.help(args); end
+
+  def self.help_command(); end
+end
+
+module Debase::EnableDisableFunctions
+  def enable_disable_breakpoints(is_enable, args); end
+
+  def enable_disable_display(is_enable, args); end
+end
+
+module Debase::EnableDisableFunctions
+end
+
+class Debase::EvalCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::EvalCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::EventProcessor
+  def at_breakpoint(context, breakpoint); end
+
+  def at_catchpoint(context, excpt); end
+
+  def at_line(context, file, line); end
+
+  def at_line?(); end
+
+  def at_return(context, file, line); end
+
+  def at_tracing(context, file, line); end
+
+  def context(); end
+
+  def context=(context); end
+
+  def file(); end
+
+  def file=(file); end
+
+  def initialize(interface); end
+
+  def line(); end
+
+  def line=(line); end
+
+  def line_event(context, file, line); end
+end
+
+class Debase::EventProcessor
+end
+
+class Debase::Exception
+  def __debug_binding(); end
+
+  def __debug_context(); end
+
+  def __debug_file(); end
+
+  def __debug_line(); end
+end
+
+class Debase::Exception
+end
+
+class Debase::ExcludeFile
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ExcludeFile
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ExecError
+  def backtrace(); end
+
+  def initialize(message, backtrace=T.unsafe(nil)); end
+
+  def message(); end
+end
+
+class Debase::ExecError
+end
+
+class Debase::ExpressionInfoCommand
+  def create_io_reader(string_to_parse); end
+
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ExpressionInfoCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::FileFilter
+  def accept?(file_path); end
+
+  def disable(); end
+
+  def enable(); end
+
+  def exclude(file_path); end
+
+  def include(file_path); end
+end
+
+class Debase::FileFilter
+end
+
+class Debase::FileFilterCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::FileFilterCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::FinishCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::FinishCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::FrameCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::FrameCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+module Debase::FrameFunctions
+  def adjust_frame(frame_pos, absolute); end
+end
+
+module Debase::FrameFunctions
+end
+
+class Debase::IdeCommandProcessor
+  def initialize(interface=T.unsafe(nil)); end
+
+  def print(*args); end
+
+  def process_commands(); end
+
+  def splitter(); end
+end
+
+class Debase::IdeCommandProcessor
+end
+
+class Debase::IdeControlCommandProcessor
+end
+
+class Debase::IdeControlCommandProcessor
+end
+
+class Debase::IncludeFile
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::IncludeFile
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::InspectCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::InspectCommand
+  def self.clear_references(); end
+
+  def self.reference_result(result); end
+end
+
+class Debase::Interface
+end
+
+class Debase::Interface
+end
+
+class Debase::InterruptCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::InterruptCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::JumpCommand
+  def execute(); end
+
+  def numeric?(object); end
+
+  def regexp(); end
+end
+
+class Debase::JumpCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::LoadCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::LoadCommand
+end
+
+class Debase::LocalInterface
+end
+
+class Debase::LocalInterface
+end
+
+class Debase::MemoryLimitError
+end
+
+class Debase::MemoryLimitError
+end
+
+class Debase::NextCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::NextCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+module Debase::OverflowMessageType
+  EXCEPTION_MESSAGE = ::T.let(nil, ::T.untyped)
+  NIL_MESSAGE = ::T.let(nil, ::T.untyped)
+  SPECIAL_SYMBOL_MESSAGE = ::T.let(nil, ::T.untyped)
+end
+
+module Debase::OverflowMessageType
+end
+
+class Debase::PPCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::PPCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+module Debase::ParseFunctions
+  def get_int(str, cmd, min=T.unsafe(nil), max=T.unsafe(nil), default=T.unsafe(nil)); end
+
+  def syntax_valid?(code); end
+end
+
+module Debase::ParseFunctions
+end
+
+class Debase::PauseCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::PauseCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::QuitCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::QuitCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::RemoteInterface
+  def close(); end
+
+  def command_queue(); end
+
+  def command_queue=(command_queue); end
+
+  def initialize(socket); end
+
+  def non_blocking_gets(); end
+
+  def print(*args); end
+
+  def read_command(); end
+end
+
+class Debase::RemoteInterface
+end
+
+class Debase::RestartCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::RestartCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::SetTypeCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::SetTypeCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::SimpleTimeLimitError
+  def initialize(message); end
+end
+
+class Debase::SimpleTimeLimitError
+end
+
+class Debase::StartCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::StartCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::State
+  def binding=(binding); end
+
+  def context(); end
+
+  def context=(context); end
+
+  def file(); end
+
+  def file=(file); end
+
+  def frame_pos(); end
+
+  def frame_pos=(frame_pos); end
+
+  def interface(); end
+
+  def interface=(interface); end
+
+  def line(); end
+
+  def line=(line); end
+
+  def original_context(); end
+
+  def original_context=(original_context); end
+
+  def previous_line(); end
+
+  def previous_line=(previous_line); end
+
+  def print(*args); end
+
+  def proceed(); end
+
+  def proceed?(); end
+
+  def restore_context(); end
+end
+
+class Debase::State
+end
+
+class Debase::StepCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::StepCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadCurrentCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadCurrentCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadInspectCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadInspectCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadListCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadListCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadResumeCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadResumeCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadStopCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadStopCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::ThreadSwitchCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::ThreadSwitchCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::TimeLimitError
+end
+
+class Debase::TimeLimitError
+end
+
+module Debase::TimeoutHandler
+end
+
+module Debase::TimeoutHandler
+  def self.do_thread_alias(); end
+
+  def self.undo_thread_alias(); end
+end
+
+class Debase::UpCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::UpCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::VarConstantCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::VarConstantCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::VarGlobalCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::VarGlobalCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::VarInstanceCommand
+  def execute(); end
+
+  def regexp(); end
+  BINDING_COMMAND = ::T.let(nil, ::T.untyped)
+end
+
+class Debase::VarInstanceCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::VarLocalCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::VarLocalCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::WhereCommand
+  def execute(); end
+
+  def regexp(); end
+end
+
+class Debase::WhereCommand
+  def self.help(cmd); end
+
+  def self.help_command(); end
+end
+
+class Debase::XmlPrinter
+  def __print_array(array); end
+
+  def __print_at_line(context, file, line); end
+
+  def __print_breakpoint(_, breakpoint); end
+
+  def __print_breakpoint_added(b); end
+
+  def __print_breakpoint_deleted(b); end
+
+  def __print_breakpoint_disabled(b); end
+
+  def __print_breakpoint_enabled(b); end
+
+  def __print_breakpoints(breakpoints); end
+
+  def __print_catchpoint(exception); end
+
+  def __print_catchpoint_deleted(exception_class_name); end
+
+  def __print_catchpoint_set(exception_class_name); end
+
+  def __print_contdition_set(bp_id); end
+
+  def __print_context(context); end
+
+  def __print_contexts(contexts); end
+
+  def __print_current_frame(frame_pos); end
+
+  def __print_debug(*args); end
+
+  def __print_element(name, additional_tags=T.unsafe(nil)); end
+
+  def __print_error(*args); end
+
+  def __print_eval(exp, value); end
+
+  def __print_exception(exception, _); end
+
+  def __print_expression(exp, value, idx); end
+
+  def __print_expression_info(incomplete, prompt, indent); end
+
+  def __print_expressions(exps); end
+
+  def __print_file_excluded(file); end
+
+  def __print_file_filter_status(status); end
+
+  def __print_file_included(file); end
+
+  def __print_frame(context, frame_id, current_frame_id); end
+
+  def __print_frames(context, current_frame_id); end
+
+  def __print_hash(hash); end
+
+  def __print_inspect(eval_result); end
+
+  def __print_list(b, e, file, line); end
+
+  def __print_load_result(file, exception=T.unsafe(nil)); end
+
+  def __print_methods(methods); end
+
+  def __print_msg(*args); end
+
+  def __print_pp(value); end
+
+  def __print_string(string); end
+
+  def __print_trace(context, file, line); end
+
+  def __print_variable(name, value, kind); end
+
+  def __print_variables(vars, kind); end
+
+  def do_print_hash(hash); end
+
+  def do_print_hash_key_value(hash); end
+
+  def exec_with_allocation_control(value, exec_method, overflow_message_type); end
+
+  def exec_with_timeout(sec, error_message); end
+
+  def initialize(interface); end
+
+  def interface(); end
+
+  def interface=(interface); end
+
+  def print_array(*args, &block); end
+
+  def print_at_line(*args, &block); end
+
+  def print_breakpoint(*args, &block); end
+
+  def print_breakpoint_added(*args, &block); end
+
+  def print_breakpoint_deleted(*args, &block); end
+
+  def print_breakpoint_disabled(*args, &block); end
+
+  def print_breakpoint_enabled(*args, &block); end
+
+  def print_breakpoints(*args, &block); end
+
+  def print_catchpoint(*args, &block); end
+
+  def print_catchpoint_deleted(*args, &block); end
+
+  def print_catchpoint_set(*args, &block); end
+
+  def print_contdition_set(*args, &block); end
+
+  def print_context(*args, &block); end
+
+  def print_contexts(*args, &block); end
+
+  def print_current_frame(*args, &block); end
+
+  def print_debug(*args, &block); end
+
+  def print_element(*args, &block); end
+
+  def print_error(*args, &block); end
+
+  def print_eval(*args, &block); end
+
+  def print_exception(*args, &block); end
+
+  def print_expression(*args, &block); end
+
+  def print_expression_info(*args, &block); end
+
+  def print_expressions(*args, &block); end
+
+  def print_file_excluded(*args, &block); end
+
+  def print_file_filter_status(*args, &block); end
+
+  def print_file_included(*args, &block); end
+
+  def print_frame(*args, &block); end
+
+  def print_frames(*args, &block); end
+
+  def print_hash(*args, &block); end
+
+  def print_inspect(*args, &block); end
+
+  def print_list(*args, &block); end
+
+  def print_load_result(*args, &block); end
+
+  def print_methods(*args, &block); end
+
+  def print_msg(*args, &block); end
+
+  def print_pp(*args, &block); end
+
+  def print_string(*args, &block); end
+
+  def print_trace(*args, &block); end
+
+  def print_variable(*args, &block); end
+
+  def print_variables(*args, &block); end
+end
+
+class Debase::XmlPrinter::ExceptionProxy
+  def initialize(exception); end
+end
+
+class Debase::XmlPrinter::ExceptionProxy
+end
+
+class Debase::XmlPrinter
+  def self.protect(mname); end
+end
+
+module Debase
+  def self.add_breakpoint(file, line, expr=T.unsafe(nil)); end
+
+  def self.add_catchpoint(exception); end
+
+  def self.attached(); end
+
+  def self.attached=(attached); end
+
+  def self.breakpoints(); end
+
+  def self.catchpoint_deleted_event(); end
+
+  def self.catchpoint_deleted_event=(catchpoint_deleted_event); end
+
+  def self.catchpoints(); end
+
+  def self.cleanup_backtrace(backtrace); end
+
+  def self.clear_catchpoints(); end
+
+  def self.cli_debug(); end
+
+  def self.cli_debug=(cli_debug); end
+
+  def self.contexts(); end
+
+  def self.control_thread(); end
+
+  def self.control_thread=(control_thread); end
+
+  def self.current_context(); end
+
+  def self.debug(); end
+
+  def self.debug_load(*_); end
+
+  def self.debug_program(options); end
+
+  def self.debugger_memory_limit(); end
+
+  def self.debugger_memory_limit=(debugger_memory_limit); end
+
+  def self.enable_file_filtering(_); end
+
+  def self.enable_trace_points(); end
+
+  def self.evaluation_timeout(); end
+
+  def self.evaluation_timeout=(evaluation_timeout); end
+
+  def self.file_filter(); end
+
+  def self.find_free_port(host); end
+
+  def self.handler(); end
+
+  def self.handler=(handler); end
+
+  def self.init_variables(); end
+
+  def self.inspect_time_limit(); end
+
+  def self.inspect_time_limit=(inspect_time_limit); end
+
+  def self.interface(); end
+
+  def self.interrupt_last(); end
+
+  def self.keep_frame_binding(); end
+
+  def self.keep_frame_binding=(keep_frame_binding); end
+
+  def self.key_value_mode(); end
+
+  def self.key_value_mode=(key_value_mode); end
+
+  def self.last_context(); end
+
+  def self.monkey_patch_prepend(); end
+
+  def self.post_mortem?(); end
+
+  def self.prepare_context(); end
+
+  def self.prepare_debugger(options); end
+
+  def self.print_debug(*args); end
+
+  def self.print_greeting_msg(stream, host, port, debugger_name=T.unsafe(nil)); end
+
+  def self.remove_breakpoint(id); end
+
+  def self.remove_catchpoint(exception); end
+
+  def self.remove_tracepoints(); end
+
+  def self.run_prog_script(); end
+
+  def self.set_trace_flag_to_iseq(_); end
+
+  def self.setup_tracepoints(); end
+
+  def self.skip(); end
+
+  def self.source_reload(); end
+
+  def self.start(options=T.unsafe(nil), &block); end
+
+  def self.start_(); end
+
+  def self.start_control(host, port, notify_dispatcher); end
+
+  def self.start_server(host=T.unsafe(nil), port=T.unsafe(nil), notify_dispatcher=T.unsafe(nil)); end
+
+  def self.started?(); end
+
+  def self.stop(); end
+
+  def self.trace_to_s(); end
+
+  def self.trace_to_s=(trace_to_s); end
+
+  def self.tracing(); end
+
+  def self.tracing=(tracing); end
+
+  def self.unset_iseq_flags(_); end
+
+  def self.value_as_nested_element(); end
+
+  def self.value_as_nested_element=(value_as_nested_element); end
+
+  def self.verbose=(verbose); end
+
+  def self.verbose?(); end
+
+  def self.xml_debug(); end
+
+  def self.xml_debug=(xml_debug); end
+end
+
+Debugger = Debase
+
 class Delegator
   include ::ActiveSupport::Tryable
   def !=(obj); end
@@ -34168,8 +34256,6 @@ class Exception
   include ::ActiveSupport::Dependencies::Blamable
   include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
   include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-  def __bb_context(); end
-
   def binding_locations(); end
 
   def bindings(); end
@@ -35961,8 +36047,6 @@ class Hash
 
   def to_h(); end
 
-  def to_options(); end
-
   def to_options!(); end
 
   def to_param(namespace=T.unsafe(nil)); end
@@ -35999,6 +36083,11 @@ class Hash
 end
 
 HashWithIndifferentAccess = ActiveSupport::HashWithIndifferentAccess
+
+class HomeController
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
 
 module I18n
   DEFAULT_INTERPOLATION_PATTERNS = ::T.let(nil, ::T.untyped)
@@ -37186,372 +37275,6 @@ class IPAddr
 end
 
 module IRB
-  IRBRC_EXT = ::T.let(nil, ::T.untyped)
-  MagicFile = ::T.let(nil, ::T.untyped)
-  STDIN_FILE_NAME = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class IRB::Abort
-end
-
-class IRB::Abort
-end
-
-class IRB::Context
-  def __exit__(*_); end
-
-  def __inspect__(); end
-
-  def __to_s__(); end
-
-  def ap_name(); end
-
-  def ap_name=(ap_name); end
-
-  def auto_indent_mode(); end
-
-  def auto_indent_mode=(auto_indent_mode); end
-
-  def back_trace_limit(); end
-
-  def back_trace_limit=(back_trace_limit); end
-
-  def debug?(); end
-
-  def debug_level(); end
-
-  def debug_level=(value); end
-
-  def echo(); end
-
-  def echo=(echo); end
-
-  def echo?(); end
-
-  def eval_history=(*opts, &b); end
-
-  def evaluate(line, line_no, exception: T.unsafe(nil)); end
-
-  def exit(ret=T.unsafe(nil)); end
-
-  def file_input?(); end
-
-  def ignore_eof(); end
-
-  def ignore_eof=(ignore_eof); end
-
-  def ignore_eof?(); end
-
-  def ignore_sigint(); end
-
-  def ignore_sigint=(ignore_sigint); end
-
-  def ignore_sigint?(); end
-
-  def initialize(irb, workspace=T.unsafe(nil), input_method=T.unsafe(nil), output_method=T.unsafe(nil)); end
-
-  def inspect?(); end
-
-  def inspect_last_value(); end
-
-  def inspect_mode(); end
-
-  def inspect_mode=(opt); end
-
-  def io(); end
-
-  def io=(io); end
-
-  def irb(); end
-
-  def irb=(irb); end
-
-  def irb_name(); end
-
-  def irb_name=(irb_name); end
-
-  def irb_path(); end
-
-  def irb_path=(irb_path); end
-
-  def last_value(); end
-
-  def load_modules(); end
-
-  def load_modules=(load_modules); end
-
-  def main(); end
-
-  def prompt_c(); end
-
-  def prompt_c=(prompt_c); end
-
-  def prompt_i(); end
-
-  def prompt_i=(prompt_i); end
-
-  def prompt_mode(); end
-
-  def prompt_mode=(mode); end
-
-  def prompt_n(); end
-
-  def prompt_n=(prompt_n); end
-
-  def prompt_s(); end
-
-  def prompt_s=(prompt_s); end
-
-  def prompting?(); end
-
-  def rc(); end
-
-  def rc=(rc); end
-
-  def rc?(); end
-
-  def return_format(); end
-
-  def return_format=(return_format); end
-
-  def save_history=(*opts, &b); end
-
-  def set_last_value(value); end
-
-  def thread(); end
-
-  def use_loader=(*opts, &b); end
-
-  def use_readline(); end
-
-  def use_readline=(opt); end
-
-  def use_readline?(); end
-
-  def use_tracer=(*opts, &b); end
-
-  def verbose(); end
-
-  def verbose=(verbose); end
-
-  def verbose?(); end
-
-  def workspace(); end
-
-  def workspace=(workspace); end
-
-  def workspace_home(); end
-  IDNAME_IVARS = ::T.let(nil, ::T.untyped)
-  NOPRINTING_IVARS = ::T.let(nil, ::T.untyped)
-  NO_INSPECTING_IVARS = ::T.let(nil, ::T.untyped)
-end
-
-class IRB::Context
-end
-
-module IRB::ContextExtender
-end
-
-IRB::ContextExtender::CE = IRB::ContextExtender
-
-module IRB::ContextExtender
-  def self.def_extend_command(cmd_name, load_file, *aliases); end
-
-  def self.install_extend_commands(); end
-end
-
-class IRB::DefaultEncodings
-  def external(); end
-
-  def external=(_); end
-
-  def internal(); end
-
-  def internal=(_); end
-end
-
-class IRB::DefaultEncodings
-  def self.[](*_); end
-
-  def self.members(); end
-end
-
-module IRB::ExtendCommandBundle
-  def install_alias_method(to, from, override=T.unsafe(nil)); end
-
-  def irb(*opts, &b); end
-
-  def irb_change_workspace(*opts, &b); end
-
-  def irb_context(); end
-
-  def irb_current_working_workspace(*opts, &b); end
-
-  def irb_exit(ret=T.unsafe(nil)); end
-
-  def irb_fg(*opts, &b); end
-
-  def irb_help(*opts, &b); end
-
-  def irb_jobs(*opts, &b); end
-
-  def irb_kill(*opts, &b); end
-
-  def irb_load(*opts, &b); end
-
-  def irb_pop_workspace(*opts, &b); end
-
-  def irb_push_workspace(*opts, &b); end
-
-  def irb_require(*opts, &b); end
-
-  def irb_source(*opts, &b); end
-
-  def irb_workspaces(*opts, &b); end
-  NO_OVERRIDE = ::T.let(nil, ::T.untyped)
-  OVERRIDE_ALL = ::T.let(nil, ::T.untyped)
-  OVERRIDE_PRIVATE_ONLY = ::T.let(nil, ::T.untyped)
-end
-
-IRB::ExtendCommandBundle::EXCB = IRB::ExtendCommandBundle
-
-module IRB::ExtendCommandBundle
-  def self.def_extend_command(cmd_name, cmd_class, load_file=T.unsafe(nil), *aliases); end
-
-  def self.extend_object(obj); end
-
-  def self.install_extend_commands(); end
-
-  def self.irb_original_method_name(method_name); end
-end
-
-class IRB::FileInputMethod
-  def encoding(); end
-
-  def eof?(); end
-
-  def initialize(file); end
-end
-
-class IRB::FileInputMethod
-end
-
-class IRB::InputMethod
-  def file_name(); end
-
-  def gets(); end
-
-  def initialize(file=T.unsafe(nil)); end
-
-  def prompt(); end
-
-  def prompt=(prompt); end
-
-  def readable_after_eof?(); end
-end
-
-class IRB::InputMethod
-end
-
-class IRB::Inspector
-  def init(); end
-
-  def initialize(inspect_proc, init_proc=T.unsafe(nil)); end
-
-  def inspect_value(v); end
-  INSPECTORS = ::T.let(nil, ::T.untyped)
-end
-
-class IRB::Inspector
-  def self.def_inspector(key, arg=T.unsafe(nil), &block); end
-
-  def self.keys_with_inspector(inspector); end
-end
-
-class IRB::Irb
-  def context(); end
-
-  def eval_input(); end
-
-  def handle_exception(exc); end
-
-  def initialize(workspace=T.unsafe(nil), input_method=T.unsafe(nil), output_method=T.unsafe(nil)); end
-
-  def output_value(); end
-
-  def prompt(prompt, ltype, indent, line_no); end
-
-  def run(conf=T.unsafe(nil)); end
-
-  def scanner(); end
-
-  def scanner=(scanner); end
-
-  def signal_handle(); end
-
-  def signal_status(status); end
-
-  def suspend_context(context); end
-
-  def suspend_input_method(input_method); end
-
-  def suspend_name(path=T.unsafe(nil), name=T.unsafe(nil)); end
-
-  def suspend_workspace(workspace); end
-  ATTR_PLAIN = ::T.let(nil, ::T.untyped)
-  ATTR_TTY = ::T.let(nil, ::T.untyped)
-end
-
-class IRB::Irb
-end
-
-class IRB::Locale
-  def String(mes); end
-
-  def encoding(); end
-
-  def find(file, paths=T.unsafe(nil)); end
-
-  def format(*opts); end
-
-  def gets(*rs); end
-
-  def initialize(locale=T.unsafe(nil)); end
-
-  def lang(); end
-
-  def load(file, priv=T.unsafe(nil)); end
-
-  def modifier(); end
-
-  def print(*opts); end
-
-  def printf(*opts); end
-
-  def puts(*opts); end
-
-  def readline(*rs); end
-
-  def require(file, priv=T.unsafe(nil)); end
-
-  def territory(); end
-  LOCALE_DIR = ::T.let(nil, ::T.untyped)
-  LOCALE_NAME_RE = ::T.let(nil, ::T.untyped)
-end
-
-class IRB::Locale
-end
-
-module IRB::MethodExtender
-  def def_post_proc(base_method, extend_method); end
-
-  def def_pre_proc(base_method, extend_method); end
-
-  def new_alias_name(name, prefix=T.unsafe(nil), postfix=T.unsafe(nil)); end
-end
-
-module IRB::MethodExtender
 end
 
 module IRB::Notifier
@@ -37666,20 +37389,6 @@ class IRB::OutputMethod
   def self.included(mod); end
 end
 
-class IRB::ReadlineInputMethod
-  include ::Readline
-  def encoding(); end
-
-  def eof?(); end
-
-  def initialize(); end
-
-  def line(line_no); end
-end
-
-class IRB::ReadlineInputMethod
-end
-
 class IRB::SLex
   def Fail(err=T.unsafe(nil), *rest); end
 
@@ -37744,80 +37453,13 @@ class IRB::SLex
   def self.included(mod); end
 end
 
-class IRB::StdioInputMethod
-  def encoding(); end
-
-  def eof?(); end
-
-  def initialize(); end
-
-  def line(line_no); end
-end
-
-class IRB::StdioInputMethod
-end
-
 class IRB::StdioOutputMethod
 end
 
 class IRB::StdioOutputMethod
-end
-
-class IRB::WorkSpace
-  def code_around_binding(); end
-
-  def evaluate(context, statements, file=T.unsafe(nil), line=T.unsafe(nil)); end
-
-  def filter_backtrace(bt); end
-
-  def initialize(*main); end
-
-  def local_variable_get(name); end
-
-  def local_variable_set(name, value); end
-
-  def main(); end
-end
-
-class IRB::WorkSpace
 end
 
 module IRB
-  def self.CurrentContext(); end
-
-  def self.Inspector(inspect, init=T.unsafe(nil)); end
-
-  def self.conf(); end
-
-  def self.default_src_encoding(); end
-
-  def self.delete_caller(); end
-
-  def self.init_config(ap_path); end
-
-  def self.init_error(); end
-
-  def self.irb_abort(irb, exception=T.unsafe(nil)); end
-
-  def self.irb_at_exit(); end
-
-  def self.irb_exit(irb, ret); end
-
-  def self.load_modules(); end
-
-  def self.parse_opts(argv: T.unsafe(nil)); end
-
-  def self.rc_file(ext=T.unsafe(nil)); end
-
-  def self.rc_file_generators(); end
-
-  def self.run_config(); end
-
-  def self.setup(ap_path, argv: T.unsafe(nil)); end
-
-  def self.start(ap_path=T.unsafe(nil)); end
-
-  def self.version(); end
 end
 
 module ITypeAssert
@@ -38049,11 +37691,7 @@ class JbuilderTemplate
 end
 
 module Kernel
-  def byebug(); end
-
   def class_eval(*args, &block); end
-
-  def debugger(); end
 
   def gem(dep, *reqs); end
 
@@ -38062,8 +37700,6 @@ module Kernel
   def object_id(); end
 
   def pretty_inspect(); end
-
-  def remote_byebug(host=T.unsafe(nil), port=T.unsafe(nil)); end
 
   def respond_to?(*_); end
 
@@ -38690,25 +38326,7 @@ end
 module Loofah::HTML5
 end
 
-module Loofah::HTML5::Scrub
-  CONTROL_CHARACTERS = ::T.let(nil, ::T.untyped)
-  CRASS_SEMICOLON = ::T.let(nil, ::T.untyped)
-  CSS_KEYWORDISH = ::T.let(nil, ::T.untyped)
-end
-
-module Loofah::HTML5::Scrub
-  def self.allowed_element?(element_name); end
-
-  def self.force_correct_attribute_escaping!(node); end
-
-  def self.scrub_attributes(node); end
-
-  def self.scrub_css(style); end
-
-  def self.scrub_css_attribute(node); end
-end
-
-module Loofah::HTML5::WhiteList
+module Loofah::HTML5::SafeList
   ACCEPTABLE_ATTRIBUTES = ::T.let(nil, ::T.untyped)
   ACCEPTABLE_CSS_FUNCTIONS = ::T.let(nil, ::T.untyped)
   ACCEPTABLE_CSS_KEYWORDS = ::T.let(nil, ::T.untyped)
@@ -38739,8 +38357,28 @@ module Loofah::HTML5::WhiteList
   VOID_ELEMENTS = ::T.let(nil, ::T.untyped)
 end
 
-module Loofah::HTML5::WhiteList
+module Loofah::HTML5::SafeList
 end
+
+module Loofah::HTML5::Scrub
+  CONTROL_CHARACTERS = ::T.let(nil, ::T.untyped)
+  CRASS_SEMICOLON = ::T.let(nil, ::T.untyped)
+  CSS_KEYWORDISH = ::T.let(nil, ::T.untyped)
+end
+
+module Loofah::HTML5::Scrub
+  def self.allowed_element?(element_name); end
+
+  def self.force_correct_attribute_escaping!(node); end
+
+  def self.scrub_attributes(node); end
+
+  def self.scrub_css(style); end
+
+  def self.scrub_css_attribute(node); end
+end
+
+Loofah::HTML5::WhiteList = Loofah::HTML5::SafeList
 
 module Loofah::HTML5
 end
@@ -41847,240 +41485,6 @@ module Mail
   def self.unregister_interceptor(interceptor); end
 
   def self.unregister_observer(observer); end
-end
-
-module MakeMakefile
-  def append_cflags(flags, *opts); end
-
-  def append_cppflags(flags, *opts); end
-
-  def append_ldflags(flags, *opts); end
-
-  def append_library(libs, lib); end
-
-  def arg_config(config, default=T.unsafe(nil), &block); end
-
-  def cc_command(opt=T.unsafe(nil)); end
-
-  def check_signedness(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def check_sizeof(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def checking_for(m, fmt=T.unsafe(nil)); end
-
-  def checking_message(target, place=T.unsafe(nil), opt=T.unsafe(nil)); end
-
-  def configuration(srcdir); end
-
-  def convertible_int(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def cpp_command(outfile, opt=T.unsafe(nil)); end
-
-  def cpp_include(header); end
-
-  def create_header(header=T.unsafe(nil)); end
-
-  def create_makefile(target, srcprefix=T.unsafe(nil)); end
-
-  def create_tmpsrc(src); end
-
-  def depend_rules(depend); end
-
-  def dir_config(target, idefault=T.unsafe(nil), ldefault=T.unsafe(nil)); end
-
-  def dummy_makefile(srcdir); end
-
-  def each_compile_rules(); end
-
-  def egrep_cpp(pat, src, opt=T.unsafe(nil), &b); end
-
-  def enable_config(config, default=T.unsafe(nil)); end
-
-  def find_executable(bin, path=T.unsafe(nil)); end
-
-  def find_executable0(bin, path=T.unsafe(nil)); end
-
-  def find_header(header, *paths); end
-
-  def find_library(lib, func, *paths, &b); end
-
-  def find_type(type, opt, *headers, &b); end
-
-  def have_const(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_devel?(); end
-
-  def have_framework(fw, &b); end
-
-  def have_func(func, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_header(header, preheaders=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_library(lib, func=T.unsafe(nil), headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_macro(macro, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_struct_member(type, member, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_type(type, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_typeof?(); end
-
-  def have_var(var, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def init_mkmf(config=T.unsafe(nil), rbconfig=T.unsafe(nil)); end
-
-  def install_dirs(target_prefix=T.unsafe(nil)); end
-
-  def install_files(mfile, ifiles, map=T.unsafe(nil), srcprefix=T.unsafe(nil)); end
-
-  def install_rb(mfile, dest, srcdir=T.unsafe(nil)); end
-
-  def libpath_env(); end
-
-  def libpathflag(libpath=T.unsafe(nil)); end
-
-  def link_command(ldflags, opt=T.unsafe(nil), libpath=T.unsafe(nil)); end
-
-  def log_src(src, heading=T.unsafe(nil)); end
-
-  def macro_defined?(macro, src, opt=T.unsafe(nil), &b); end
-
-  def map_dir(dir, map=T.unsafe(nil)); end
-
-  def merge_libs(*libs); end
-
-  def message(*s); end
-
-  def mkintpath(path); end
-
-  def mkmf_failed(path); end
-
-  def modified?(target, times); end
-
-  def pkg_config(pkg, option=T.unsafe(nil)); end
-
-  def relative_from(path, base); end
-
-  def scalar_ptr_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def scalar_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def split_libs(*strs); end
-
-  def timestamp_file(name, target_prefix=T.unsafe(nil)); end
-
-  def try_cflags(flags, opts=T.unsafe(nil)); end
-
-  def try_compile(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_const(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_constant(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_cpp(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_cppflags(flags, opts=T.unsafe(nil)); end
-
-  def try_do(src, command, *opts, &b); end
-
-  def try_func(func, libs, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_header(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_ldflags(flags, opts=T.unsafe(nil)); end
-
-  def try_link(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_link0(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_run(src, opt=T.unsafe(nil), &b); end
-
-  def try_signedness(type, member, headers=T.unsafe(nil), opts=T.unsafe(nil)); end
-
-  def try_static_assert(expr, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_type(type, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_var(var, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def typedef_expr(type, headers); end
-
-  def what_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def winsep(s); end
-
-  def with_cflags(flags); end
-
-  def with_config(config, default=T.unsafe(nil)); end
-
-  def with_cppflags(flags); end
-
-  def with_destdir(dir); end
-
-  def with_ldflags(flags); end
-
-  def with_werror(opt, opts=T.unsafe(nil)); end
-
-  def xpopen(command, *mode, &block); end
-
-  def xsystem(command, opts=T.unsafe(nil)); end
-  ASSEMBLE_C = ::T.let(nil, ::T.untyped)
-  ASSEMBLE_CXX = ::T.let(nil, ::T.untyped)
-  CLEANINGS = ::T.let(nil, ::T.untyped)
-  COMMON_HEADERS = ::T.let(nil, ::T.untyped)
-  COMMON_LIBS = ::T.let(nil, ::T.untyped)
-  COMPILE_C = ::T.let(nil, ::T.untyped)
-  COMPILE_CXX = ::T.let(nil, ::T.untyped)
-  COMPILE_RULES = ::T.let(nil, ::T.untyped)
-  CONFIG = ::T.let(nil, ::T.untyped)
-  CONFTEST = ::T.let(nil, ::T.untyped)
-  CONFTEST_C = ::T.let(nil, ::T.untyped)
-  COUTFLAG = ::T.let(nil, ::T.untyped)
-  CPPOUTFILE = ::T.let(nil, ::T.untyped)
-  CSRCFLAG = ::T.let(nil, ::T.untyped)
-  CXX_EXT = ::T.let(nil, ::T.untyped)
-  C_EXT = ::T.let(nil, ::T.untyped)
-  EXPORT_PREFIX = ::T.let(nil, ::T.untyped)
-  FailedMessage = ::T.let(nil, ::T.untyped)
-  HDR_EXT = ::T.let(nil, ::T.untyped)
-  INSTALL_DIRS = ::T.let(nil, ::T.untyped)
-  LIBARG = ::T.let(nil, ::T.untyped)
-  LIBPATHFLAG = ::T.let(nil, ::T.untyped)
-  LINK_SO = ::T.let(nil, ::T.untyped)
-  MAIN_DOES_NOTHING = ::T.let(nil, ::T.untyped)
-  ORIG_LIBPATH = ::T.let(nil, ::T.untyped)
-  OUTFLAG = ::T.let(nil, ::T.untyped)
-  RPATHFLAG = ::T.let(nil, ::T.untyped)
-  RULE_SUBST = ::T.let(nil, ::T.untyped)
-  SRC_EXT = ::T.let(nil, ::T.untyped)
-  STRING_OR_FAILED_FORMAT = ::T.let(nil, ::T.untyped)
-  TRY_LINK = ::T.let(nil, ::T.untyped)
-  UNIVERSAL_INTS = ::T.let(nil, ::T.untyped)
-end
-
-module MakeMakefile::Logging
-end
-
-module MakeMakefile::Logging
-  def self.log_close(); end
-
-  def self.log_open(); end
-
-  def self.log_opened?(); end
-
-  def self.logfile(file); end
-
-  def self.open(); end
-
-  def self.postpone(); end
-
-  def self.quiet(); end
-
-  def self.quiet=(quiet); end
-end
-
-module MakeMakefile
 end
 
 module Marcel
@@ -45816,7 +45220,6 @@ class Object
   include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
   include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::PP::ObjectMixin
-  include ::MakeMakefile
   include ::ActiveSupport::Tryable
   include ::ActiveSupport::Dependencies::Loadable
   include ::JSON::Ext::Generator::GeneratorMethods::Object
@@ -49063,6 +48466,36 @@ class Pathname
 
   def make_symlink(_); end
 
+end
+
+class PrettyPrint
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+end
+
+class PrettyPrint::Breakable
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+end
+
+class PrettyPrint::Group
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+end
+
+class PrettyPrint::GroupQueue
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+end
+
+class PrettyPrint::SingleLine
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
+end
+
+class PrettyPrint::Text
+  include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
+  include ::ActiveSupport::ToJsonWithActiveSupportEncoder
 end
 
 class Proc
@@ -55873,8 +55306,6 @@ module Rails
   def self.logger=(logger); end
 
   def self.public_path(); end
-
-  def self.root(); end
 
   def self.version(); end
 end
@@ -68377,8 +67808,6 @@ class String
 
   def ext(newext=T.unsafe(nil)); end
 
-  def funcall_style(); end
-
   def grapheme_clusters(); end
 
   def parse_csv(**options); end
@@ -68391,11 +67820,7 @@ class String
 
   def pathmap_replace(patterns, &block); end
 
-  def quote(); end
-
   def reverse!(); end
-
-  def sans_arguments(); end
 
   def shellescape(); end
 
@@ -68404,8 +67829,6 @@ class String
   def succ!(); end
 
   def to_d(); end
-
-  def tr_cpp(); end
 
   def truncate_bytes(truncate_at, omission: T.unsafe(nil)); end
 
@@ -68418,8 +67841,6 @@ class String
   def unicode_normalized?(*_); end
 
   def unpack1(_); end
-
-  def unspace(); end
 
   BLANK_RE = ::T.let(nil, ::T.untyped)
   ENCODED_BLANKS = ::T.let(nil, ::T.untyped)
@@ -70719,8 +70140,6 @@ class Time
 
   def ago(seconds); end
 
-  def at_beginning_of_day(); end
-
   def at_beginning_of_hour(); end
 
   def at_beginning_of_minute(); end
@@ -70730,16 +70149,6 @@ class Time
   def at_end_of_hour(); end
 
   def at_end_of_minute(); end
-
-  def at_midday(); end
-
-  def at_middle_of_day(); end
-
-  def at_midnight(); end
-
-  def at_noon(); end
-
-  def beginning_of_day(); end
 
   def beginning_of_hour(); end
 
@@ -70765,12 +70174,6 @@ class Time
 
   def in(seconds); end
 
-  def midday(); end
-
-  def middle_of_day(); end
-
-  def midnight(); end
-
   def minus_with_coercion(other); end
 
   def minus_with_duration(other); end
@@ -70784,8 +70187,6 @@ class Time
   def next_month(months=T.unsafe(nil)); end
 
   def next_year(years=T.unsafe(nil)); end
-
-  def noon(); end
 
   def plus_with_duration(other); end
 
@@ -72506,6 +71907,10 @@ module Zip
 
   def unicode_names=(unicode_names); end
 
+  def validate_entry_sizes(); end
+
+  def validate_entry_sizes=(validate_entry_sizes); end
+
   def warn_invalid_date(); end
 
   def warn_invalid_date=(warn_invalid_date); end
@@ -72908,6 +72313,12 @@ end
 class Zip::EntrySet
 end
 
+class Zip::EntrySizeError
+end
+
+class Zip::EntrySizeError
+end
+
 class Zip::Error
 end
 
@@ -73110,6 +72521,8 @@ end
 
 class Zip::File
   def add(entry, src_path, &continue_on_exists_proc); end
+
+  def add_stored(entry, src_path, &continue_on_exists_proc); end
 
   def close(); end
 

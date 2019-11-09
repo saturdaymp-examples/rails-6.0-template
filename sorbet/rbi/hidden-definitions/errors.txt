@@ -1321,13 +1321,13 @@
 # wrong constant name <Class:NullSessionHash>
 # wrong constant name handle_unverified_request
 # wrong constant name initialize
-# uninitialized constant #<Class:0x0000561b66406d98>::DOMAIN_REGEXP
+# uninitialized constant #<Class:0x000055786ca91570>::DOMAIN_REGEXP
 # Did you mean?  ActionController::RequestForgeryProtection::ProtectionMethods::NullSession::NullCookieJar::DOMAIN_REGEXP
-# uninitialized constant #<Class:0x0000561b66406d98>::Elem
+# uninitialized constant #<Class:0x000055786ca91570>::Elem
 # wrong constant name write
 # wrong constant name <static-init>
-# uninitialized constant #<Class:0x0000561b66406fc8>::Elem
-# uninitialized constant #<Class:0x0000561b66406fc8>::Unspecified
+# uninitialized constant #<Class:0x000055786ca91700>::Elem
+# uninitialized constant #<Class:0x000055786ca91700>::Unspecified
 # Did you mean?  ActionController::RequestForgeryProtection::ProtectionMethods::NullSession::NullSessionHash::Unspecified
 # wrong constant name initialize
 # wrong constant name <static-init>
@@ -3382,36 +3382,36 @@
 # uninitialized constant ActionMailbox::InboundEmail::ActiveRecord_AssociationRelation::VALID_UNSCOPING_VALUES
 # uninitialized constant ActionMailbox::InboundEmail::ActiveRecord_AssociationRelation::VALUE_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_AssociationRelation::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65dc2220>::CLAUSE_METHODS
+# uninitialized constant #<Class:0x000055786ea71908>::CLAUSE_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ClassMethods
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::ClassMethods
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65dc2220>::DEFAULT_VALUES
+# uninitialized constant #<Class:0x000055786ea71908>::DEFAULT_VALUES
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::DEFAULT_VALUES
-# uninitialized constant #<Class:0x0000561b65dc2220>::FROZEN_EMPTY_ARRAY
+# uninitialized constant #<Class:0x000055786ea71908>::FROZEN_EMPTY_ARRAY
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65dc2220>::FROZEN_EMPTY_HASH
+# uninitialized constant #<Class:0x000055786ea71908>::FROZEN_EMPTY_HASH
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65dc2220>::INVALID_METHODS_FOR_DELETE_ALL
+# uninitialized constant #<Class:0x000055786ea71908>::INVALID_METHODS_FOR_DELETE_ALL
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::INVALID_METHODS_FOR_DELETE_ALL
-# uninitialized constant #<Class:0x0000561b65dc2220>::MULTI_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786ea71908>::MULTI_VALUE_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::MULTI_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65dc2220>::ONE_AS_ONE
+# uninitialized constant #<Class:0x000055786ea71908>::ONE_AS_ONE
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::ONE_AS_ONE
-# uninitialized constant #<Class:0x0000561b65dc2220>::ORDER_IGNORE_MESSAGE
+# uninitialized constant #<Class:0x000055786ea71908>::ORDER_IGNORE_MESSAGE
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::ORDER_IGNORE_MESSAGE
-# uninitialized constant #<Class:0x0000561b65dc2220>::SINGLE_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786ea71908>::SINGLE_VALUE_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::SINGLE_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65dc2220>::STRUCTURAL_OR_METHODS
+# uninitialized constant #<Class:0x000055786ea71908>::STRUCTURAL_OR_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::STRUCTURAL_OR_METHODS
-# uninitialized constant #<Class:0x0000561b65dc2220>::VALID_DIRECTIONS
+# uninitialized constant #<Class:0x000055786ea71908>::VALID_DIRECTIONS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::VALID_DIRECTIONS
-# uninitialized constant #<Class:0x0000561b65dc2220>::VALID_UNSCOPING_VALUES
+# uninitialized constant #<Class:0x000055786ea71908>::VALID_UNSCOPING_VALUES
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::VALID_UNSCOPING_VALUES
-# uninitialized constant #<Class:0x0000561b65dc2220>::VALUE_METHODS
+# uninitialized constant #<Class:0x000055786ea71908>::VALUE_METHODS
 # Did you mean?  ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActionMailbox::InboundEmail::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
 # uninitialized constant ActionMailbox::InboundEmail::ActiveRecord_Relation::CLAUSE_METHODS
@@ -4619,6 +4619,7 @@
 # wrong constant name <Class:TextHelper>
 # wrong constant name <Class:TranslationHelper>
 # uninitialized constant ActionView::Helpers::URI_REGEXP
+# wrong constant name <Class:UrlHelper>
 # wrong constant name <static-init>
 # uninitialized constant ActionView::Helpers::AssetTagHelper::ASSET_EXTENSIONS
 # Did you mean?  ActionView::Helpers::ASSET_EXTENSIONS
@@ -4877,10 +4878,14 @@
 # wrong constant name _back_url
 # wrong constant name _filtered_referrer
 # wrong constant name button_to
+# wrong constant name current_page?
+# wrong constant name link_to
+# wrong constant name link_to_if
 # wrong constant name link_to_unless
 # wrong constant name link_to_unless_current
 # wrong constant name mail_to
 # wrong constant name url_for
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name locale=
 # wrong constant name lookup_context
@@ -5736,8 +5741,12 @@
 # wrong constant name to_param
 # wrong constant name to_partial_path
 # wrong constant name <static-init>
+# wrong constant name attribute_changed?
+# wrong constant name attribute_changed_in_place?
+# wrong constant name attribute_previously_changed?
 # wrong constant name attribute_was
 # wrong constant name changed
+# wrong constant name changed?
 # wrong constant name changed_attributes
 # wrong constant name changes
 # wrong constant name changes_applied
@@ -5745,6 +5754,7 @@
 # wrong constant name clear_changes_information
 # wrong constant name previous_changes
 # wrong constant name restore_attributes
+# wrong constant name <static-init>
 # wrong constant name attributes
 # wrong constant name check_validity!
 # wrong constant name initialize
@@ -5879,6 +5889,21 @@
 # wrong constant name i18n_scope
 # wrong constant name lookup_ancestors
 # wrong constant name <static-init>
+# wrong constant name <Class:BigInteger>
+# wrong constant name <Class:Binary>
+# wrong constant name <Class:Boolean>
+# wrong constant name <Class:Date>
+# wrong constant name <Class:DateTime>
+# wrong constant name <Class:Decimal>
+# wrong constant name <Class:Float>
+# wrong constant name <Class:Helpers>
+# wrong constant name <Class:ImmutableString>
+# wrong constant name <Class:Integer>
+# wrong constant name <Class:Registration>
+# wrong constant name <Class:Registry>
+# wrong constant name <Class:String>
+# wrong constant name <Class:Time>
+# wrong constant name <Class:Value>
 # uninitialized constant ActiveModel::Type::BigInteger::DEFAULT_LIMIT
 # wrong constant name <static-init>
 # wrong constant name <Class:Data>
@@ -5887,6 +5912,7 @@
 # wrong constant name hex
 # wrong constant name initialize
 # wrong constant name to_str
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
@@ -5975,6 +6001,17 @@
 # wrong constant name validate!
 # wrong constant name validates_with
 # wrong constant name <static-init>
+# wrong constant name validates_absence_of
+# wrong constant name validates_acceptance_of
+# wrong constant name validates_confirmation_of
+# wrong constant name validates_exclusion_of
+# wrong constant name validates_format_of
+# wrong constant name validates_inclusion_of
+# wrong constant name validates_length_of
+# wrong constant name validates_numericality_of
+# wrong constant name validates_presence_of
+# wrong constant name validates_size_of
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name kind
 # wrong constant name options
@@ -5984,13 +6021,18 @@
 # wrong constant name <static-init>
 # wrong constant name gem_version
 # wrong constant name version
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <Class:ClassMethods>
 # wrong constant name reload
 # wrong constant name composed_of
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # uninitialized constant ActiveRecord::AssociationRelation::CLAUSE_METHODS
 # Did you mean?  ActiveRecord::AssociationRelation::ClassMethods
 #                ActiveRecord::AssociationRelation::VALUE_METHODS
@@ -6016,6 +6058,7 @@
 # wrong constant name initialize
 # wrong constant name new
 # wrong constant name proxy_association
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <Class:CollectionProxy>
 # wrong constant name association
@@ -6178,14 +6221,18 @@
 # wrong constant name where_clause=
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name attribute
 # wrong constant name exception
 # wrong constant name initialize
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <Class:BeforeTypeCast>
+# wrong constant name <Class:Dirty>
 # wrong constant name <Class:PrimaryKey>
 # wrong constant name <Class:Query>
 # wrong constant name <Class:Read>
+# wrong constant name <Class:Serialization>
 # wrong constant name <Class:TimeZoneConversion>
 # wrong constant name <Class:Write>
 # wrong constant name []
@@ -6209,9 +6256,11 @@
 # wrong constant name has_changes_to_save?
 # wrong constant name reload
 # wrong constant name saved_change_to_attribute
+# wrong constant name saved_change_to_attribute?
 # wrong constant name saved_changes
 # wrong constant name saved_changes?
 # wrong constant name will_save_change_to_attribute?
+# wrong constant name <static-init>
 # wrong constant name id
 # wrong constant name id=
 # wrong constant name id?
@@ -6229,6 +6278,7 @@
 # wrong constant name <static-init>
 # wrong constant name _write_attribute
 # wrong constant name write_attribute
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name changed_for_autosave?
@@ -6391,14 +6441,22 @@
 # wrong constant name _validators
 # wrong constant name _validators=
 # wrong constant name _validators?
+# wrong constant name after_create
+# wrong constant name after_destroy
 # wrong constant name after_find
 # wrong constant name after_initialize
+# wrong constant name after_save
 # wrong constant name after_touch
+# wrong constant name after_update
 # wrong constant name aggregate_reflections
 # wrong constant name aggregate_reflections=
 # wrong constant name aggregate_reflections?
 # wrong constant name allow_unsafe_raw_sql
 # wrong constant name allow_unsafe_raw_sql=
+# wrong constant name around_create
+# wrong constant name around_destroy
+# wrong constant name around_save
+# wrong constant name around_update
 # wrong constant name attachment_reflections
 # wrong constant name attachment_reflections=
 # wrong constant name attachment_reflections?
@@ -6414,6 +6472,10 @@
 # wrong constant name attributes_to_define_after_schema_loads
 # wrong constant name attributes_to_define_after_schema_loads=
 # wrong constant name attributes_to_define_after_schema_loads?
+# wrong constant name before_create
+# wrong constant name before_destroy
+# wrong constant name before_save
+# wrong constant name before_update
 # wrong constant name belongs_to_required_by_default
 # wrong constant name belongs_to_required_by_default=
 # wrong constant name cache_timestamp_format
@@ -6547,6 +6609,46 @@
 # wrong constant name object_class=
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <Class:AbstractAdapter>
+# wrong constant name <Class:AbstractPool>
+# wrong constant name <Class:AddColumnDefinition>
+# wrong constant name <Class:AlterTable>
+# wrong constant name <Class:ChangeColumnDefinition>
+# wrong constant name <Class:Column>
+# wrong constant name <Class:ColumnDefinition>
+# wrong constant name <Class:ColumnMethods>
+# wrong constant name <Class:ConnectionHandler>
+# wrong constant name <Class:ConnectionPool>
+# wrong constant name <Class:ConnectionSpecification>
+# wrong constant name <Class:DatabaseLimits>
+# wrong constant name <Class:DatabaseStatements>
+# wrong constant name <Class:DetermineIfPreparableVisitor>
+# wrong constant name <Class:ForeignKeyDefinition>
+# wrong constant name <Class:IndexDefinition>
+# wrong constant name <Class:NullColumn>
+# wrong constant name <Class:NullPool>
+# wrong constant name <Class:NullTransaction>
+# wrong constant name <Class:PostgreSQL>
+# wrong constant name <Class:PostgreSQLAdapter>
+# wrong constant name <Class:PrimaryKeyDefinition>
+# wrong constant name <Class:QueryCache>
+# wrong constant name <Class:Quoting>
+# wrong constant name <Class:RealTransaction>
+# wrong constant name <Class:ReferenceDefinition>
+# wrong constant name <Class:SavepointTransaction>
+# wrong constant name <Class:Savepoints>
+# wrong constant name <Class:SchemaCache>
+# wrong constant name <Class:SchemaDumper>
+# wrong constant name <Class:SchemaStatements>
+# wrong constant name <Class:SqlTypeMetadata>
+# wrong constant name <Class:StatementPool>
+# wrong constant name <Class:Table>
+# wrong constant name <Class:TableDefinition>
+# wrong constant name <Class:Transaction>
+# wrong constant name <Class:TransactionManager>
+# wrong constant name <Class:TransactionState>
 # uninitialized constant ActiveRecord::ConnectionAdapters::AbstractAdapter::CALLBACK_FILTER_TYPES
 # wrong constant name <Class:SchemaCreation>
 # wrong constant name <Class:Version>
@@ -6738,6 +6840,9 @@
 # wrong constant name <static-init>
 # wrong constant name []
 # wrong constant name members
+# wrong constant name <Class:ClassMethods>
+# wrong constant name primary_key
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name active_connections?
 # wrong constant name clear_active_connections!
@@ -7250,9 +7355,9 @@
 # wrong constant name supports_pgcrypto_uuid?
 # wrong constant name supports_ranges?
 # wrong constant name use_insert_returning?
-# uninitialized constant #<Class:0x0000561b63fd9600>::DEFAULT_STATEMENT_LIMIT
+# uninitialized constant #<Class:0x0000557869e20720>::DEFAULT_STATEMENT_LIMIT
 # Did you mean?  ActiveRecord::ConnectionAdapters::PostgreSQLAdapter::StatementPool::DEFAULT_STATEMENT_LIMIT
-# uninitialized constant #<Class:0x0000561b63fd9600>::Elem
+# uninitialized constant #<Class:0x0000557869e20720>::Elem
 # wrong constant name []=
 # wrong constant name initialize
 # wrong constant name next_key
@@ -7419,27 +7524,51 @@
 # wrong constant name key?
 # wrong constant name length
 # wrong constant name <static-init>
+# wrong constant name belongs_to
 # wrong constant name bigint
 # wrong constant name binary
 # wrong constant name boolean
+# wrong constant name change
+# wrong constant name change_default
+# wrong constant name column
+# wrong constant name column_exists?
 # wrong constant name date
 # wrong constant name datetime
 # wrong constant name decimal
 # wrong constant name float
+# wrong constant name foreign_key
+# wrong constant name foreign_key_exists?
+# wrong constant name index
+# wrong constant name index_exists?
 # wrong constant name initialize
 # wrong constant name integer
 # wrong constant name json
 # wrong constant name name
 # wrong constant name numeric
+# wrong constant name references
+# wrong constant name remove
+# wrong constant name remove_belongs_to
+# wrong constant name remove_foreign_key
+# wrong constant name remove_index
+# wrong constant name remove_references
+# wrong constant name remove_timestamps
+# wrong constant name rename
+# wrong constant name rename_index
 # wrong constant name string
 # wrong constant name text
 # wrong constant name time
 # wrong constant name timestamp
+# wrong constant name timestamps
 # wrong constant name virtual
+# wrong constant name <static-init>
+# wrong constant name []
 # wrong constant name as
+# wrong constant name belongs_to
 # wrong constant name bigint
 # wrong constant name binary
 # wrong constant name boolean
+# wrong constant name column
+# wrong constant name columns
 # wrong constant name comment
 # wrong constant name date
 # wrong constant name datetime
@@ -7448,6 +7577,7 @@
 # wrong constant name foreign_key
 # wrong constant name foreign_keys
 # wrong constant name if_not_exists
+# wrong constant name index
 # wrong constant name indexes
 # wrong constant name initialize
 # wrong constant name integer
@@ -7457,12 +7587,16 @@
 # wrong constant name numeric
 # wrong constant name options
 # wrong constant name primary_keys
+# wrong constant name references
+# wrong constant name remove_column
 # wrong constant name string
 # wrong constant name temporary
 # wrong constant name text
 # wrong constant name time
 # wrong constant name timestamp
+# wrong constant name timestamps
 # wrong constant name virtual
+# wrong constant name <static-init>
 # wrong constant name add_record
 # wrong constant name before_commit_records
 # wrong constant name closed?
@@ -7533,6 +7667,8 @@
 # wrong constant name retrieve_connection
 # wrong constant name with_handler
 # wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <=>
 # wrong constant name ==
 # wrong constant name blank?
@@ -7551,6 +7687,7 @@
 # wrong constant name readonly!
 # wrong constant name readonly?
 # wrong constant name slice
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <Class:DatabaseConfig>
@@ -7587,6 +7724,7 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name &
 # wrong constant name +
 # wrong constant name -
@@ -7617,8 +7755,11 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name <Class:FindBy>
 # wrong constant name <Class:FindByBang>
 # wrong constant name <Class:Method>
@@ -7638,6 +7779,7 @@
 # wrong constant name suffix
 # wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name <Class:EnumType>
 # wrong constant name enum
 # wrong constant name inherited
@@ -7649,6 +7791,8 @@
 # wrong constant name <static-init>
 # wrong constant name extended
 # wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name collecting_queries_for_explain
 # wrong constant name exec_explain
 # wrong constant name <static-init>
@@ -7701,6 +7845,7 @@
 # wrong constant name initialize
 # wrong constant name model_class
 # wrong constant name to_hash
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
@@ -7776,14 +7921,29 @@
 # wrong constant name instantiate_fixtures
 # wrong constant name reset_cache
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <Class:Builder>
 # wrong constant name connection
 # wrong constant name execute
@@ -7816,26 +7976,27 @@
 # wrong constant name cache_version
 # wrong constant name to_param
 # wrong constant name <static-init>
-# uninitialized constant #<Class:0x0000561b64674d70>::ACTIONS
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::ACTIONS
 # Did you mean?  ActiveRecord::InternalMetadata::ACTIONS
-# uninitialized constant #<Class:0x0000561b64674d70>::CALLBACKS
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::CALLBACKS
 # Did you mean?  ActiveRecord::InternalMetadata::Callbacks
 #                ActiveRecord::Callbacks
 #                ActiveRecord::InternalMetadata::Callback
 #                ActiveRecord::InternalMetadata::CALLBACKS
-# uninitialized constant #<Class:0x0000561b64674d70>::CALLBACK_FILTER_TYPES
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::CALLBACK_FILTER_TYPES
 # Did you mean?  ActiveRecord::InternalMetadata::CALLBACK_FILTER_TYPES
-# uninitialized constant #<Class:0x0000561b64674d70>::CALL_COMPILABLE_REGEXP
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::CALL_COMPILABLE_REGEXP
 # Did you mean?  ActiveRecord::InternalMetadata::CALL_COMPILABLE_REGEXP
 # wrong constant name <Class:GeneratedAssociationMethods>
+# wrong constant name <Class:GeneratedAttributeMethods>
 # wrong constant name <Class:GeneratedRelationMethods>
-# uninitialized constant #<Class:0x0000561b64674d70>::MAX_PASSWORD_LENGTH_ALLOWED
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::MAX_PASSWORD_LENGTH_ALLOWED
 # Did you mean?  ActiveRecord::InternalMetadata::MAX_PASSWORD_LENGTH_ALLOWED
-# uninitialized constant #<Class:0x0000561b64674d70>::NAME_COMPILABLE_REGEXP
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::NAME_COMPILABLE_REGEXP
 # Did you mean?  ActiveRecord::InternalMetadata::NAME_COMPILABLE_REGEXP
-# uninitialized constant #<Class:0x0000561b64674d70>::RESTRICTED_CLASS_METHODS
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::RESTRICTED_CLASS_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::RESTRICTED_CLASS_METHODS
-# uninitialized constant #<Class:0x0000561b64674d70>::UNASSIGNABLE_KEYS
+# uninitialized constant ActiveRecord::InternalMetadata(Table doesn't exist)::UNASSIGNABLE_KEYS
 # Did you mean?  ActiveRecord::InternalMetadata::UNASSIGNABLE_KEYS
 # uninitialized constant ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation::CLAUSE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ClassMethods
@@ -7856,36 +8017,36 @@
 # uninitialized constant ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation::VALID_UNSCOPING_VALUES
 # uninitialized constant ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation::VALUE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65a47780>::CLAUSE_METHODS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::CLAUSE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ClassMethods
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::ClassMethods
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65a47780>::DEFAULT_VALUES
+# uninitialized constant #<Class:0x000055786b4cf3b8>::DEFAULT_VALUES
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::DEFAULT_VALUES
-# uninitialized constant #<Class:0x0000561b65a47780>::FROZEN_EMPTY_ARRAY
+# uninitialized constant #<Class:0x000055786b4cf3b8>::FROZEN_EMPTY_ARRAY
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65a47780>::FROZEN_EMPTY_HASH
+# uninitialized constant #<Class:0x000055786b4cf3b8>::FROZEN_EMPTY_HASH
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65a47780>::INVALID_METHODS_FOR_DELETE_ALL
+# uninitialized constant #<Class:0x000055786b4cf3b8>::INVALID_METHODS_FOR_DELETE_ALL
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::INVALID_METHODS_FOR_DELETE_ALL
-# uninitialized constant #<Class:0x0000561b65a47780>::MULTI_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::MULTI_VALUE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::MULTI_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65a47780>::ONE_AS_ONE
+# uninitialized constant #<Class:0x000055786b4cf3b8>::ONE_AS_ONE
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::ONE_AS_ONE
-# uninitialized constant #<Class:0x0000561b65a47780>::ORDER_IGNORE_MESSAGE
+# uninitialized constant #<Class:0x000055786b4cf3b8>::ORDER_IGNORE_MESSAGE
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::ORDER_IGNORE_MESSAGE
-# uninitialized constant #<Class:0x0000561b65a47780>::SINGLE_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::SINGLE_VALUE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::SINGLE_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65a47780>::STRUCTURAL_OR_METHODS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::STRUCTURAL_OR_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::STRUCTURAL_OR_METHODS
-# uninitialized constant #<Class:0x0000561b65a47780>::VALID_DIRECTIONS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::VALID_DIRECTIONS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::VALID_DIRECTIONS
-# uninitialized constant #<Class:0x0000561b65a47780>::VALID_UNSCOPING_VALUES
+# uninitialized constant #<Class:0x000055786b4cf3b8>::VALID_UNSCOPING_VALUES
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::VALID_UNSCOPING_VALUES
-# uninitialized constant #<Class:0x0000561b65a47780>::VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b4cf3b8>::VALUE_METHODS
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
 # uninitialized constant ActiveRecord::InternalMetadata::ActiveRecord_Relation::CLAUSE_METHODS
@@ -7909,11 +8070,16 @@
 # Did you mean?  ActiveRecord::InternalMetadata::ActiveRecord_Relation::CLAUSE_METHODS
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name []
 # wrong constant name []=
 # wrong constant name create_table
 # wrong constant name drop_table
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <Class:Rails41>
 # wrong constant name <Class:Rails420>
 # wrong constant name <static-init>
@@ -7922,6 +8088,10 @@
 # wrong constant name convert
 # wrong constant name <static-init>
 # wrong constant name convert
+# wrong constant name <static-init>
+# wrong constant name <Class:LockingType>
+# wrong constant name <Class:Optimistic>
+# wrong constant name <Class:Pessimistic>
 # wrong constant name deserialize
 # wrong constant name encode_with
 # wrong constant name init_with
@@ -7930,6 +8100,8 @@
 # wrong constant name locking_enabled?
 # wrong constant name <static-init>
 # wrong constant name lock!
+# wrong constant name with_lock
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # uninitialized constant ActiveRecord::LogSubscriber::BLACK
 # uninitialized constant ActiveRecord::LogSubscriber::BLUE
@@ -8162,6 +8334,7 @@
 # wrong constant name up
 # wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # uninitialized constant ActiveRecord::MigrationProxy::Elem
 # wrong constant name announce
 # wrong constant name basename
@@ -8198,18 +8371,23 @@
 # wrong constant name migrations_paths=
 # wrong constant name initialize
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name derive_join_table_name
 # wrong constant name errors
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name _destroy
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name no_touching?
 # wrong constant name touch
 # wrong constant name touch_later
 # wrong constant name <static-init>
 # wrong constant name applied_to?
 # wrong constant name apply_to
+# wrong constant name <static-init>
 # uninitialized constant ActiveRecord::NullMigration::Elem
 # wrong constant name initialize
 # wrong constant name <static-init>
@@ -8230,12 +8408,36 @@
 # wrong constant name _actions
 # wrong constant name _actions=
 # wrong constant name _actions?
+# wrong constant name <static-init>
 # wrong constant name _actions
 # wrong constant name _actions=
 # wrong constant name _actions?
+# wrong constant name becomes
+# wrong constant name becomes!
+# wrong constant name decrement
+# wrong constant name decrement!
 # wrong constant name delete
 # wrong constant name destroy
 # wrong constant name destroy!
+# wrong constant name destroyed?
+# wrong constant name increment
+# wrong constant name increment!
+# wrong constant name new_record?
+# wrong constant name persisted?
+# wrong constant name reload
+# wrong constant name save
+# wrong constant name save!
+# wrong constant name toggle
+# wrong constant name toggle!
+# wrong constant name touch
+# wrong constant name update
+# wrong constant name update!
+# wrong constant name update_attribute
+# wrong constant name update_attributes
+# wrong constant name update_attributes!
+# wrong constant name update_column
+# wrong constant name update_columns
+# wrong constant name <static-init>
 # uninitialized constant ActiveRecord::Point::Elem
 # wrong constant name x
 # wrong constant name x=
@@ -8293,7 +8495,10 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name references
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name <Class:ClassMethods>
 # wrong constant name cache
 # wrong constant name uncached
@@ -8302,6 +8507,7 @@
 # wrong constant name complete
 # wrong constant name install_executor_hooks
 # wrong constant name run
+# wrong constant name <static-init>
 # wrong constant name _select!
 # wrong constant name annotate
 # wrong constant name annotate!
@@ -8520,16 +8726,23 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name record
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name record
+# wrong constant name <static-init>
 # wrong constant name id
 # wrong constant name initialize
 # wrong constant name model
 # wrong constant name primary_key
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name record
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <Class:AbstractReflection>
 # wrong constant name <Class:MacroReflection>
 # wrong constant name actual_source_reflection
@@ -8668,6 +8881,8 @@
 # wrong constant name to_a
 # wrong constant name to_ary
 # wrong constant name to_hash
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name connection_handler
 # wrong constant name connection_handler=
 # wrong constant name sql_runtime
@@ -8679,6 +8894,8 @@
 # wrong constant name sql_runtime=
 # wrong constant name <static-init>
 # uninitialized constant ActiveRecord::Schema::MigrationFilenameRegexp
+# wrong constant name define
+# wrong constant name <static-init>
 # wrong constant name define
 # wrong constant name dump
 # wrong constant name fk_ignore_pattern
@@ -8692,26 +8909,27 @@
 # wrong constant name fk_ignore_pattern=
 # wrong constant name ignore_tables
 # wrong constant name ignore_tables=
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::ACTIONS
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::ACTIONS
 # Did you mean?  ActiveRecord::SchemaMigration::ACTIONS
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::CALLBACKS
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::CALLBACKS
 # Did you mean?  ActiveRecord::SchemaMigration::Callbacks
 #                ActiveRecord::Callbacks
 #                ActiveRecord::SchemaMigration::Callback
 #                ActiveRecord::SchemaMigration::CALLBACKS
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::CALLBACK_FILTER_TYPES
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::CALLBACK_FILTER_TYPES
 # Did you mean?  ActiveRecord::SchemaMigration::CALLBACK_FILTER_TYPES
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::CALL_COMPILABLE_REGEXP
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::CALL_COMPILABLE_REGEXP
 # Did you mean?  ActiveRecord::SchemaMigration::CALL_COMPILABLE_REGEXP
 # wrong constant name <Class:GeneratedAssociationMethods>
+# wrong constant name <Class:GeneratedAttributeMethods>
 # wrong constant name <Class:GeneratedRelationMethods>
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::MAX_PASSWORD_LENGTH_ALLOWED
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::MAX_PASSWORD_LENGTH_ALLOWED
 # Did you mean?  ActiveRecord::SchemaMigration::MAX_PASSWORD_LENGTH_ALLOWED
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::NAME_COMPILABLE_REGEXP
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::NAME_COMPILABLE_REGEXP
 # Did you mean?  ActiveRecord::SchemaMigration::NAME_COMPILABLE_REGEXP
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::RESTRICTED_CLASS_METHODS
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::RESTRICTED_CLASS_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::RESTRICTED_CLASS_METHODS
-# uninitialized constant ActiveRecord::SchemaMigration(version: string)::UNASSIGNABLE_KEYS
+# uninitialized constant ActiveRecord::SchemaMigration(Table doesn't exist)::UNASSIGNABLE_KEYS
 # Did you mean?  ActiveRecord::SchemaMigration::UNASSIGNABLE_KEYS
 # wrong constant name version
 # uninitialized constant ActiveRecord::SchemaMigration::ActiveRecord_AssociationRelation::CLAUSE_METHODS
@@ -8733,36 +8951,36 @@
 # uninitialized constant ActiveRecord::SchemaMigration::ActiveRecord_AssociationRelation::VALID_UNSCOPING_VALUES
 # uninitialized constant ActiveRecord::SchemaMigration::ActiveRecord_AssociationRelation::VALUE_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_AssociationRelation::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65c74b20>::CLAUSE_METHODS
+# uninitialized constant #<Class:0x000055786c4a4338>::CLAUSE_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ClassMethods
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::ClassMethods
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b65c74b20>::DEFAULT_VALUES
+# uninitialized constant #<Class:0x000055786c4a4338>::DEFAULT_VALUES
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::DEFAULT_VALUES
-# uninitialized constant #<Class:0x0000561b65c74b20>::FROZEN_EMPTY_ARRAY
+# uninitialized constant #<Class:0x000055786c4a4338>::FROZEN_EMPTY_ARRAY
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65c74b20>::FROZEN_EMPTY_HASH
+# uninitialized constant #<Class:0x000055786c4a4338>::FROZEN_EMPTY_HASH
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b65c74b20>::INVALID_METHODS_FOR_DELETE_ALL
+# uninitialized constant #<Class:0x000055786c4a4338>::INVALID_METHODS_FOR_DELETE_ALL
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::INVALID_METHODS_FOR_DELETE_ALL
-# uninitialized constant #<Class:0x0000561b65c74b20>::MULTI_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786c4a4338>::MULTI_VALUE_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::MULTI_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65c74b20>::ONE_AS_ONE
+# uninitialized constant #<Class:0x000055786c4a4338>::ONE_AS_ONE
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::ONE_AS_ONE
-# uninitialized constant #<Class:0x0000561b65c74b20>::ORDER_IGNORE_MESSAGE
+# uninitialized constant #<Class:0x000055786c4a4338>::ORDER_IGNORE_MESSAGE
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::ORDER_IGNORE_MESSAGE
-# uninitialized constant #<Class:0x0000561b65c74b20>::SINGLE_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786c4a4338>::SINGLE_VALUE_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::SINGLE_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b65c74b20>::STRUCTURAL_OR_METHODS
+# uninitialized constant #<Class:0x000055786c4a4338>::STRUCTURAL_OR_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::STRUCTURAL_OR_METHODS
-# uninitialized constant #<Class:0x0000561b65c74b20>::VALID_DIRECTIONS
+# uninitialized constant #<Class:0x000055786c4a4338>::VALID_DIRECTIONS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::VALID_DIRECTIONS
-# uninitialized constant #<Class:0x0000561b65c74b20>::VALID_UNSCOPING_VALUES
+# uninitialized constant #<Class:0x000055786c4a4338>::VALID_UNSCOPING_VALUES
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::VALID_UNSCOPING_VALUES
-# uninitialized constant #<Class:0x0000561b65c74b20>::VALUE_METHODS
+# uninitialized constant #<Class:0x000055786c4a4338>::VALUE_METHODS
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveRecord::SchemaMigration::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
 # uninitialized constant ActiveRecord::SchemaMigration::ActiveRecord_Relation::CLAUSE_METHODS
@@ -8786,11 +9004,14 @@
 # Did you mean?  ActiveRecord::SchemaMigration::ActiveRecord_Relation::CLAUSE_METHODS
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name all_versions
 # wrong constant name create_table
 # wrong constant name drop_table
 # wrong constant name normalize_migration_number
 # wrong constant name normalized_versions
+# wrong constant name <Class:Default>
+# wrong constant name <Class:Named>
 # wrong constant name initialize_internals_callback
 # wrong constant name populate_with_current_scope_attributes
 # wrong constant name <static-init>
@@ -8798,6 +9019,8 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name serializable_hash
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name except
 # wrong constant name merge
@@ -8808,6 +9031,7 @@
 # wrong constant name attempted_action
 # wrong constant name initialize
 # wrong constant name record
+# wrong constant name <static-init>
 # wrong constant name <Class:BindMap>
 # wrong constant name <Class:Params>
 # wrong constant name <Class:PartialQuery>
@@ -8840,6 +9064,9 @@
 # wrong constant name binds
 # wrong constant name initialize
 # wrong constant name sql
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name save
 # wrong constant name save!
@@ -8972,10 +9199,14 @@
 # wrong constant name teardown_fixtures
 # wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name touch
 # wrong constant name touch_later
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name before_committed!
 # wrong constant name committed!
@@ -8991,6 +9222,20 @@
 # wrong constant name i18n_scope
 # wrong constant name lookup_ancestors
 # wrong constant name <static-init>
+# wrong constant name <Class:AdapterSpecificRegistry>
+# wrong constant name <Class:Date>
+# wrong constant name <Class:DateTime>
+# wrong constant name <Class:DecimalWithoutScale>
+# wrong constant name <Class:DecorationRegistration>
+# wrong constant name <Class:HashLookupTypeMap>
+# wrong constant name <Class:Internal>
+# wrong constant name <Class:Json>
+# wrong constant name <Class:Registration>
+# wrong constant name <Class:Serialized>
+# wrong constant name <Class:Text>
+# wrong constant name <Class:Time>
+# wrong constant name <Class:TypeMap>
+# wrong constant name <Class:UnsignedInteger>
 # wrong constant name add_modifier
 # wrong constant name <static-init>
 # uninitialized constant ActiveRecord::Type::Date::ISO_DATE
@@ -9066,14 +9311,22 @@
 # wrong constant name type_cast_for_database
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name initialize
+# wrong constant name <static-init>
 # wrong constant name initialize
 # wrong constant name model
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name save
 # wrong constant name save!
 # wrong constant name valid?
 # wrong constant name validate
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
 # wrong constant name gem_version
 # wrong constant name version
 # wrong constant name enum_calls
@@ -9243,36 +9496,36 @@
 # uninitialized constant ActiveStorage::Attachment::ActiveRecord_AssociationRelation::VALID_UNSCOPING_VALUES
 # uninitialized constant ActiveStorage::Attachment::ActiveRecord_AssociationRelation::VALUE_METHODS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_AssociationRelation::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b672d2d90>::CLAUSE_METHODS
+# uninitialized constant #<Class:0x000055786b015f70>::CLAUSE_METHODS
 # Did you mean?  ActiveStorage::Attachment::ClassMethods
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::ClassMethods
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
-# uninitialized constant #<Class:0x0000561b672d2d90>::DEFAULT_VALUES
+# uninitialized constant #<Class:0x000055786b015f70>::DEFAULT_VALUES
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::DEFAULT_VALUES
-# uninitialized constant #<Class:0x0000561b672d2d90>::FROZEN_EMPTY_ARRAY
+# uninitialized constant #<Class:0x000055786b015f70>::FROZEN_EMPTY_ARRAY
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b672d2d90>::FROZEN_EMPTY_HASH
+# uninitialized constant #<Class:0x000055786b015f70>::FROZEN_EMPTY_HASH
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_HASH
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::FROZEN_EMPTY_ARRAY
-# uninitialized constant #<Class:0x0000561b672d2d90>::INVALID_METHODS_FOR_DELETE_ALL
+# uninitialized constant #<Class:0x000055786b015f70>::INVALID_METHODS_FOR_DELETE_ALL
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::INVALID_METHODS_FOR_DELETE_ALL
-# uninitialized constant #<Class:0x0000561b672d2d90>::MULTI_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b015f70>::MULTI_VALUE_METHODS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::MULTI_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b672d2d90>::ONE_AS_ONE
+# uninitialized constant #<Class:0x000055786b015f70>::ONE_AS_ONE
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::ONE_AS_ONE
-# uninitialized constant #<Class:0x0000561b672d2d90>::ORDER_IGNORE_MESSAGE
+# uninitialized constant #<Class:0x000055786b015f70>::ORDER_IGNORE_MESSAGE
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::ORDER_IGNORE_MESSAGE
-# uninitialized constant #<Class:0x0000561b672d2d90>::SINGLE_VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b015f70>::SINGLE_VALUE_METHODS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::SINGLE_VALUE_METHODS
-# uninitialized constant #<Class:0x0000561b672d2d90>::STRUCTURAL_OR_METHODS
+# uninitialized constant #<Class:0x000055786b015f70>::STRUCTURAL_OR_METHODS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::STRUCTURAL_OR_METHODS
-# uninitialized constant #<Class:0x0000561b672d2d90>::VALID_DIRECTIONS
+# uninitialized constant #<Class:0x000055786b015f70>::VALID_DIRECTIONS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::VALID_DIRECTIONS
-# uninitialized constant #<Class:0x0000561b672d2d90>::VALID_UNSCOPING_VALUES
+# uninitialized constant #<Class:0x000055786b015f70>::VALID_UNSCOPING_VALUES
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::VALID_UNSCOPING_VALUES
-# uninitialized constant #<Class:0x0000561b672d2d90>::VALUE_METHODS
+# uninitialized constant #<Class:0x000055786b015f70>::VALUE_METHODS
 # Did you mean?  ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::VALUE_METHODS
 #                ActiveStorage::Attachment::ActiveRecord_Associations_CollectionProxy::CLAUSE_METHODS
 # uninitialized constant ActiveStorage::Attachment::ActiveRecord_Relation::CLAUSE_METHODS
@@ -9768,7 +10021,6 @@
 # wrong constant name <Class:SubscriberQueueRegistry>
 # wrong constant name <Class:TaggedLogging>
 # wrong constant name <Class:Testing>
-# wrong constant name <Class:TimeWithZone>
 # wrong constant name <Class:TimeZone>
 # wrong constant name <Class:ToJsonWithActiveSupportEncoder>
 # wrong constant name <Class:Tryable>
@@ -11120,7 +11372,6 @@
 # wrong constant name yday
 # wrong constant name year
 # wrong constant name zone
-# wrong constant name <static-init>
 # wrong constant name <=>
 # wrong constant name =~
 # wrong constant name at
@@ -12400,7 +12651,6 @@
 # wrong constant name pack
 # wrong constant name permutation$2
 # wrong constant name pop$2
-# wrong constant name quote
 # wrong constant name replace
 # wrong constant name rindex$2
 # wrong constant name rotate$1
@@ -12995,782 +13245,6 @@
 # wrong constant name empty?
 # wrong constant name for
 # wrong constant name for_many
-# wrong constant name <Class:AutoirbSetting>
-# wrong constant name <Class:AutolistSetting>
-# wrong constant name <Class:AutoprySetting>
-# wrong constant name <Class:AutosaveSetting>
-# wrong constant name <Class:BasenameSetting>
-# wrong constant name <Class:BreakCommand>
-# wrong constant name <Class:Breakpoint>
-# wrong constant name <Class:CallstyleSetting>
-# wrong constant name <Class:CatchCommand>
-# wrong constant name <Class:Command>
-# wrong constant name <Class:CommandList>
-# wrong constant name <Class:CommandNotFound>
-# wrong constant name <Class:CommandProcessor>
-# wrong constant name <Class:ConditionCommand>
-# wrong constant name <Class:Context>
-# wrong constant name <Class:ContinueCommand>
-# wrong constant name <Class:ControlProcessor>
-# wrong constant name <Class:DebugCommand>
-# wrong constant name <Class:DebugThread>
-# wrong constant name <Class:DeleteCommand>
-# wrong constant name <Class:DisableCommand>
-# wrong constant name <Class:DisplayCommand>
-# wrong constant name <Class:DownCommand>
-# wrong constant name <Class:EditCommand>
-# wrong constant name <Class:EnableCommand>
-# wrong constant name <Class:FinishCommand>
-# wrong constant name <Class:Frame>
-# wrong constant name <Class:FrameCommand>
-# wrong constant name <Class:FullpathSetting>
-# wrong constant name <Class:HelpCommand>
-# wrong constant name <Class:Helpers>
-# wrong constant name <Class:HistfileSetting>
-# wrong constant name <Class:History>
-# wrong constant name <Class:HistoryCommand>
-# wrong constant name <Class:HistsizeSetting>
-# wrong constant name <Class:InfoCommand>
-# wrong constant name <Class:Interface>
-# wrong constant name <Class:InterruptCommand>
-# wrong constant name <Class:IrbCommand>
-# wrong constant name <Class:KillCommand>
-# wrong constant name <Class:LinetraceSetting>
-# wrong constant name <Class:ListCommand>
-# wrong constant name <Class:ListsizeSetting>
-# wrong constant name <Class:LocalInterface>
-# wrong constant name <Class:MethodCommand>
-# wrong constant name <Class:NextCommand>
-# wrong constant name <Class:PostMortemProcessor>
-# wrong constant name <Class:PostMortemSetting>
-# wrong constant name <Class:Printers>
-# wrong constant name <Class:PryCommand>
-# wrong constant name <Class:QuitCommand>
-# wrong constant name <Class:Remote>
-# wrong constant name <Class:RemoteInterface>
-# wrong constant name <Class:RestartCommand>
-# wrong constant name <Class:SaveCommand>
-# wrong constant name <Class:SavefileSetting>
-# wrong constant name <Class:ScriptInterface>
-# wrong constant name <Class:ScriptProcessor>
-# wrong constant name <Class:SetCommand>
-# wrong constant name <Class:Setting>
-# wrong constant name <Class:ShowCommand>
-# wrong constant name <Class:SkipCommand>
-# wrong constant name <Class:SourceCommand>
-# wrong constant name <Class:SourceFileFormatter>
-# wrong constant name <Class:StackOnErrorSetting>
-# wrong constant name <Class:StepCommand>
-# wrong constant name <Class:Subcommands>
-# wrong constant name <Class:ThreadCommand>
-# wrong constant name <Class:ThreadsTable>
-# wrong constant name <Class:TracevarCommand>
-# wrong constant name <Class:UndisplayCommand>
-# wrong constant name <Class:UntracevarCommand>
-# wrong constant name <Class:UpCommand>
-# wrong constant name <Class:VarCommand>
-# wrong constant name <Class:WhereCommand>
-# wrong constant name <Class:WidthSetting>
-# wrong constant name displays
-# wrong constant name displays=
-# wrong constant name init_file
-# wrong constant name init_file=
-# wrong constant name mode
-# wrong constant name mode=
-# wrong constant name run_init_script
-# wrong constant name banner
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name banner
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name banner
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name banner
-# wrong constant name <static-init>
-# uninitialized constant Byebug::BasenameSetting::DEFAULT
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name enabled=
-# wrong constant name enabled?
-# wrong constant name expr
-# wrong constant name expr=
-# wrong constant name hit_condition
-# wrong constant name hit_condition=
-# wrong constant name hit_count
-# wrong constant name hit_value
-# wrong constant name hit_value=
-# wrong constant name id
-# wrong constant name initialize
-# wrong constant name pos
-# wrong constant name source
-# wrong constant name <static-init>
-# wrong constant name add
-# wrong constant name first
-# wrong constant name last
-# wrong constant name none?
-# wrong constant name potential_line?
-# wrong constant name potential_lines
-# wrong constant name remove
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name arguments
-# wrong constant name confirm
-# wrong constant name context
-# wrong constant name errmsg
-# wrong constant name frame
-# wrong constant name help
-# wrong constant name initialize
-# wrong constant name match
-# wrong constant name pr
-# wrong constant name prc
-# wrong constant name print
-# wrong constant name processor
-# wrong constant name prv
-# wrong constant name puts
-# wrong constant name <static-init>
-# wrong constant name allow_in_control
-# wrong constant name allow_in_control=
-# wrong constant name allow_in_post_mortem
-# wrong constant name allow_in_post_mortem=
-# wrong constant name always_run
-# wrong constant name always_run=
-# wrong constant name columnize
-# wrong constant name help
-# wrong constant name match
-# uninitialized constant Byebug::CommandList::Elem
-# wrong constant name each
-# wrong constant name initialize
-# wrong constant name match
-# wrong constant name <static-init>
-# wrong constant name initialize
-# wrong constant name <static-init>
-# wrong constant name after_repl
-# wrong constant name at_breakpoint
-# wrong constant name at_catchpoint
-# wrong constant name at_end
-# wrong constant name at_line
-# wrong constant name at_return
-# wrong constant name at_tracing
-# wrong constant name before_repl
-# wrong constant name command_list
-# wrong constant name commands
-# wrong constant name confirm
-# wrong constant name context
-# wrong constant name errmsg
-# wrong constant name frame
-# wrong constant name initialize
-# wrong constant name interface
-# wrong constant name pr
-# wrong constant name prc
-# wrong constant name prev_line
-# wrong constant name prev_line=
-# wrong constant name printer
-# wrong constant name proceed!
-# wrong constant name process_commands
-# wrong constant name prompt
-# wrong constant name prv
-# wrong constant name puts
-# wrong constant name repl
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name at_breakpoint
-# wrong constant name at_catchpoint
-# wrong constant name at_end
-# wrong constant name at_line
-# wrong constant name at_return
-# wrong constant name at_tracing
-# wrong constant name backtrace
-# wrong constant name dead?
-# wrong constant name file
-# wrong constant name frame
-# wrong constant name frame=
-# wrong constant name frame_binding
-# wrong constant name frame_class
-# wrong constant name frame_file
-# wrong constant name frame_line
-# wrong constant name frame_method
-# wrong constant name frame_self
-# wrong constant name full_location
-# wrong constant name ignored?
-# wrong constant name interrupt
-# wrong constant name line
-# wrong constant name location
-# wrong constant name resume
-# wrong constant name stack_size
-# wrong constant name step_into
-# wrong constant name step_out
-# wrong constant name step_over
-# wrong constant name stop_reason
-# wrong constant name suspend
-# wrong constant name suspended?
-# wrong constant name switch
-# wrong constant name thnum
-# wrong constant name thread
-# wrong constant name tracing
-# wrong constant name tracing=
-# wrong constant name <static-init>
-# wrong constant name ignored_files
-# wrong constant name ignored_files=
-# wrong constant name interface
-# wrong constant name interface=
-# wrong constant name processor
-# wrong constant name processor=
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name commands
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:BreakpointsCommand>
-# wrong constant name <Class:DisplayCommand>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:BreakpointsCommand>
-# wrong constant name <Class:DisplayCommand>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name _binding
-# wrong constant name _class
-# wrong constant name _method
-# wrong constant name _self
-# wrong constant name args
-# wrong constant name c_frame?
-# wrong constant name current?
-# wrong constant name deco_args
-# wrong constant name deco_block
-# wrong constant name deco_call
-# wrong constant name deco_class
-# wrong constant name deco_file
-# wrong constant name deco_method
-# wrong constant name deco_pos
-# wrong constant name file
-# wrong constant name initialize
-# wrong constant name line
-# wrong constant name locals
-# wrong constant name mark
-# wrong constant name pos
-# wrong constant name to_hash
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:BinHelper>
-# wrong constant name <Class:EvalHelper>
-# wrong constant name <Class:FileHelper>
-# wrong constant name <Class:FrameHelper>
-# wrong constant name <Class:ParseHelper>
-# wrong constant name <Class:PathHelper>
-# wrong constant name <Class:ReflectionHelper>
-# wrong constant name <Class:StringHelper>
-# wrong constant name <Class:ThreadHelper>
-# wrong constant name <Class:ToggleHelper>
-# wrong constant name <Class:VarHelper>
-# wrong constant name executable_file_extensions
-# wrong constant name find_executable
-# wrong constant name real_executable?
-# wrong constant name search_paths
-# wrong constant name which
-# wrong constant name <static-init>
-# wrong constant name error_eval
-# wrong constant name multiple_thread_eval
-# wrong constant name separate_thread_eval
-# wrong constant name silent_eval
-# wrong constant name warning_eval
-# wrong constant name <static-init>
-# wrong constant name get_line
-# wrong constant name get_lines
-# wrong constant name n_lines
-# wrong constant name normalize
-# wrong constant name shortpath
-# wrong constant name virtual_file?
-# wrong constant name <static-init>
-# wrong constant name jump_frames
-# wrong constant name switch_to_frame
-# wrong constant name <static-init>
-# wrong constant name get_int
-# wrong constant name parse_steps
-# wrong constant name syntax_valid?
-# wrong constant name <static-init>
-# wrong constant name all_files
-# wrong constant name bin_file
-# wrong constant name gem_files
-# wrong constant name lib_files
-# wrong constant name root_path
-# wrong constant name test_files
-# wrong constant name <static-init>
-# wrong constant name commands
-# wrong constant name <static-init>
-# wrong constant name camelize
-# wrong constant name deindent
-# wrong constant name prettify
-# wrong constant name <static-init>
-# wrong constant name context_from_thread
-# wrong constant name current_thread?
-# wrong constant name display_context
-# wrong constant name thread_arguments
-# wrong constant name <static-init>
-# wrong constant name enable_disable_breakpoints
-# wrong constant name enable_disable_display
-# wrong constant name <static-init>
-# wrong constant name var_args
-# wrong constant name var_global
-# wrong constant name var_instance
-# wrong constant name var_list
-# wrong constant name var_local
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name buffer
-# wrong constant name clear
-# wrong constant name default_max_size
-# wrong constant name ignore?
-# wrong constant name last_ids
-# wrong constant name pop
-# wrong constant name push
-# wrong constant name restore
-# wrong constant name save
-# wrong constant name size
-# wrong constant name size=
-# wrong constant name specific_max_size
-# wrong constant name to_s
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name <Class:BreakpointsCommand>
-# wrong constant name <Class:DisplayCommand>
-# wrong constant name <Class:FileCommand>
-# wrong constant name <Class:LineCommand>
-# wrong constant name <Class:ProgramCommand>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name autorestore
-# wrong constant name autosave
-# wrong constant name close
-# wrong constant name command_queue
-# wrong constant name command_queue=
-# wrong constant name confirm
-# wrong constant name errmsg
-# wrong constant name error
-# wrong constant name history
-# wrong constant name history=
-# wrong constant name input
-# wrong constant name last_if_empty
-# wrong constant name output
-# wrong constant name prepare_input
-# wrong constant name print
-# wrong constant name puts
-# wrong constant name read_command
-# wrong constant name read_file
-# wrong constant name read_input
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# uninitialized constant Byebug::LinetraceSetting::DEFAULT
-# wrong constant name banner
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name amend_final
-# wrong constant name execute
-# wrong constant name max_line
-# wrong constant name size
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name readline
-# wrong constant name with_repl_like_sigint
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name commands
-# wrong constant name <static-init>
-# uninitialized constant Byebug::PostMortemSetting::DEFAULT
-# wrong constant name banner
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name <Class:Base>
-# wrong constant name <Class:Plain>
-# wrong constant name <Class:MissedArgument>
-# wrong constant name <Class:MissedPath>
-# wrong constant name type
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# uninitialized constant Byebug::Printers::Plain::SEPARATOR
-# wrong constant name print
-# wrong constant name print_collection
-# wrong constant name print_variables
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:Client>
-# wrong constant name <Class:Server>
-# wrong constant name initialize
-# wrong constant name interface
-# wrong constant name socket
-# wrong constant name start
-# wrong constant name started?
-# wrong constant name <static-init>
-# wrong constant name actual_port
-# wrong constant name initialize
-# wrong constant name start
-# wrong constant name wait_connection
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name initialize
-# wrong constant name readline
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name initialize
-# wrong constant name <static-init>
-# wrong constant name commands
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name boolean?
-# wrong constant name help
-# wrong constant name integer?
-# wrong constant name to_sym
-# wrong constant name value
-# wrong constant name value=
-# wrong constant name <static-init>
-# wrong constant name []
-# wrong constant name []=
-# wrong constant name find
-# wrong constant name help_all
-# wrong constant name settings
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name auto_run
-# wrong constant name execute
-# wrong constant name initialize_attributes
-# wrong constant name keep_execution
-# wrong constant name reset_attributes
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name file_line
-# wrong constant name file_line=
-# wrong constant name file_path
-# wrong constant name file_path=
-# wrong constant name previous_autolist
-# wrong constant name regexp
-# wrong constant name restore_autolist
-# wrong constant name setup_autolist
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name amend
-# wrong constant name amend_final
-# wrong constant name amend_initial
-# wrong constant name annotator
-# wrong constant name file
-# wrong constant name initialize
-# wrong constant name lines
-# wrong constant name lines_around
-# wrong constant name max_initial_line
-# wrong constant name max_line
-# wrong constant name range_around
-# wrong constant name range_from
-# wrong constant name size
-# wrong constant name <static-init>
-# uninitialized constant Byebug::StackOnErrorSetting::DEFAULT
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:ClassMethods>
-# wrong constant name execute
-# wrong constant name subcommand_list
-# wrong constant name help
-# wrong constant name subcommand_list
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name included
-# wrong constant name <Class:CurrentCommand>
-# wrong constant name <Class:ListCommand>
-# wrong constant name <Class:ResumeCommand>
-# wrong constant name <Class:StopCommand>
-# wrong constant name <Class:SwitchCommand>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <Class:AllCommand>
-# wrong constant name <Class:ArgsCommand>
-# wrong constant name <Class:ConstCommand>
-# wrong constant name <Class:GlobalCommand>
-# wrong constant name <Class:InstanceCommand>
-# wrong constant name <Class:LocalCommand>
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name execute
-# wrong constant name <static-init>
-# wrong constant name description
-# wrong constant name regexp
-# wrong constant name short_description
-# wrong constant name banner
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name actual_control_port
-# wrong constant name actual_port
-# wrong constant name attach
-# wrong constant name handle_post_mortem
-# wrong constant name interrupt
-# wrong constant name load_settings
-# wrong constant name parse_host_and_port
-# wrong constant name spawn
-# wrong constant name start_client
-# wrong constant name start_control
-# wrong constant name start_server
-# wrong constant name wait_connection
-# wrong constant name wait_connection=
 # wrong constant name <Class:HtmlExtension>
 # uninitialized constant CGI::RFC822_DAYS
 # uninitialized constant CGI::RFC822_MONTHS
@@ -16159,6 +15633,7 @@
 # wrong constant name members
 # wrong constant name <static-init>
 # uninitialized constant DEBUG
+# Did you mean?  Debugger
 # uninitialized constant ERROR
 # Did you mean?  IOError
 #                Errno
@@ -16477,9 +15952,7 @@
 # wrong constant name use_simple_logger
 # wrong constant name use_stdlib_logger
 # uninitialized constant Configatron
-# Did you mean?  CONFIG
 # uninitialized constant Configatron
-# Did you mean?  CONFIG
 # uninitialized constant Coverage
 # uninitialized constant Coverage
 # wrong constant name <Class:Parser>
@@ -16888,6 +16361,600 @@
 # wrong constant name utc?
 # wrong constant name utc_offset
 # wrong constant name civil_from_format
+# wrong constant name <Class:AddBreakpoint>
+# wrong constant name <Class:Breakpoint>
+# wrong constant name <Class:BreakpointsCommand>
+# wrong constant name <Class:CatchCommand>
+# wrong constant name <Class:Command>
+# wrong constant name <Class:ConditionCommand>
+# wrong constant name <Class:Context>
+# wrong constant name <Class:ContinueCommand>
+# wrong constant name <Class:ControlState>
+# wrong constant name <Class:DebugThread>
+# wrong constant name <Class:DeleteBreakpointCommand>
+# wrong constant name <Class:DetachCommand>
+# wrong constant name <Class:DisableCommand>
+# wrong constant name <Class:DownCommand>
+# wrong constant name <Class:EnableCommand>
+# wrong constant name <Class:EnableDisableFunctions>
+# wrong constant name <Class:EvalCommand>
+# wrong constant name <Class:EventProcessor>
+# wrong constant name <Class:Exception>
+# wrong constant name <Class:ExcludeFile>
+# wrong constant name <Class:ExecError>
+# wrong constant name <Class:ExpressionInfoCommand>
+# wrong constant name <Class:FileFilter>
+# wrong constant name <Class:FileFilterCommand>
+# wrong constant name <Class:FinishCommand>
+# wrong constant name <Class:FrameCommand>
+# wrong constant name <Class:FrameFunctions>
+# wrong constant name <Class:IdeCommandProcessor>
+# wrong constant name <Class:IdeControlCommandProcessor>
+# wrong constant name <Class:IncludeFile>
+# wrong constant name <Class:InspectCommand>
+# wrong constant name <Class:Interface>
+# wrong constant name <Class:InterruptCommand>
+# wrong constant name <Class:JumpCommand>
+# wrong constant name <Class:LoadCommand>
+# wrong constant name <Class:LocalInterface>
+# wrong constant name <Class:MemoryLimitError>
+# wrong constant name <Class:NextCommand>
+# wrong constant name <Class:OverflowMessageType>
+# wrong constant name <Class:PPCommand>
+# wrong constant name <Class:ParseFunctions>
+# wrong constant name <Class:PauseCommand>
+# wrong constant name <Class:QuitCommand>
+# wrong constant name <Class:RemoteInterface>
+# wrong constant name <Class:RestartCommand>
+# wrong constant name <Class:SetTypeCommand>
+# wrong constant name <Class:SimpleTimeLimitError>
+# wrong constant name <Class:StartCommand>
+# wrong constant name <Class:State>
+# wrong constant name <Class:StepCommand>
+# wrong constant name <Class:ThreadCurrentCommand>
+# wrong constant name <Class:ThreadInspectCommand>
+# wrong constant name <Class:ThreadListCommand>
+# wrong constant name <Class:ThreadResumeCommand>
+# wrong constant name <Class:ThreadStopCommand>
+# wrong constant name <Class:ThreadSwitchCommand>
+# wrong constant name <Class:TimeLimitError>
+# wrong constant name <Class:TimeoutHandler>
+# wrong constant name <Class:UpCommand>
+# wrong constant name <Class:VarConstantCommand>
+# wrong constant name <Class:VarGlobalCommand>
+# wrong constant name <Class:VarInstanceCommand>
+# wrong constant name <Class:VarLocalCommand>
+# wrong constant name <Class:WhereCommand>
+# wrong constant name <Class:XmlPrinter>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name enabled
+# wrong constant name enabled=
+# wrong constant name expr
+# wrong constant name expr=
+# wrong constant name id
+# wrong constant name initialize
+# wrong constant name pos
+# wrong constant name source
+# wrong constant name <static-init>
+# wrong constant name find
+# wrong constant name remove
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name <Class:SubcmdStruct>
+# wrong constant name debug_eval
+# wrong constant name debug_silent_eval
+# wrong constant name errmsg
+# wrong constant name find
+# wrong constant name get_binding
+# wrong constant name get_context
+# wrong constant name initialize
+# wrong constant name line_at
+# wrong constant name match
+# wrong constant name print
+# wrong constant name realpath
+# wrong constant name timeout
+# uninitialized constant Debase::Command::SubcmdStruct::Elem
+# wrong constant name long_help
+# wrong constant name long_help=
+# wrong constant name min
+# wrong constant name min=
+# wrong constant name name
+# wrong constant name name=
+# wrong constant name short_help
+# wrong constant name short_help=
+# wrong constant name <static-init>
+# wrong constant name []
+# wrong constant name members
+# wrong constant name <static-init>
+# wrong constant name commands
+# wrong constant name file_filter_supported?
+# wrong constant name inherited
+# wrong constant name load_commands
+# wrong constant name method_missing
+# wrong constant name options
+# wrong constant name unescape_incoming
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name at_breakpoint
+# wrong constant name at_catchpoint
+# wrong constant name at_line
+# wrong constant name at_return
+# wrong constant name at_tracing
+# wrong constant name dead?
+# wrong constant name frame_args_info
+# wrong constant name frame_binding
+# wrong constant name frame_class
+# wrong constant name frame_file
+# wrong constant name frame_line
+# wrong constant name frame_locals
+# wrong constant name frame_self
+# wrong constant name handler
+# wrong constant name ignored?
+# wrong constant name pause
+# wrong constant name stack_size
+# wrong constant name step
+# wrong constant name step_over
+# wrong constant name stop_frame=
+# wrong constant name stop_next=
+# wrong constant name stop_reason
+# wrong constant name thnum
+# wrong constant name thread
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name context
+# wrong constant name file
+# wrong constant name initialize
+# wrong constant name print
+# wrong constant name proceed
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name inherited
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name disable_breakpoints
+# wrong constant name disable_display
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name enable_breakpoints
+# wrong constant name enable_display
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name enable_disable_breakpoints
+# wrong constant name enable_disable_display
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name at_breakpoint
+# wrong constant name at_catchpoint
+# wrong constant name at_line
+# wrong constant name at_line?
+# wrong constant name at_return
+# wrong constant name at_tracing
+# wrong constant name context
+# wrong constant name context=
+# wrong constant name file
+# wrong constant name file=
+# wrong constant name initialize
+# wrong constant name line
+# wrong constant name line=
+# wrong constant name line_event
+# wrong constant name <static-init>
+# wrong constant name __debug_binding
+# wrong constant name __debug_context
+# wrong constant name __debug_file
+# wrong constant name __debug_line
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name backtrace
+# wrong constant name initialize
+# wrong constant name message
+# wrong constant name <static-init>
+# wrong constant name create_io_reader
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name accept?
+# wrong constant name disable
+# wrong constant name enable
+# wrong constant name exclude
+# wrong constant name include
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name adjust_frame
+# wrong constant name <static-init>
+# wrong constant name initialize
+# wrong constant name print
+# wrong constant name process_commands
+# wrong constant name splitter
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name clear_references
+# wrong constant name reference_result
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name numeric?
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name get_int
+# wrong constant name syntax_valid?
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name close
+# wrong constant name command_queue
+# wrong constant name command_queue=
+# wrong constant name initialize
+# wrong constant name non_blocking_gets
+# wrong constant name print
+# wrong constant name read_command
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name binding=
+# wrong constant name context
+# wrong constant name context=
+# wrong constant name file
+# wrong constant name file=
+# wrong constant name frame_pos
+# wrong constant name frame_pos=
+# wrong constant name interface
+# wrong constant name interface=
+# wrong constant name line
+# wrong constant name line=
+# wrong constant name original_context
+# wrong constant name original_context=
+# wrong constant name previous_line
+# wrong constant name previous_line=
+# wrong constant name print
+# wrong constant name proceed
+# wrong constant name proceed?
+# wrong constant name restore_context
+# wrong constant name <static-init>
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name do_thread_alias
+# wrong constant name undo_thread_alias
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name execute
+# wrong constant name regexp
+# wrong constant name <static-init>
+# wrong constant name help
+# wrong constant name help_command
+# wrong constant name <Class:ExceptionProxy>
+# wrong constant name __print_array
+# wrong constant name __print_at_line
+# wrong constant name __print_breakpoint
+# wrong constant name __print_breakpoint_added
+# wrong constant name __print_breakpoint_deleted
+# wrong constant name __print_breakpoint_disabled
+# wrong constant name __print_breakpoint_enabled
+# wrong constant name __print_breakpoints
+# wrong constant name __print_catchpoint
+# wrong constant name __print_catchpoint_deleted
+# wrong constant name __print_catchpoint_set
+# wrong constant name __print_contdition_set
+# wrong constant name __print_context
+# wrong constant name __print_contexts
+# wrong constant name __print_current_frame
+# wrong constant name __print_debug
+# wrong constant name __print_element
+# wrong constant name __print_error
+# wrong constant name __print_eval
+# wrong constant name __print_exception
+# wrong constant name __print_expression
+# wrong constant name __print_expression_info
+# wrong constant name __print_expressions
+# wrong constant name __print_file_excluded
+# wrong constant name __print_file_filter_status
+# wrong constant name __print_file_included
+# wrong constant name __print_frame
+# wrong constant name __print_frames
+# wrong constant name __print_hash
+# wrong constant name __print_inspect
+# wrong constant name __print_list
+# wrong constant name __print_load_result
+# wrong constant name __print_methods
+# wrong constant name __print_msg
+# wrong constant name __print_pp
+# wrong constant name __print_string
+# wrong constant name __print_trace
+# wrong constant name __print_variable
+# wrong constant name __print_variables
+# wrong constant name do_print_hash
+# wrong constant name do_print_hash_key_value
+# wrong constant name exec_with_allocation_control
+# wrong constant name exec_with_timeout
+# wrong constant name initialize
+# wrong constant name interface
+# wrong constant name interface=
+# wrong constant name print_array
+# wrong constant name print_at_line
+# wrong constant name print_breakpoint
+# wrong constant name print_breakpoint_added
+# wrong constant name print_breakpoint_deleted
+# wrong constant name print_breakpoint_disabled
+# wrong constant name print_breakpoint_enabled
+# wrong constant name print_breakpoints
+# wrong constant name print_catchpoint
+# wrong constant name print_catchpoint_deleted
+# wrong constant name print_catchpoint_set
+# wrong constant name print_contdition_set
+# wrong constant name print_context
+# wrong constant name print_contexts
+# wrong constant name print_current_frame
+# wrong constant name print_debug
+# wrong constant name print_element
+# wrong constant name print_error
+# wrong constant name print_eval
+# wrong constant name print_exception
+# wrong constant name print_expression
+# wrong constant name print_expression_info
+# wrong constant name print_expressions
+# wrong constant name print_file_excluded
+# wrong constant name print_file_filter_status
+# wrong constant name print_file_included
+# wrong constant name print_frame
+# wrong constant name print_frames
+# wrong constant name print_hash
+# wrong constant name print_inspect
+# wrong constant name print_list
+# wrong constant name print_load_result
+# wrong constant name print_methods
+# wrong constant name print_msg
+# wrong constant name print_pp
+# wrong constant name print_string
+# wrong constant name print_trace
+# wrong constant name print_variable
+# wrong constant name print_variables
+# wrong constant name initialize
+# wrong constant name <static-init>
+# wrong constant name <static-init>
+# wrong constant name protect
+# wrong constant name <static-init>
+# wrong constant name add_breakpoint
+# wrong constant name add_catchpoint
+# wrong constant name attached
+# wrong constant name attached=
+# wrong constant name breakpoints
+# wrong constant name catchpoint_deleted_event
+# wrong constant name catchpoint_deleted_event=
+# wrong constant name catchpoints
+# wrong constant name cleanup_backtrace
+# wrong constant name clear_catchpoints
+# wrong constant name cli_debug
+# wrong constant name cli_debug=
+# wrong constant name contexts
+# wrong constant name control_thread
+# wrong constant name control_thread=
+# wrong constant name current_context
+# wrong constant name debug
+# wrong constant name debug_load
+# wrong constant name debug_program
+# wrong constant name debugger_memory_limit
+# wrong constant name debugger_memory_limit=
+# wrong constant name enable_file_filtering
+# wrong constant name enable_trace_points
+# wrong constant name evaluation_timeout
+# wrong constant name evaluation_timeout=
+# wrong constant name file_filter
+# wrong constant name find_free_port
+# wrong constant name handler
+# wrong constant name handler=
+# wrong constant name init_variables
+# wrong constant name inspect_time_limit
+# wrong constant name inspect_time_limit=
+# wrong constant name interface
+# wrong constant name interrupt_last
+# wrong constant name keep_frame_binding
+# wrong constant name keep_frame_binding=
+# wrong constant name key_value_mode
+# wrong constant name key_value_mode=
+# wrong constant name last_context
+# wrong constant name monkey_patch_prepend
+# wrong constant name post_mortem?
+# wrong constant name prepare_context
+# wrong constant name prepare_debugger
+# wrong constant name print_debug
+# wrong constant name print_greeting_msg
+# wrong constant name remove_breakpoint
+# wrong constant name remove_catchpoint
+# wrong constant name remove_tracepoints
+# wrong constant name run_prog_script
+# wrong constant name set_trace_flag_to_iseq
+# wrong constant name setup_tracepoints
+# wrong constant name skip
+# wrong constant name source_reload
+# wrong constant name start
+# wrong constant name start_
+# wrong constant name start_control
+# wrong constant name start_server
+# wrong constant name started?
+# wrong constant name stop
+# wrong constant name trace_to_s
+# wrong constant name trace_to_s=
+# wrong constant name tracing
+# wrong constant name tracing=
+# wrong constant name unset_iseq_flags
+# wrong constant name value_as_nested_element
+# wrong constant name value_as_nested_element=
+# wrong constant name verbose=
+# wrong constant name verbose?
+# wrong constant name xml_debug
+# wrong constant name xml_debug=
 # wrong constant name !=
 # wrong constant name ==
 # wrong constant name __getobj__
@@ -17081,7 +17148,6 @@
 # undefined method `initialize$1' for class `Enumerator'
 # Did you mean?  initialize
 # undefined method `with_index$2' for class `Enumerator'
-# Did you mean?  with_destdir
 # wrong constant name +
 # wrong constant name <Class:ArithmeticSequence>
 # wrong constant name <Class:Chain>
@@ -17173,7 +17239,6 @@
 # Did you mean?  exception
 # undefined method `initialize$1' for class `Exception'
 # Did you mean?  initialize
-# wrong constant name __bb_context
 # wrong constant name binding_locations
 # wrong constant name bindings
 # wrong constant name exception$1
@@ -17509,8 +17574,8 @@
 # Did you mean?  FFI::ArrayType::LONG_LONG
 #                FFI::ArrayType::ULONG_LONG
 # uninitialized constant FFI::ArrayType::SSHORT
-# Did you mean?  FFI::ArrayType::USHORT
-#                FFI::ArrayType::SHORT
+# Did you mean?  FFI::ArrayType::SHORT
+#                FFI::ArrayType::USHORT
 # uninitialized constant FFI::ArrayType::STRING
 # Did you mean?  String
 #                StringIO
@@ -17520,8 +17585,8 @@
 # Did you mean?  FFI::ArrayType::CHAR
 #                FFI::ArrayType::SCHAR
 # uninitialized constant FFI::ArrayType::UINT
-# Did you mean?  FFI::ArrayType::INT
-#                FFI::ArrayType::UINT8
+# Did you mean?  FFI::ArrayType::UINT8
+#                FFI::ArrayType::INT
 # uninitialized constant FFI::ArrayType::UINT16
 # Did you mean?  FFI::ArrayType::INT16
 #                FFI::ArrayType::UINT64
@@ -17530,8 +17595,8 @@
 # uninitialized constant FFI::ArrayType::UINT32
 # Did you mean?  FFI::ArrayType::INT32
 #                FFI::ArrayType::UINT64
-#                FFI::ArrayType::UINT16
 #                FFI::ArrayType::UINT8
+#                FFI::ArrayType::UINT16
 # uninitialized constant FFI::ArrayType::UINT64
 # Did you mean?  FFI::ArrayType::INT64
 #                FFI::ArrayType::UINT16
@@ -17540,9 +17605,9 @@
 # uninitialized constant FFI::ArrayType::UINT8
 # Did you mean?  FFI::ArrayType::INT8
 #                FFI::ArrayType::UINT64
+#                FFI::ArrayType::UINT32
 #                FFI::ArrayType::INT
 #                FFI::ArrayType::UINT16
-#                FFI::ArrayType::UINT32
 # uninitialized constant FFI::ArrayType::ULONG
 # Did you mean?  FFI::ArrayType::SLONG
 #                FFI::ArrayType::LONG
@@ -17550,8 +17615,8 @@
 # Did you mean?  FFI::ArrayType::LONG_LONG
 #                FFI::ArrayType::SLONG_LONG
 # uninitialized constant FFI::ArrayType::USHORT
-# Did you mean?  FFI::ArrayType::SSHORT
-#                FFI::ArrayType::SHORT
+# Did you mean?  FFI::ArrayType::SHORT
+#                FFI::ArrayType::SSHORT
 # uninitialized constant FFI::ArrayType::VARARGS
 # uninitialized constant FFI::ArrayType::VOID
 # wrong constant name elem_type
@@ -17698,8 +17763,8 @@
 # Did you mean?  FFI::FunctionType::LONG_LONG
 #                FFI::FunctionType::ULONG_LONG
 # uninitialized constant FFI::FunctionType::SSHORT
-# Did you mean?  FFI::FunctionType::USHORT
-#                FFI::FunctionType::SHORT
+# Did you mean?  FFI::FunctionType::SHORT
+#                FFI::FunctionType::USHORT
 # uninitialized constant FFI::FunctionType::STRING
 # Did you mean?  String
 #                StringIO
@@ -17709,8 +17774,8 @@
 # Did you mean?  FFI::FunctionType::CHAR
 #                FFI::FunctionType::SCHAR
 # uninitialized constant FFI::FunctionType::UINT
-# Did you mean?  FFI::FunctionType::INT
-#                FFI::FunctionType::UINT8
+# Did you mean?  FFI::FunctionType::UINT8
+#                FFI::FunctionType::INT
 # uninitialized constant FFI::FunctionType::UINT16
 # Did you mean?  FFI::FunctionType::INT16
 #                FFI::FunctionType::UINT64
@@ -17719,8 +17784,8 @@
 # uninitialized constant FFI::FunctionType::UINT32
 # Did you mean?  FFI::FunctionType::INT32
 #                FFI::FunctionType::UINT64
-#                FFI::FunctionType::UINT16
 #                FFI::FunctionType::UINT8
+#                FFI::FunctionType::UINT16
 # uninitialized constant FFI::FunctionType::UINT64
 # Did you mean?  FFI::FunctionType::INT64
 #                FFI::FunctionType::UINT16
@@ -17729,9 +17794,9 @@
 # uninitialized constant FFI::FunctionType::UINT8
 # Did you mean?  FFI::FunctionType::INT8
 #                FFI::FunctionType::UINT64
+#                FFI::FunctionType::UINT32
 #                FFI::FunctionType::INT
 #                FFI::FunctionType::UINT16
-#                FFI::FunctionType::UINT32
 # uninitialized constant FFI::FunctionType::ULONG
 # Did you mean?  FFI::FunctionType::SLONG
 #                FFI::FunctionType::LONG
@@ -17739,8 +17804,8 @@
 # Did you mean?  FFI::FunctionType::LONG_LONG
 #                FFI::FunctionType::SLONG_LONG
 # uninitialized constant FFI::FunctionType::USHORT
-# Did you mean?  FFI::FunctionType::SSHORT
-#                FFI::FunctionType::SHORT
+# Did you mean?  FFI::FunctionType::SHORT
+#                FFI::FunctionType::SSHORT
 # uninitialized constant FFI::FunctionType::VARARGS
 # uninitialized constant FFI::FunctionType::VOID
 # wrong constant name initialize
@@ -17939,8 +18004,8 @@
 # Did you mean?  FFI::StructByValue::LONG_LONG
 #                FFI::StructByValue::ULONG_LONG
 # uninitialized constant FFI::StructByValue::SSHORT
-# Did you mean?  FFI::StructByValue::USHORT
-#                FFI::StructByValue::SHORT
+# Did you mean?  FFI::StructByValue::SHORT
+#                FFI::StructByValue::USHORT
 # uninitialized constant FFI::StructByValue::STRING
 # Did you mean?  String
 #                StringIO
@@ -17950,8 +18015,8 @@
 # Did you mean?  FFI::StructByValue::CHAR
 #                FFI::StructByValue::SCHAR
 # uninitialized constant FFI::StructByValue::UINT
-# Did you mean?  FFI::StructByValue::INT
-#                FFI::StructByValue::UINT8
+# Did you mean?  FFI::StructByValue::UINT8
+#                FFI::StructByValue::INT
 # uninitialized constant FFI::StructByValue::UINT16
 # Did you mean?  FFI::StructByValue::INT16
 #                FFI::StructByValue::UINT64
@@ -17960,8 +18025,8 @@
 # uninitialized constant FFI::StructByValue::UINT32
 # Did you mean?  FFI::StructByValue::INT32
 #                FFI::StructByValue::UINT64
-#                FFI::StructByValue::UINT16
 #                FFI::StructByValue::UINT8
+#                FFI::StructByValue::UINT16
 # uninitialized constant FFI::StructByValue::UINT64
 # Did you mean?  FFI::StructByValue::INT64
 #                FFI::StructByValue::UINT16
@@ -17970,9 +18035,9 @@
 # uninitialized constant FFI::StructByValue::UINT8
 # Did you mean?  FFI::StructByValue::INT8
 #                FFI::StructByValue::UINT64
+#                FFI::StructByValue::UINT32
 #                FFI::StructByValue::INT
 #                FFI::StructByValue::UINT16
-#                FFI::StructByValue::UINT32
 # uninitialized constant FFI::StructByValue::ULONG
 # Did you mean?  FFI::StructByValue::SLONG
 #                FFI::StructByValue::LONG
@@ -17980,8 +18045,8 @@
 # Did you mean?  FFI::StructByValue::LONG_LONG
 #                FFI::StructByValue::SLONG_LONG
 # uninitialized constant FFI::StructByValue::USHORT
-# Did you mean?  FFI::StructByValue::SSHORT
-#                FFI::StructByValue::SHORT
+# Did you mean?  FFI::StructByValue::SHORT
+#                FFI::StructByValue::SSHORT
 # uninitialized constant FFI::StructByValue::VARARGS
 # uninitialized constant FFI::StructByValue::VOID
 # wrong constant name layout
@@ -18063,8 +18128,8 @@
 # Did you mean?  FFI::StructLayout::LONG_LONG
 #                FFI::StructLayout::ULONG_LONG
 # uninitialized constant FFI::StructLayout::SSHORT
-# Did you mean?  FFI::StructLayout::USHORT
-#                FFI::StructLayout::SHORT
+# Did you mean?  FFI::StructLayout::SHORT
+#                FFI::StructLayout::USHORT
 # uninitialized constant FFI::StructLayout::STRING
 # Did you mean?  String
 #                FFI::StructLayout::String
@@ -18076,8 +18141,8 @@
 # Did you mean?  FFI::StructLayout::CHAR
 #                FFI::StructLayout::SCHAR
 # uninitialized constant FFI::StructLayout::UINT
-# Did you mean?  FFI::StructLayout::INT
-#                FFI::StructLayout::UINT8
+# Did you mean?  FFI::StructLayout::UINT8
+#                FFI::StructLayout::INT
 # uninitialized constant FFI::StructLayout::UINT16
 # Did you mean?  FFI::StructLayout::INT16
 #                FFI::StructLayout::UINT64
@@ -18086,8 +18151,8 @@
 # uninitialized constant FFI::StructLayout::UINT32
 # Did you mean?  FFI::StructLayout::INT32
 #                FFI::StructLayout::UINT64
-#                FFI::StructLayout::UINT16
 #                FFI::StructLayout::UINT8
+#                FFI::StructLayout::UINT16
 # uninitialized constant FFI::StructLayout::UINT64
 # Did you mean?  FFI::StructLayout::INT64
 #                FFI::StructLayout::UINT16
@@ -18096,9 +18161,9 @@
 # uninitialized constant FFI::StructLayout::UINT8
 # Did you mean?  FFI::StructLayout::INT8
 #                FFI::StructLayout::UINT64
+#                FFI::StructLayout::UINT32
 #                FFI::StructLayout::INT
 #                FFI::StructLayout::UINT16
-#                FFI::StructLayout::UINT32
 # uninitialized constant FFI::StructLayout::ULONG
 # Did you mean?  FFI::StructLayout::SLONG
 #                FFI::StructLayout::LONG
@@ -18106,8 +18171,8 @@
 # Did you mean?  FFI::StructLayout::LONG_LONG
 #                FFI::StructLayout::SLONG_LONG
 # uninitialized constant FFI::StructLayout::USHORT
-# Did you mean?  FFI::StructLayout::SSHORT
-#                FFI::StructLayout::SHORT
+# Did you mean?  FFI::StructLayout::SHORT
+#                FFI::StructLayout::SSHORT
 # uninitialized constant FFI::StructLayout::VARARGS
 # uninitialized constant FFI::StructLayout::VOID
 # wrong constant name []
@@ -18212,22 +18277,22 @@
 #                FFI::Type::Builtin::FLOAT32
 #                FFI::Type::FLOAT
 # uninitialized constant FFI::Type::Builtin::INT
-# Did you mean?  FFI::Type::UINT
-#                FFI::Type::INT8
+# Did you mean?  FFI::Type::INT8
+#                FFI::Type::Builtin::SINT
+#                FFI::Type::UINT
 #                FFI::Type::SINT
 #                FFI::Type::INT
-#                FFI::Type::Builtin::SINT
 #                FFI::Type::Builtin::UINT
 #                FFI::Type::Builtin::INT8
 # uninitialized constant FFI::Type::Builtin::INT16
 # Did you mean?  FFI::Type::INT16
-#                FFI::Type::UINT16
 #                FFI::Type::Builtin::UINT16
+#                FFI::Type::UINT16
 #                FFI::Type::Builtin::INT64
 #                FFI::Type::INT64
 #                FFI::Type::INT8
-#                FFI::Type::INT
 #                FFI::Type::Builtin::INT8
+#                FFI::Type::INT
 # uninitialized constant FFI::Type::Builtin::INT32
 # Did you mean?  FFI::Type::INT32
 #                FFI::Type::UINT32
@@ -18239,11 +18304,11 @@
 # Did you mean?  FFI::Type::INT64
 #                FFI::Type::UINT64
 #                FFI::Type::Builtin::UINT64
-#                FFI::Type::INT16
 #                FFI::Type::Builtin::INT16
+#                FFI::Type::INT16
 #                FFI::Type::INT8
-#                FFI::Type::INT
 #                FFI::Type::Builtin::INT8
+#                FFI::Type::INT
 # uninitialized constant FFI::Type::Builtin::INT8
 # Did you mean?  FFI::Type::INT8
 #                FFI::Type::Builtin::UINT8
@@ -18274,10 +18339,10 @@
 #                FFI::Type::SCHAR
 # uninitialized constant FFI::Type::Builtin::SHORT
 # Did you mean?  TSort
-#                FFI::Type::USHORT
-#                FFI::Type::SSHORT
 #                FFI::Type::SHORT
 #                FFI::Type::Builtin::SSHORT
+#                FFI::Type::USHORT
+#                FFI::Type::SSHORT
 #                FFI::Type::Builtin::USHORT
 # uninitialized constant FFI::Type::Builtin::SINT
 # Did you mean?  FFI::Type::SINT
@@ -18296,11 +18361,11 @@
 #                FFI::Type::SLONG_LONG
 #                FFI::Type::ULONG_LONG
 # uninitialized constant FFI::Type::Builtin::SSHORT
-# Did you mean?  FFI::Type::Builtin::USHORT
-#                FFI::Type::Builtin::SHORT
+# Did you mean?  FFI::Type::Builtin::SHORT
+#                FFI::Type::Builtin::USHORT
+#                FFI::Type::SHORT
 #                FFI::Type::USHORT
 #                FFI::Type::SSHORT
-#                FFI::Type::SHORT
 # uninitialized constant FFI::Type::Builtin::STRING
 # Did you mean?  String
 #                StringIO
@@ -18314,57 +18379,57 @@
 #                FFI::Type::CHAR
 #                FFI::Type::SCHAR
 # uninitialized constant FFI::Type::Builtin::UINT
-# Did you mean?  FFI::Type::Builtin::INT
-#                FFI::Type::Builtin::UINT8
+# Did you mean?  FFI::Type::Builtin::UINT8
+#                FFI::Type::Builtin::INT
+#                FFI::Type::UINT8
 #                FFI::Type::UINT
 #                FFI::Type::INT
-#                FFI::Type::UINT8
 # uninitialized constant FFI::Type::Builtin::UINT16
-# Did you mean?  FFI::Type::INT16
-#                FFI::Type::Builtin::INT16
+# Did you mean?  FFI::Type::Builtin::INT16
+#                FFI::Type::INT16
 #                FFI::Type::UINT16
-#                FFI::Type::Builtin::UINT64
 #                FFI::Type::UINT64
+#                FFI::Type::Builtin::UINT64
+#                FFI::Type::UINT8
 #                FFI::Type::Builtin::UINT8
+#                FFI::Type::Builtin::UINT32
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
-#                FFI::Type::Builtin::UINT32
-#                FFI::Type::UINT8
 # uninitialized constant FFI::Type::Builtin::UINT32
 # Did you mean?  FFI::Type::INT32
 #                FFI::Type::Builtin::INT32
 #                FFI::Type::UINT32
-#                FFI::Type::Builtin::UINT8
 #                FFI::Type::Builtin::UINT16
+#                FFI::Type::UINT8
 #                FFI::Type::UINT64
 #                FFI::Type::UINT
 #                FFI::Type::Builtin::UINT64
-#                FFI::Type::UINT16
-#                FFI::Type::UINT8
-# uninitialized constant FFI::Type::Builtin::UINT64
-# Did you mean?  FFI::Type::INT64
-#                FFI::Type::Builtin::INT64
-#                FFI::Type::UINT64
-#                FFI::Type::Builtin::UINT16
-#                FFI::Type::UINT16
 #                FFI::Type::Builtin::UINT8
+#                FFI::Type::UINT16
+# uninitialized constant FFI::Type::Builtin::UINT64
+# Did you mean?  FFI::Type::Builtin::INT64
+#                FFI::Type::INT64
+#                FFI::Type::UINT64
+#                FFI::Type::UINT16
+#                FFI::Type::Builtin::UINT16
+#                FFI::Type::UINT8
 #                FFI::Type::Builtin::UINT32
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
-#                FFI::Type::UINT8
+#                FFI::Type::Builtin::UINT8
 # uninitialized constant FFI::Type::Builtin::UINT8
 # Did you mean?  FFI::Type::Builtin::INT8
 #                FFI::Type::INT8
 #                FFI::Type::UINT8
-#                FFI::Type::UINT64
 #                FFI::Type::Builtin::UINT16
-#                FFI::Type::Builtin::UINT64
 #                FFI::Type::Builtin::INT
+#                FFI::Type::Builtin::UINT32
+#                FFI::Type::Builtin::UINT64
+#                FFI::Type::UINT64
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
 #                FFI::Type::INT
 #                FFI::Type::UINT16
-#                FFI::Type::Builtin::UINT32
 # uninitialized constant FFI::Type::Builtin::ULONG
 # Did you mean?  FFI::Type::Builtin::SLONG
 #                FFI::Type::Builtin::LONG
@@ -18378,11 +18443,11 @@
 #                FFI::Type::SLONG_LONG
 #                FFI::Type::ULONG_LONG
 # uninitialized constant FFI::Type::Builtin::USHORT
-# Did you mean?  FFI::Type::Builtin::SSHORT
-#                FFI::Type::Builtin::SHORT
+# Did you mean?  FFI::Type::Builtin::SHORT
+#                FFI::Type::Builtin::SSHORT
+#                FFI::Type::SHORT
 #                FFI::Type::USHORT
 #                FFI::Type::SSHORT
-#                FFI::Type::SHORT
 # uninitialized constant FFI::Type::Builtin::VARARGS
 # Did you mean?  FFI::Type::VARARGS
 # uninitialized constant FFI::Type::Builtin::VOID
@@ -18436,22 +18501,22 @@
 #                FFI::Type::Mapped::FLOAT32
 #                FFI::Type::FLOAT
 # uninitialized constant FFI::Type::Mapped::INT
-# Did you mean?  FFI::Type::UINT
-#                FFI::Type::INT8
+# Did you mean?  FFI::Type::INT8
+#                FFI::Type::Mapped::SINT
+#                FFI::Type::UINT
 #                FFI::Type::SINT
 #                FFI::Type::INT
-#                FFI::Type::Mapped::SINT
 #                FFI::Type::Mapped::UINT
 #                FFI::Type::Mapped::INT8
 # uninitialized constant FFI::Type::Mapped::INT16
 # Did you mean?  FFI::Type::INT16
-#                FFI::Type::UINT16
 #                FFI::Type::Mapped::UINT16
+#                FFI::Type::UINT16
 #                FFI::Type::Mapped::INT64
 #                FFI::Type::INT64
 #                FFI::Type::INT8
-#                FFI::Type::INT
 #                FFI::Type::Mapped::INT8
+#                FFI::Type::INT
 # uninitialized constant FFI::Type::Mapped::INT32
 # Did you mean?  FFI::Type::INT32
 #                FFI::Type::UINT32
@@ -18463,11 +18528,11 @@
 # Did you mean?  FFI::Type::INT64
 #                FFI::Type::UINT64
 #                FFI::Type::Mapped::UINT64
-#                FFI::Type::INT16
 #                FFI::Type::Mapped::INT16
+#                FFI::Type::INT16
 #                FFI::Type::INT8
-#                FFI::Type::INT
 #                FFI::Type::Mapped::INT8
+#                FFI::Type::INT
 # uninitialized constant FFI::Type::Mapped::INT8
 # Did you mean?  FFI::Type::INT8
 #                FFI::Type::Mapped::UINT8
@@ -18498,10 +18563,10 @@
 #                FFI::Type::SCHAR
 # uninitialized constant FFI::Type::Mapped::SHORT
 # Did you mean?  TSort
-#                FFI::Type::USHORT
-#                FFI::Type::SSHORT
 #                FFI::Type::SHORT
 #                FFI::Type::Mapped::SSHORT
+#                FFI::Type::USHORT
+#                FFI::Type::SSHORT
 #                FFI::Type::Mapped::USHORT
 # uninitialized constant FFI::Type::Mapped::SINT
 # Did you mean?  FFI::Type::SINT
@@ -18520,11 +18585,11 @@
 #                FFI::Type::SLONG_LONG
 #                FFI::Type::ULONG_LONG
 # uninitialized constant FFI::Type::Mapped::SSHORT
-# Did you mean?  FFI::Type::Mapped::USHORT
-#                FFI::Type::Mapped::SHORT
+# Did you mean?  FFI::Type::Mapped::SHORT
+#                FFI::Type::Mapped::USHORT
+#                FFI::Type::SHORT
 #                FFI::Type::USHORT
 #                FFI::Type::SSHORT
-#                FFI::Type::SHORT
 # uninitialized constant FFI::Type::Mapped::STRING
 # Did you mean?  String
 #                StringIO
@@ -18538,57 +18603,57 @@
 #                FFI::Type::CHAR
 #                FFI::Type::SCHAR
 # uninitialized constant FFI::Type::Mapped::UINT
-# Did you mean?  FFI::Type::Mapped::INT
-#                FFI::Type::Mapped::UINT8
+# Did you mean?  FFI::Type::Mapped::UINT8
+#                FFI::Type::Mapped::INT
+#                FFI::Type::UINT8
 #                FFI::Type::UINT
 #                FFI::Type::INT
-#                FFI::Type::UINT8
 # uninitialized constant FFI::Type::Mapped::UINT16
-# Did you mean?  FFI::Type::INT16
-#                FFI::Type::Mapped::INT16
+# Did you mean?  FFI::Type::Mapped::INT16
+#                FFI::Type::INT16
 #                FFI::Type::UINT16
-#                FFI::Type::Mapped::UINT64
 #                FFI::Type::UINT64
+#                FFI::Type::Mapped::UINT64
+#                FFI::Type::UINT8
 #                FFI::Type::Mapped::UINT8
+#                FFI::Type::Mapped::UINT32
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
-#                FFI::Type::Mapped::UINT32
-#                FFI::Type::UINT8
 # uninitialized constant FFI::Type::Mapped::UINT32
 # Did you mean?  FFI::Type::INT32
 #                FFI::Type::Mapped::INT32
 #                FFI::Type::UINT32
-#                FFI::Type::Mapped::UINT8
 #                FFI::Type::Mapped::UINT16
+#                FFI::Type::UINT8
 #                FFI::Type::UINT64
 #                FFI::Type::UINT
 #                FFI::Type::Mapped::UINT64
-#                FFI::Type::UINT16
-#                FFI::Type::UINT8
-# uninitialized constant FFI::Type::Mapped::UINT64
-# Did you mean?  FFI::Type::INT64
-#                FFI::Type::Mapped::INT64
-#                FFI::Type::UINT64
-#                FFI::Type::Mapped::UINT16
-#                FFI::Type::UINT16
 #                FFI::Type::Mapped::UINT8
+#                FFI::Type::UINT16
+# uninitialized constant FFI::Type::Mapped::UINT64
+# Did you mean?  FFI::Type::Mapped::INT64
+#                FFI::Type::INT64
+#                FFI::Type::UINT64
+#                FFI::Type::UINT16
+#                FFI::Type::Mapped::UINT16
+#                FFI::Type::UINT8
 #                FFI::Type::Mapped::UINT32
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
-#                FFI::Type::UINT8
+#                FFI::Type::Mapped::UINT8
 # uninitialized constant FFI::Type::Mapped::UINT8
 # Did you mean?  FFI::Type::Mapped::INT8
 #                FFI::Type::INT8
 #                FFI::Type::UINT8
-#                FFI::Type::UINT64
 #                FFI::Type::Mapped::UINT16
-#                FFI::Type::Mapped::UINT64
 #                FFI::Type::Mapped::INT
+#                FFI::Type::Mapped::UINT32
+#                FFI::Type::Mapped::UINT64
+#                FFI::Type::UINT64
 #                FFI::Type::UINT
 #                FFI::Type::UINT32
 #                FFI::Type::INT
 #                FFI::Type::UINT16
-#                FFI::Type::Mapped::UINT32
 # uninitialized constant FFI::Type::Mapped::ULONG
 # Did you mean?  FFI::Type::Mapped::SLONG
 #                FFI::Type::Mapped::LONG
@@ -18602,11 +18667,11 @@
 #                FFI::Type::SLONG_LONG
 #                FFI::Type::ULONG_LONG
 # uninitialized constant FFI::Type::Mapped::USHORT
-# Did you mean?  FFI::Type::Mapped::SSHORT
-#                FFI::Type::Mapped::SHORT
+# Did you mean?  FFI::Type::Mapped::SHORT
+#                FFI::Type::Mapped::SSHORT
+#                FFI::Type::SHORT
 #                FFI::Type::USHORT
 #                FFI::Type::SSHORT
-#                FFI::Type::SHORT
 # uninitialized constant FFI::Type::Mapped::VARARGS
 # Did you mean?  FFI::Type::VARARGS
 # uninitialized constant FFI::Type::Mapped::VOID
@@ -18845,7 +18910,6 @@
 # wrong constant name slice
 # wrong constant name slice!
 # wrong constant name to_h
-# wrong constant name to_options
 # wrong constant name to_options!
 # wrong constant name to_param
 # wrong constant name to_proc
@@ -19444,186 +19508,10 @@
 # wrong constant name <static-init>
 # wrong constant name new_ntoh
 # wrong constant name ntop
-# wrong constant name <Class:Abort>
-# wrong constant name <Class:Context>
-# wrong constant name <Class:ContextExtender>
-# wrong constant name <Class:DefaultEncodings>
-# wrong constant name <Class:ExtendCommandBundle>
-# wrong constant name <Class:FileInputMethod>
-# wrong constant name <Class:InputMethod>
-# wrong constant name <Class:Inspector>
-# wrong constant name <Class:Irb>
-# wrong constant name <Class:Locale>
-# wrong constant name <Class:MethodExtender>
 # wrong constant name <Class:Notifier>
 # wrong constant name <Class:OutputMethod>
-# wrong constant name <Class:ReadlineInputMethod>
 # wrong constant name <Class:SLex>
-# wrong constant name <Class:StdioInputMethod>
 # wrong constant name <Class:StdioOutputMethod>
-# wrong constant name <Class:WorkSpace>
-# wrong constant name <static-init>
-# wrong constant name __exit__
-# wrong constant name __inspect__
-# wrong constant name __to_s__
-# wrong constant name ap_name
-# wrong constant name ap_name=
-# wrong constant name auto_indent_mode
-# wrong constant name auto_indent_mode=
-# wrong constant name back_trace_limit
-# wrong constant name back_trace_limit=
-# wrong constant name debug?
-# wrong constant name debug_level
-# wrong constant name debug_level=
-# wrong constant name echo
-# wrong constant name echo=
-# wrong constant name echo?
-# wrong constant name eval_history=
-# wrong constant name evaluate
-# wrong constant name exit
-# wrong constant name file_input?
-# wrong constant name ignore_eof
-# wrong constant name ignore_eof=
-# wrong constant name ignore_eof?
-# wrong constant name ignore_sigint
-# wrong constant name ignore_sigint=
-# wrong constant name ignore_sigint?
-# wrong constant name initialize
-# wrong constant name inspect?
-# wrong constant name inspect_last_value
-# wrong constant name inspect_mode
-# wrong constant name inspect_mode=
-# wrong constant name io
-# wrong constant name io=
-# wrong constant name irb
-# wrong constant name irb=
-# wrong constant name irb_name
-# wrong constant name irb_name=
-# wrong constant name irb_path
-# wrong constant name irb_path=
-# wrong constant name last_value
-# wrong constant name load_modules
-# wrong constant name load_modules=
-# wrong constant name main
-# wrong constant name prompt_c
-# wrong constant name prompt_c=
-# wrong constant name prompt_i
-# wrong constant name prompt_i=
-# wrong constant name prompt_mode
-# wrong constant name prompt_mode=
-# wrong constant name prompt_n
-# wrong constant name prompt_n=
-# wrong constant name prompt_s
-# wrong constant name prompt_s=
-# wrong constant name prompting?
-# wrong constant name rc
-# wrong constant name rc=
-# wrong constant name rc?
-# wrong constant name return_format
-# wrong constant name return_format=
-# wrong constant name save_history=
-# wrong constant name set_last_value
-# wrong constant name thread
-# wrong constant name use_loader=
-# wrong constant name use_readline
-# wrong constant name use_readline=
-# wrong constant name use_readline?
-# wrong constant name use_tracer=
-# wrong constant name verbose
-# wrong constant name verbose=
-# wrong constant name verbose?
-# wrong constant name workspace
-# wrong constant name workspace=
-# wrong constant name workspace_home
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name def_extend_command
-# wrong constant name install_extend_commands
-# uninitialized constant IRB::DefaultEncodings::Elem
-# wrong constant name external
-# wrong constant name external=
-# wrong constant name internal
-# wrong constant name internal=
-# wrong constant name <static-init>
-# wrong constant name []
-# wrong constant name members
-# wrong constant name install_alias_method
-# wrong constant name irb
-# wrong constant name irb_change_workspace
-# wrong constant name irb_context
-# wrong constant name irb_current_working_workspace
-# wrong constant name irb_exit
-# wrong constant name irb_fg
-# wrong constant name irb_help
-# wrong constant name irb_jobs
-# wrong constant name irb_kill
-# wrong constant name irb_load
-# wrong constant name irb_pop_workspace
-# wrong constant name irb_push_workspace
-# wrong constant name irb_require
-# wrong constant name irb_source
-# wrong constant name irb_workspaces
-# wrong constant name <static-init>
-# wrong constant name def_extend_command
-# wrong constant name extend_object
-# wrong constant name install_extend_commands
-# wrong constant name irb_original_method_name
-# wrong constant name encoding
-# wrong constant name eof?
-# wrong constant name initialize
-# wrong constant name <static-init>
-# wrong constant name file_name
-# wrong constant name gets
-# wrong constant name initialize
-# wrong constant name prompt
-# wrong constant name prompt=
-# wrong constant name readable_after_eof?
-# wrong constant name <static-init>
-# wrong constant name init
-# wrong constant name initialize
-# wrong constant name inspect_value
-# wrong constant name <static-init>
-# wrong constant name def_inspector
-# wrong constant name keys_with_inspector
-# wrong constant name context
-# wrong constant name eval_input
-# wrong constant name handle_exception
-# wrong constant name initialize
-# wrong constant name output_value
-# wrong constant name prompt
-# wrong constant name run
-# wrong constant name scanner
-# wrong constant name scanner=
-# wrong constant name signal_handle
-# wrong constant name signal_status
-# wrong constant name suspend_context
-# wrong constant name suspend_input_method
-# wrong constant name suspend_name
-# wrong constant name suspend_workspace
-# wrong constant name <static-init>
-# uninitialized constant IRB::Locale::String
-# Did you mean?  StringIO
-#                Spring
-#                STDIN
-# wrong constant name encoding
-# wrong constant name find
-# wrong constant name format
-# wrong constant name gets
-# wrong constant name initialize
-# wrong constant name lang
-# wrong constant name load
-# wrong constant name modifier
-# wrong constant name print
-# wrong constant name printf
-# wrong constant name puts
-# wrong constant name readline
-# wrong constant name require
-# wrong constant name territory
-# wrong constant name <static-init>
-# wrong constant name def_post_proc
-# wrong constant name def_pre_proc
-# wrong constant name new_alias_name
-# wrong constant name <static-init>
 # wrong constant name <Class:AbstractNotifier>
 # wrong constant name <Class:CompositeNotifier>
 # wrong constant name <Class:ErrUndefinedNotifier>
@@ -19676,18 +19564,6 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name included
-# uninitialized constant IRB::ReadlineInputMethod::FILENAME_COMPLETION_PROC
-# Did you mean?  IRB::ReadlineInputMethod::USERNAME_COMPLETION_PROC
-# uninitialized constant IRB::ReadlineInputMethod::HISTORY
-# uninitialized constant IRB::ReadlineInputMethod::USERNAME_COMPLETION_PROC
-# Did you mean?  IRB::ReadlineInputMethod::FILENAME_COMPLETION_PROC
-# uninitialized constant IRB::ReadlineInputMethod::VERSION
-# Did you mean?  IRB::VERSION
-# wrong constant name encoding
-# wrong constant name eof?
-# wrong constant name initialize
-# wrong constant name line
-# wrong constant name <static-init>
 # wrong constant name <Class:ErrNodeAlreadyExists>
 # wrong constant name <Class:ErrNodeNothing>
 # uninitialized constant IRB::SLex::Fail
@@ -19716,38 +19592,8 @@
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name included
-# wrong constant name encoding
-# wrong constant name eof?
-# wrong constant name initialize
-# wrong constant name line
 # wrong constant name <static-init>
 # wrong constant name <static-init>
-# wrong constant name code_around_binding
-# wrong constant name evaluate
-# wrong constant name filter_backtrace
-# wrong constant name initialize
-# wrong constant name local_variable_get
-# wrong constant name local_variable_set
-# wrong constant name main
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# uninitialized constant IRB::CurrentContext
-# wrong constant name conf
-# wrong constant name default_src_encoding
-# wrong constant name delete_caller
-# wrong constant name init_config
-# wrong constant name init_error
-# wrong constant name irb_abort
-# wrong constant name irb_at_exit
-# wrong constant name irb_exit
-# wrong constant name load_modules
-# wrong constant name parse_opts
-# wrong constant name rc_file
-# wrong constant name rc_file_generators
-# wrong constant name run_config
-# wrong constant name setup
-# wrong constant name start
-# wrong constant name version
 # wrong constant name get_type
 # undefined method `chr$2' for class `Integer'
 # undefined method `inspect$1' for class `Integer'
@@ -19907,10 +19753,8 @@
 #                singleton_method
 # undefined method `to_enum$2' for module `Kernel'
 # Did you mean?  to_enum
-# wrong constant name byebug
 # wrong constant name class_eval
 # wrong constant name clone$1
-# wrong constant name debugger
 # wrong constant name define_singleton_method$2
 # wrong constant name display$1
 # wrong constant name enum_for$2
@@ -19925,7 +19769,6 @@
 # wrong constant name protected_methods$1
 # wrong constant name public_methods$1
 # wrong constant name public_send$1
-# wrong constant name remote_byebug
 # wrong constant name respond_to?
 # wrong constant name send$2
 # wrong constant name singleton_methods$1
@@ -20257,15 +20100,15 @@
 # wrong constant name serialize_root
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <Class:SafeList>
 # wrong constant name <Class:Scrub>
-# wrong constant name <Class:WhiteList>
+# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name allowed_element?
 # wrong constant name force_correct_attribute_escaping!
 # wrong constant name scrub_attributes
 # wrong constant name scrub_css
 # wrong constant name scrub_css_attribute
-# wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
 # wrong constant name <static-init>
@@ -22376,7 +22219,7 @@
 # wrong constant name start
 # wrong constant name start=
 # wrong constant name <Class:ContentTransferEncodingStruct>
-# uninitialized constant #<Class:0x0000561b61d4e360>::Elem
+# uninitialized constant #<Class:0x0000557868fc4b18>::Elem
 # wrong constant name encoding
 # wrong constant name encoding=
 # wrong constant name error
@@ -23610,105 +23453,6 @@
 # wrong constant name uniq
 # wrong constant name unregister_interceptor
 # wrong constant name unregister_observer
-# wrong constant name <Class:Logging>
-# wrong constant name append_cflags
-# wrong constant name append_cppflags
-# wrong constant name append_ldflags
-# wrong constant name append_library
-# wrong constant name arg_config
-# wrong constant name cc_command
-# wrong constant name check_signedness
-# wrong constant name check_sizeof
-# wrong constant name checking_for
-# wrong constant name checking_message
-# wrong constant name configuration
-# wrong constant name convertible_int
-# wrong constant name cpp_command
-# wrong constant name cpp_include
-# wrong constant name create_header
-# wrong constant name create_makefile
-# wrong constant name create_tmpsrc
-# wrong constant name depend_rules
-# wrong constant name dir_config
-# wrong constant name dummy_makefile
-# wrong constant name each_compile_rules
-# wrong constant name egrep_cpp
-# wrong constant name enable_config
-# wrong constant name find_executable
-# wrong constant name find_executable0
-# wrong constant name find_header
-# wrong constant name find_library
-# wrong constant name find_type
-# wrong constant name have_const
-# wrong constant name have_devel?
-# wrong constant name have_framework
-# wrong constant name have_func
-# wrong constant name have_header
-# wrong constant name have_library
-# wrong constant name have_macro
-# wrong constant name have_struct_member
-# wrong constant name have_type
-# wrong constant name have_typeof?
-# wrong constant name have_var
-# wrong constant name init_mkmf
-# wrong constant name install_dirs
-# wrong constant name install_files
-# wrong constant name install_rb
-# wrong constant name libpath_env
-# wrong constant name libpathflag
-# wrong constant name link_command
-# wrong constant name log_src
-# wrong constant name macro_defined?
-# wrong constant name map_dir
-# wrong constant name merge_libs
-# wrong constant name message
-# wrong constant name mkintpath
-# wrong constant name mkmf_failed
-# wrong constant name modified?
-# wrong constant name pkg_config
-# wrong constant name relative_from
-# wrong constant name scalar_ptr_type?
-# wrong constant name scalar_type?
-# wrong constant name split_libs
-# wrong constant name timestamp_file
-# wrong constant name try_cflags
-# wrong constant name try_compile
-# wrong constant name try_const
-# wrong constant name try_constant
-# wrong constant name try_cpp
-# wrong constant name try_cppflags
-# wrong constant name try_do
-# wrong constant name try_func
-# wrong constant name try_header
-# wrong constant name try_ldflags
-# wrong constant name try_link
-# wrong constant name try_link0
-# wrong constant name try_run
-# wrong constant name try_signedness
-# wrong constant name try_static_assert
-# wrong constant name try_type
-# wrong constant name try_var
-# wrong constant name typedef_expr
-# wrong constant name what_type?
-# wrong constant name winsep
-# wrong constant name with_cflags
-# wrong constant name with_config
-# wrong constant name with_cppflags
-# wrong constant name with_destdir
-# wrong constant name with_ldflags
-# wrong constant name with_werror
-# wrong constant name xpopen
-# wrong constant name xsystem
-# wrong constant name <static-init>
-# wrong constant name log_close
-# wrong constant name log_open
-# wrong constant name log_opened?
-# wrong constant name logfile
-# wrong constant name open
-# wrong constant name postpone
-# wrong constant name quiet
-# wrong constant name quiet=
-# wrong constant name <static-init>
 # wrong constant name <Class:MimeType>
 # wrong constant name <static-init>
 # wrong constant name extend
@@ -24566,12 +24310,12 @@
 # uninitialized constant Net::IMAP::SSL3_VERSION
 # Did you mean?  Net::IMAP::SSL2_VERSION
 # uninitialized constant Net::IMAP::TLS1_1_VERSION
-# Did you mean?  Net::IMAP::TLS1_2_VERSION
-#                Net::IMAP::TLS1_3_VERSION
+# Did you mean?  Net::IMAP::TLS1_3_VERSION
+#                Net::IMAP::TLS1_2_VERSION
 #                Net::IMAP::TLS1_VERSION
 # uninitialized constant Net::IMAP::TLS1_2_VERSION
-# Did you mean?  Net::IMAP::TLS1_1_VERSION
-#                Net::IMAP::TLS1_3_VERSION
+# Did you mean?  Net::IMAP::TLS1_3_VERSION
+#                Net::IMAP::TLS1_1_VERSION
 #                Net::IMAP::TLS1_VERSION
 #                Net::IMAP::SSL2_VERSION
 # uninitialized constant Net::IMAP::TLS1_3_VERSION
@@ -24581,8 +24325,8 @@
 #                Net::IMAP::SSL3_VERSION
 # uninitialized constant Net::IMAP::TLS1_VERSION
 # Did you mean?  Net::IMAP::TLS1_3_VERSION
-#                Net::IMAP::TLS1_2_VERSION
 #                Net::IMAP::TLS1_1_VERSION
+#                Net::IMAP::TLS1_2_VERSION
 # uninitialized constant Net::IMAP::VERIFY_CLIENT_ONCE
 # uninitialized constant Net::IMAP::VERIFY_FAIL_IF_NO_PEER_CERT
 # uninitialized constant Net::IMAP::VERIFY_NONE
@@ -26139,50 +25883,7 @@
 # wrong constant name <static-init>
 # wrong constant name encode
 # wrong constant name parse
-# uninitialized constant ASSEMBLE_C
-# Did you mean?  ASSEMBLE_CXX
-# uninitialized constant ASSEMBLE_CXX
-# uninitialized constant CLEANINGS
-# uninitialized constant COMMON_HEADERS
-# uninitialized constant COMMON_LIBS
-# uninitialized constant COMPILE_C
-# Did you mean?  Complex
-#                COMPILE_CXX
-# uninitialized constant COMPILE_CXX
-# uninitialized constant COMPILE_RULES
-# uninitialized constant CONFIG
-# Did you mean?  RbConfig
-# uninitialized constant CONFTEST
-# Did you mean?  CONFTEST_C
-# uninitialized constant CONFTEST_C
-# uninitialized constant COUTFLAG
-# uninitialized constant CPPOUTFILE
-# uninitialized constant CSRCFLAG
-# uninitialized constant CXX_EXT
-# Did you mean?  C_EXT
-# uninitialized constant C_EXT
-# Did you mean?  CXX_EXT
-#                SRC_EXT
-# uninitialized constant EXPORT_PREFIX
-# uninitialized constant FailedMessage
-# uninitialized constant HDR_EXT
-# uninitialized constant INSTALL_DIRS
-# uninitialized constant LIBARG
-# uninitialized constant LIBPATHFLAG
-# Did you mean?  RPATHFLAG
-# uninitialized constant LINK_SO
-# uninitialized constant MAIN_DOES_NOTHING
-# uninitialized constant ORIG_LIBPATH
-# uninitialized constant OUTFLAG
-# Did you mean?  COUTFLAG
-# uninitialized constant RPATHFLAG
-# Did you mean?  LIBPATHFLAG
 # uninitialized constant RUBYGEMS_ACTIVATION_MONITOR
-# uninitialized constant RULE_SUBST
-# uninitialized constant SRC_EXT
-# uninitialized constant STRING_OR_FAILED_FORMAT
-# uninitialized constant TRY_LINK
-# uninitialized constant UNIVERSAL_INTS
 # wrong constant name as_json
 # wrong constant name dclone
 # wrong constant name html_safe?
@@ -27362,8 +27063,8 @@
 # Did you mean?  PG::PGRES_COPY_IN
 #                PG::PGRES_COPY_OUT
 #                PG::Connection::PGRES_COPY_OUT
-#                PG::PGRES_COPY_BOTH
 #                PG::Connection::PGRES_COPY_BOTH
+#                PG::PGRES_COPY_BOTH
 # uninitialized constant PG::Connection::PGRES_COPY_OUT
 # Did you mean?  PG::PGRES_COPY_IN
 #                PG::Connection::PGRES_COPY_IN
@@ -27994,8 +27695,8 @@
 # Did you mean?  PG::PGRES_COPY_IN
 #                PG::PGRES_COPY_OUT
 #                PG::Result::PGRES_COPY_OUT
-#                PG::PGRES_COPY_BOTH
 #                PG::Result::PGRES_COPY_BOTH
+#                PG::PGRES_COPY_BOTH
 # uninitialized constant PG::Result::PGRES_COPY_OUT
 # Did you mean?  PG::PGRES_COPY_IN
 #                PG::Result::PGRES_COPY_IN
@@ -32254,8 +31955,8 @@
 # wrong constant name set_header
 # wrong constant name <static-init>
 # uninitialized constant Rack::Request::Helpers::GET
-# Did you mean?  Set
-#                Net
+# Did you mean?  Net
+#                Set
 #                Gem
 #                Rack::GET
 # uninitialized constant Rack::Request::Helpers::POST
@@ -33433,7 +33134,6 @@
 # wrong constant name logger
 # wrong constant name logger=
 # wrong constant name public_path
-# wrong constant name root
 # wrong constant name version
 # wrong constant name <Class:Cloneable>
 # wrong constant name <Class:DSL>
@@ -39657,7 +39357,6 @@
 # undefined method `slice$2' for class `String'
 # undefined method `slice!$2' for class `String'
 # undefined method `split$2' for class `String'
-# Did you mean?  split_libs
 # undefined method `squeeze$1' for class `String'
 # undefined method `squeeze!$1' for class `String'
 # undefined method `sub$2' for class `String'
@@ -39691,7 +39390,6 @@
 # wrong constant name encode
 # wrong constant name encode!
 # wrong constant name ext
-# wrong constant name funcall_style
 # wrong constant name grapheme_clusters
 # wrong constant name gsub$2
 # wrong constant name gsub!$2
@@ -39707,11 +39405,9 @@
 # wrong constant name pathmap_partial
 # wrong constant name pathmap_replace
 # wrong constant name prepend$1
-# wrong constant name quote
 # wrong constant name reverse!
 # wrong constant name rindex$1
 # wrong constant name rjust$1
-# wrong constant name sans_arguments
 # wrong constant name scrub$2
 # wrong constant name scrub!$2
 # wrong constant name shellescape
@@ -39729,14 +39425,12 @@
 # wrong constant name swapcase!$1
 # wrong constant name to_d
 # wrong constant name to_i$1
-# wrong constant name tr_cpp
 # wrong constant name truncate_bytes
 # wrong constant name undump
 # wrong constant name unicode_normalize
 # wrong constant name unicode_normalize!
 # wrong constant name unicode_normalized?
 # wrong constant name unpack1
-# wrong constant name unspace
 # wrong constant name upcase$1
 # wrong constant name upcase!$1
 # wrong constant name upto$2
@@ -40817,17 +40511,11 @@
 # wrong constant name acts_like_time?
 # wrong constant name advance
 # wrong constant name ago
-# wrong constant name at_beginning_of_day
 # wrong constant name at_beginning_of_hour
 # wrong constant name at_beginning_of_minute
 # wrong constant name at_end_of_day
 # wrong constant name at_end_of_hour
 # wrong constant name at_end_of_minute
-# wrong constant name at_midday
-# wrong constant name at_middle_of_day
-# wrong constant name at_midnight
-# wrong constant name at_noon
-# wrong constant name beginning_of_day
 # wrong constant name beginning_of_hour
 # wrong constant name beginning_of_minute
 # wrong constant name change
@@ -40843,9 +40531,6 @@
 # wrong constant name in
 # wrong constant name initialize$1
 # wrong constant name localtime$1
-# wrong constant name midday
-# wrong constant name middle_of_day
-# wrong constant name midnight
 # wrong constant name minus_with_coercion
 # wrong constant name minus_with_duration
 # wrong constant name minus_without_coercion
@@ -40853,7 +40538,6 @@
 # wrong constant name next_day
 # wrong constant name next_month
 # wrong constant name next_year
-# wrong constant name noon
 # wrong constant name plus_with_duration
 # wrong constant name plus_without_duration
 # wrong constant name prev_day
@@ -40895,7 +40579,6 @@
 # wrong constant name zone_default=
 # wrong constant name zone_offset$1
 # undefined method `enable$2' for class `TracePoint'
-# Did you mean?  enable_config
 # wrong constant name __enable
 # wrong constant name enable$2
 # wrong constant name eval_script
@@ -41865,6 +41548,7 @@
 # wrong constant name <Class:EntryExistsError>
 # wrong constant name <Class:EntryNameError>
 # wrong constant name <Class:EntrySet>
+# wrong constant name <Class:EntrySizeError>
 # wrong constant name <Class:Error>
 # wrong constant name <Class:ExtraField>
 # wrong constant name <Class:File>
@@ -41903,6 +41587,8 @@
 # wrong constant name sort_entries=
 # wrong constant name unicode_names
 # wrong constant name unicode_names=
+# wrong constant name validate_entry_sizes
+# wrong constant name validate_entry_sizes=
 # wrong constant name warn_invalid_date
 # wrong constant name warn_invalid_date=
 # wrong constant name write_zip64_support
@@ -42071,6 +41757,7 @@
 # wrong constant name sorted_entries
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name <static-init>
 # uninitialized constant Zip::ExtraField::Elem
 # wrong constant name <Class:Generic>
 # wrong constant name <Class:IUnix>
@@ -42169,6 +41856,7 @@
 # uninitialized constant Zip::File::ZIP64_END_OF_CDS
 # uninitialized constant Zip::File::ZIP64_EOCD_LOCATOR
 # wrong constant name add
+# wrong constant name add_stored
 # wrong constant name close
 # wrong constant name comment=
 # wrong constant name commit
