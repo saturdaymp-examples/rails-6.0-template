@@ -1,6 +1,6 @@
 # Rails 6 Template
 
-A template for starting a new Rails 6 application.  It includes a empty [Rails](https://rubyonrails.org/) 6 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
+A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
 Since it uses Docker the only thing you need installed on your development machine is Docker and your favorite Rails IDE.  No need to install Ruby, Yarn, etc.  Tested in my development environments of Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04/) and Macos [Mojave (10.14)](https://www.apple.com/ca/macos).
 
@@ -10,7 +10,7 @@ If you tried it and have any suggestions or imporvements please let know by open
 
 Assuming you have [Docker](https://www.docker.com/) installed you need too:
 
-1) Fork/Checkout of the repository to you local machine.
+1) Click the "Use this Template" button.  Alternativly you can just fork or download the of the repository to you local machine.
 
 2) In the repository root directly run the below command build the Docker container:
 
@@ -74,3 +74,6 @@ Now you should be able to run/debug the application.  If something is not workin
 ## GitLab Automated Build
 
 There is a base GitLab automated build [script](.gitlab-ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-6-template/pipelines).
+
+Why GitLab?  It's where I host some of my private repos that use this template.  Want a GitHub actions build?  Then let me know by opening and [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or even better a [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
+
