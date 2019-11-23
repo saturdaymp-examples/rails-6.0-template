@@ -44,7 +44,7 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
     fi
 
 # Yarn packages.
-COPY package.json yarn.lock .yarnrc ./
+COPY package.json yarn.lock ./
 RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
     yarn install --check-files --frozen-lockfile ; \
     else \
@@ -53,6 +53,11 @@ RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
 
 # Add the code.
 COPY . .
+
+# Precompile the assets if in production.
+RUN if [ "$INCLUDE_DEV_ITEMS" != "true" ] ; then \
+    rails assets:precompile ; \
+    fi
 
 # Expose the port.
 EXPOSE $PORT
