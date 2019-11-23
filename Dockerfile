@@ -1,13 +1,21 @@
+# By default this Dockefile is setup to create a
+# development environment container.  It can be
+# overriden for stagin/production by setting the
+# RAILS_ENV during the container build and run.
+
+# Note that rebuilding the container can result in a newer
+# version of apline.  For example you might have 3.10.0
+# then 3.10.1 in a future build.
 FROM ruby:2.6.5-alpine3.10
 
-# If true then development gems and libraries are included
-# in the container.
-ARG INCLUDE_DEV_ITEMS=true
+# Argument and envrionemnt so the environment
+# can be used when building the container and
+# also running it.
 ARG RAILS_ENV=development
-
-# Environment and port when running the container.  Override
-# for other envrionments other then development.
 ENV RAILS_ENV=$RAILS_ENV
+
+# Default for development, override for your staging/production
+# environment.
 ENV PORT=3000
 
 # Working directory.
@@ -38,7 +46,7 @@ RUN apk update && \
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.0.2
-RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
+RUN if [ "$RAILS_ENV" = "development" ] ; then \
     bundle install ; \
     else \
     bundle install --without development test ; \
@@ -46,7 +54,7 @@ RUN if [ "$INCLUDE_DEV_ITEMS" = "true" ] ; then \
 
 # Yarn packages.
 COPY package.json yarn.lock ./
-RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
+RUN if [ "$RAILS_ENV" = "development" ] ; then \
     yarn install --check-files --frozen-lockfile ; \
     else \
     yarn install --check-files --frozen-lockfile --no-cache --production ; \
@@ -61,7 +69,7 @@ COPY . .
 #  ArgumentError: Missing `secret_key_base` for 'production' environment
 #
 # https://github.com/rails/rails/issues/32947
-RUN if [ "$INCLUDE_DEV_ITEMS" != "true" ] ; then \
+RUN if [ "$RAILS_ENV" != "development" ] ; then \
     SECRET_KEY_BASE=dummy rails assets:precompile; \
     fi
 
