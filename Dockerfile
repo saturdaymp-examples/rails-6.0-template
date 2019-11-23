@@ -3,7 +3,7 @@ FROM ruby:2.6.5-alpine3.10
 # If true then development gems and libraries are included
 # in the container.
 ARG INCLUDE_DEV_ITEMS=true
-ARG RAILS_ENV=developemnt
+ARG RAILS_ENV=development
 
 # Environment and port when running the container.  Override
 # for other envrionments other then development.
@@ -55,9 +55,14 @@ RUN if [ "${INCLUDE_DEV_ITEMS}" = "true" ] ; then \
 # Add the code.
 COPY . .
 
-# Precompile the assets if in production.
+# Precompile the assets if in production.  Need a dummy
+# secrect key otherwise Rails will error out with:
+#
+#  ArgumentError: Missing `secret_key_base` for 'production' environment
+#
+# https://github.com/rails/rails/issues/32947
 RUN if [ "$INCLUDE_DEV_ITEMS" != "true" ] ; then \
-    rails assets:precompile; \
+    SECRET_KEY_BASE=dummy rails assets:precompile; \
     fi
 
 # Expose the port.
