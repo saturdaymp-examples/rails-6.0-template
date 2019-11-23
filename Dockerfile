@@ -3,10 +3,11 @@ FROM ruby:2.6.5-alpine3.10
 # If true then development gems and libraries are included
 # in the container.
 ARG INCLUDE_DEV_ITEMS=true
+ARG RAILS_ENV=developemnt
 
 # Environment and port when running the container.  Override
 # for other envrionments other then development.
-ENV RAILS_ENV=development
+ENV RAILS_ENV=$RAILS_ENV
 ENV PORT=3000
 
 # Working directory.
@@ -56,7 +57,7 @@ COPY . .
 
 # Precompile the assets if in production.
 RUN if [ "$INCLUDE_DEV_ITEMS" != "true" ] ; then \
-    rails assets:precompile ; \
+    rails assets:precompile; \
     fi
 
 # Expose the port.
