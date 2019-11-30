@@ -1,0 +1,12 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build Docker Image Step
+        run: docker build . --file Dockerfile
