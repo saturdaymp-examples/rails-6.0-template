@@ -32,3 +32,6 @@ yarn-debug.log*
 
 # RubyMine files
 .idea/*
+
+# Coverage files
+coverage/

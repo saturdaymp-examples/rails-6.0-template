@@ -60,6 +60,9 @@ group :test do
   # If you get an error when running srb init on Alpine linux that libglib-2.0.so.0 is not found
   # then you need to comment out the webdrivers gem.
   gem "webdrivers"
+
+  # Code coverage.
+  gem "simplecov", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
