@@ -6,7 +6,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/maintainability)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/test_coverage)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/test_coverage)
 
-A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
+A template for starting a new Rails applications.  It includes:
+ - [Rails](https://rubyonrails.org/) 6.0 application
+ - [Docker](https://www.docker.com/) image for development and production
+ - [RuboCop Standard](https://github.com/testdouble/standard) linter
+ - [Sorbet](https://sorbet.org/) type checking
+ - [GitLab](https://about.gitlab.com/) and [GitHub Actions](https://github.com/features/actions) CI build scripts
 
 Since it uses Docker the only thing you need installed on your development machine is Docker and your favorite Rails IDE.  No need to install Ruby, Yarn, etc.  Tested in my development environments of Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04/) and Macos [Mojave (10.14)](https://www.apple.com/ca/macos).
 
@@ -14,7 +19,7 @@ If you tried it and have any suggestions or imporvements please let know by open
 
 ## Development Environment Setup
 
-Assuming you have [Docker](https://www.docker.com/) installed you need too:
+Assuming you have [Docker](https://www.docker.com/) installed you get up and running by following the below steps:
 
 1) Click the "Use this Template" button.  Alternativly you can just fork or download the of the repository to you local machine.
 
@@ -24,45 +29,43 @@ Assuming you have [Docker](https://www.docker.com/) installed you need too:
 docker-compose build
 ```
 
-3) Once the container is built we need to initialize the database.  First run your new container:
+3) Run the continer.  The Docker image base is [Ruby](https://hub.docker.com/_/ruby) [Alpine](https://alpinelinux.org/) Linux so we use sh instead of bash.  Also when you first run this command it will pull down the Postgres Docker image.
 
 ```
 docker-compose run web sh
 ```
 
-The Docker image base is Alpine Linux so we use sh instead of bash.  Also when you first run this command it will pull down the Postgres Docker image.
-
-Now that you are inside the Docker container create the test databases:
+4) Create the database
 
 ```
 rails db:create
 ```
 
-4) Now run the tests.  There are currently no tests setup but this is a good smoke test to make sure everything is setup correcty:
+5) In a web brower navigate to http://localhost:3000 and you should see the home page.
+
+
+I would also recommend running the following linter, typechecker, and unit tests.  All the command should be run in the Docker container and should return no errors:
+
+1) [RuboCop Standard](https://github.com/testdouble/standard) linter:
 
 ```
-rails test
+rake standard
 ```
 
-5) Run the Sorbet type checker:
+2) [Sorbet](https://sorbet.org/) type checking:
 
 ```
 srb tc
 ```
 
-6) Assuming there are no issues with the above exist the Docker container:
+3) Rails [unit tests](https://guides.rubyonrails.org/testing.html):
 
 ```
-exit
+rails db:test:prepare
+rails test
 ```
 
-7) Now test that the website will actually run.  On your host machine run 
-
-```
-docker-compose up web
-```
-
-Then open up your favorite browser and navigate to `localhost:3000` and you should see the home page.
+If you run into any issues or have any questions let me know by opening an [issue](https://github.com/saturdaymp-examples/rails-templates/issues).
 
 ### RubyMine IDE Setup
 Open up the project in RubyMine then navigate to the Settings->Languages & Frameworks->[Ruby SDK and Gems](https://www.jetbrains.com/help/ruby/ruby-sdk-and-gems.html).  Then click the plus sign and add a new Remote Interperter.  Choose Docker Compose with the following settings:
