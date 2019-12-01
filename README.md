@@ -1,6 +1,7 @@
 # Rails 6 Template
 
 ![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg)
+![](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-6-template?label=CI&logo=GitLab)
 
 A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
@@ -73,9 +74,8 @@ Ruby of version manager path: ruby
 
 Now you should be able to run/debug the application.  If something is not working let me know by opening and [issue](https://github.com/saturdaymp-examples/rails-6-template/issues).
 
-## GitLab Automated Build
+## CI
 
-There is a base GitLab automated build [script](.gitlab-ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-6-template/pipelines).
+There is a base GitLab automated build [script](.gitlab-ci.yml) and GitHub Actions [script](https://github.com/saturdaymp-examples/rails-templates/blob/master/.github/workflows/ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-6-template/pipelines).
 
-Why GitLab?  It's where I host some of my private repos that use this template.  Want a GitHub actions build?  Then let me know by opening and [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or even better a [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
-
+Why GitLab and GitHub?  I use GitLab to store some of my private repos.
