@@ -9,4 +9,15 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Build Docker Image Step
-        run: docker build . --file Dockerfile
+        run: docker-compose build web
+
+      - name: Run Sorbet
+        run: docker-compose run web srb tc
+
+      - name: Test setup
+        run: |
+          docker-compose run web bundle exec db:create
+          docker-compose run web bundle exec db:schema:load RAILS_ENV=test
+
+      - name: Run tests
+        run: docker-compose run web bundle exec rails test
