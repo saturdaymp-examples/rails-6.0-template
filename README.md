@@ -1,13 +1,13 @@
 # Rails 6 Template
 
 ![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg)
-![](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-6-template?label=CI&logo=GitLab)
+![](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-templates?label=CI&logo=GitLab)
 
 A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
 Since it uses Docker the only thing you need installed on your development machine is Docker and your favorite Rails IDE.  No need to install Ruby, Yarn, etc.  Tested in my development environments of Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04/) and Macos [Mojave (10.14)](https://www.apple.com/ca/macos).
 
-If you tried it and have any suggestions or imporvements please let know by opening an [issue](https://github.com/saturdaymp-examples/rails-6-template/issues) or [pull request](https://github.com/saturdaymp-examples/rails-6-template/pulls).
+If you tried it and have any suggestions or imporvements please let know by opening an [issue](https://github.com/saturdaymp-examples/rails-templates/issues) or [pull request](https://github.com/saturdaymp-examples/rails-templates/pulls).
 
 ## Development Environment Setup
 
@@ -76,6 +76,6 @@ Now you should be able to run/debug the application.  If something is not workin
 
 ## CI
 
-There is a base GitLab automated build [script](.gitlab-ci.yml) and GitHub Actions [script](https://github.com/saturdaymp-examples/rails-templates/blob/master/.github/workflows/ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-6-template/pipelines).
+There is a base GitLab automated build [script](.gitlab-ci.yml) and GitHub Actions [script](https://github.com/saturdaymp-examples/rails-templates/blob/master/.github/workflows/ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-templates/pipelines).
 
 Why GitLab and GitHub?  I use GitLab to store some of my private repos.
