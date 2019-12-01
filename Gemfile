@@ -37,6 +37,9 @@ group :development, :test do
   # RubyMine debugging.
   gem 'ruby-debug-ide'
   gem 'debase'
+
+  # Linter
+  gem 'standard'
 end
 
 group :development do
