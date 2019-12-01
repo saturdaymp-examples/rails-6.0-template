@@ -3,6 +3,8 @@
 ![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg)
 ![](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-templates?label=CI&logo=GitLab)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/maintainability)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/test_coverage)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/test_coverage)
 
 A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
