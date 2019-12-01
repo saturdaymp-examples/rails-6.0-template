@@ -1,5 +1,7 @@
 # Rails 6 Template
 
+![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg)
+
 A template for starting a new Rails applications.  It includes a empty [Rails](https://rubyonrails.org/) 6.0 application, [Docker](https://www.docker.com/) image for development and production, [Sorbet](https://sorbet.org/) type checker, and a [GitLab](https://about.gitlab.com/) CI build.
 
 Since it uses Docker the only thing you need installed on your development machine is Docker and your favorite Rails IDE.  No need to install Ruby, Yarn, etc.  Tested in my development environments of Ubuntu [18.04 LTS](http://releases.ubuntu.com/18.04/) and Macos [Mojave (10.14)](https://www.apple.com/ca/macos).
