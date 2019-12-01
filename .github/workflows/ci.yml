@@ -1,0 +1,23 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Build Docker Image Step
+        run: docker-compose build web
+
+      - name: Run Sorbet
+        run: docker-compose run web srb tc
+
+      - name: Test setup
+        run: |
+          docker-compose run web bundle exec rails db:create
+          docker-compose run web bundle exec rails db:schema:load RAILS_ENV=test
+
+      - name: Run tests
+        run: docker-compose run web bundle exec rails test
