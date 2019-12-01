@@ -1,6 +1,6 @@
 # typed: strong
 
-require 'sorbet-runtime'
+require "sorbet-runtime"
 
 class HomeController < ApplicationController
   extend T::Sig

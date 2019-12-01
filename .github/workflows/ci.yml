@@ -11,6 +11,9 @@ jobs:
       - name: Build Docker Image Step
         run: docker-compose build web
 
+      - name: Rubocop Standard
+        run: docker-compose run web rake standard
+
       - name: Run Sorbet
         run: docker-compose run web srb tc
 
