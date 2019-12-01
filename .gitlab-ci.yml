@@ -20,8 +20,8 @@ build-docker-image:
 
   script:
     - docker pull $CI_REGISTRY_IMAGE || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE -tag $CI_REGISTRY_IMAGE .
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build --cache-from $CI_REGISTRY_IMAGE --tag $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
 
 run-linter:
   stage: run-linter
