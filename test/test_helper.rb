@@ -4,17 +4,17 @@
 #
 # https://github.com/colszowka/simplecov
 require "simplecov"
-SimpleCov.start "rails"
 
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
-require "rails/test_help"
 
 # Required by SimpleCov because we are using Spring.
 #
 # https://github.com/colszowka/simplecov
 # https://github.com/colszowka/simplecov/issues/381#issuecomment-347651728
 Rails.application.eager_load!
+
+require "rails/test_help"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
