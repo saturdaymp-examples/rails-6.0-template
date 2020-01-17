@@ -23,6 +23,11 @@ build-docker-image:
     - docker build --cache-from $CI_REGISTRY_IMAGE --tag $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
 
+  # Save the webpacker tests files for the test step.after_script:
+  artifacts:
+    paths:
+      - public/
+
 run-linter:
   stage: run-linter
   image:
@@ -50,6 +55,10 @@ run-tests:
   services:
     - name: postgres:12
       alias: db
+
+  # So the we have the pack-tests
+  dependencies:
+    - build-docker-image
 
   script:
     - bundle exec rails db:create
