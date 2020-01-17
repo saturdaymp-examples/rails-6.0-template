@@ -52,6 +52,6 @@ run-tests:
       alias: db
 
   script:
-    - RAILS_ENV=test bundle exec rails db:create
-    - RAILS_ENV=test bundle exec rails db:schema:load
-    - bundle exec rails test
+    - RAILS_ENV=test rails db:create
+    - RAILS_ENV=test rails db:schema:load
+    - rails test
