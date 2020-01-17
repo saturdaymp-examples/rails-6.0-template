@@ -11,7 +11,7 @@ NULLCMD = :
 
 #### Start of system configuration section. ####
 
-srcdir = /usr/local/bundle/gems/sorbet-0.4.4756/bin
+srcdir = /usr/local/bundle/gems/sorbet-0.4.5059/bin
 topdir = /usr/local/include/ruby-2.6.0
 hdrdir = $(topdir)
 arch_hdrdir = /usr/local/include/ruby-2.6.0/x86_64-linux-musl
