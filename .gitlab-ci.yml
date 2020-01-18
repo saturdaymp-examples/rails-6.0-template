@@ -45,14 +45,12 @@ run-tests:
   stage: run-tests
   image: 
     name: $CI_REGISTRY_IMAGE
-    entrypoint: [""]
 
   services:
     - name: postgres:12
       alias: db
 
   script:
-    - RAILS_ENV=test bundle exec rails webpacker:compile
     - RAILS_ENV=test bundle exec rails db:create
     - RAILS_ENV=test bundle exec rails db:schema:load
     - bundle exec rails test
