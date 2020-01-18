@@ -52,6 +52,7 @@ run-tests:
       alias: db
 
   script:
+    - RAILS_ENV=test rails webpacker:compile
     - RAILS_ENV=test rails db:create
     - RAILS_ENV=test rails db:schema:load
     - rails test
