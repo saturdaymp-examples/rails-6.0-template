@@ -43,6 +43,8 @@ run-type-checking:
 
 run-tests:
   stage: run-tests
+  variables:
+    RAILS_ENV: "development"
   image: 
     name: $CI_REGISTRY_IMAGE
 
@@ -51,6 +53,8 @@ run-tests:
       alias: db
 
   script:
+    - echo $RAILS_ENV
+    - ls -la node_modules
     - RAILS_ENV=test bundle exec rails db:create
     - RAILS_ENV=test bundle exec rails db:schema:load
     - bundle exec rails test
