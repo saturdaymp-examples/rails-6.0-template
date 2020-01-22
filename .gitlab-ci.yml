@@ -20,23 +20,23 @@ build-docker-image:
 
   script:
     - docker pull $CI_REGISTRY_IMAGE || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE --tag $CI_REGISTRY_IMAGE .
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE
 
 run-linter:
   stage: run-linter
   image:
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   script:
-   - ls -la
+    - ls
     - rake standard
 
 run-type-checking:
   stage: run-type-checking
   image: 
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   script:
@@ -47,7 +47,7 @@ run-tests:
   variables:
     RAILS_ENV: "development"
   image: 
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 
   services:
     - name: postgres:12
@@ -55,7 +55,7 @@ run-tests:
 
   script:
     - echo $RAILS_ENV
-    - ls -la
-    - RAILS_ENV=test bundle exec rails db:create
-    - RAILS_ENV=test bundle exec rails db:schema:load
-    - bundle exec rails test
+    - ls
+    - RAILS_ENV=test rails db:create
+    - RAILS_ENV=test rails db:schema:load
+    - rails test
