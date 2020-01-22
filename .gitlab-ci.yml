@@ -21,6 +21,7 @@ build-docker-image:
   script:
     - docker pull $CI_REGISTRY_IMAGE || true
     - docker build --cache-from $CI_REGISTRY_IMAGE --tag $CI_REGISTRY_IMAGE .
+    - docker run web ls -la
     - docker push $CI_REGISTRY_IMAGE
 
 run-linter:
@@ -30,6 +31,7 @@ run-linter:
     entrypoint: [""]
 
   script:
+   - ls -la
     - rake standard
 
 run-type-checking:
@@ -54,7 +56,7 @@ run-tests:
 
   script:
     - echo $RAILS_ENV
-    - ls -la node_modules
+    - ls -la
     - RAILS_ENV=test bundle exec rails db:create
     - RAILS_ENV=test bundle exec rails db:schema:load
     - bundle exec rails test
