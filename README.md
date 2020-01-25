@@ -47,7 +47,7 @@ rails db:create
 docker-compose up
 ```
 
-6) In a web brower navigate to http://localhost:3000 and you should see the home page.
+6) In a web browser navigate to http://localhost:3000 and you should see the home page.
 
 
 I would also recommend running the following linter, typechecker, and unit tests.  All the command should be run in the Docker container and should return no errors:
