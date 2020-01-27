@@ -24,6 +24,8 @@ build-docker-image:
     - docker push $CI_REGISTRY_IMAGE
 
 run-linter:
+  variables:
+    GIT_STRATEGY: none
   stage: run-linter
   image:
     name: $CI_REGISTRY_IMAGE
@@ -33,6 +35,8 @@ run-linter:
     - rake standard
 
 run-type-checking:
+  variables:
+    GIT_STRATEGY: none
   stage: run-type-checking
   image: 
     name: $CI_REGISTRY_IMAGE
@@ -42,6 +46,8 @@ run-type-checking:
     - srb tc
 
 run-tests:
+  variables:
+    GIT_STRATEGY: none
   stage: run-tests
   image: 
     name: $CI_REGISTRY_IMAGE
@@ -51,6 +57,6 @@ run-tests:
       alias: db
 
   script:
-    - RAILS_ENV=test bundle exec rails db:create
-    - RAILS_ENV=test bundle exec rails db:schema:load
-    - bundle exec rails test
+    - RAILS_ENV=test rails db:create
+    - RAILS_ENV=test rails db:schema:load
+    - rails test
