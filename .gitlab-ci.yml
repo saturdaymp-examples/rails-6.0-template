@@ -21,7 +21,7 @@ build-docker-image:
   script:
     - docker pull $CI_REGISTRY_IMAGE || true
     - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
-    - docker push $CI_REGISTRY_IMAGE
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 
 run-linter:
   variables:
@@ -32,6 +32,8 @@ run-linter:
     entrypoint: [""]
 
   script:
+    - pwd
+    - cd /app
     - ls
     - rake standard
 
@@ -52,6 +54,7 @@ run-tests:
   stage: run-tests
   image: 
     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    entrypoint: [""]
 
   services:
     - name: postgres:12
