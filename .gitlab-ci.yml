@@ -32,9 +32,7 @@ run-linter:
     entrypoint: [""]
 
   script:
-    - pwd
     - cd /app
-    - ls
     - rake standard
 
 run-type-checking:
@@ -46,6 +44,7 @@ run-type-checking:
     entrypoint: [""]
 
   script:
+    - cd /app
     - srb tc
 
 run-tests:
@@ -61,6 +60,7 @@ run-tests:
       alias: db
 
   script:
+    - cd /app
     - RAILS_ENV=test rails db:create
     - RAILS_ENV=test rails db:schema:load
     - rails test
