@@ -19,7 +19,7 @@ jobs:
 
       - name: Test setup
         run: |
-          docker-compose run web bundle exec rails db:create
+          docker-compose run web bundle exec rails db:create RAILS_ENV=test
           docker-compose run web bundle exec rails db:schema:load RAILS_ENV=test
 
       - name: Run tests

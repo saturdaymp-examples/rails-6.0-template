@@ -3,7 +3,10 @@ stages:
   - run-linter
   - run-type-checking
   - run-tests
-
+##
+# Build a development version of the Docker image.  This image will
+# be used in later stages such as running tests, linter, etc.
+##
 build-docker-image:
   stage: build-docker-image
   image: docker:18.09.7
@@ -20,31 +23,46 @@ build-docker-image:
 
   script:
     - docker pull $CI_REGISTRY_IMAGE || true
-    - docker build --cache-from $CI_REGISTRY_IMAGE --tag $CI_REGISTRY_IMAGE .
-    - docker push $CI_REGISTRY_IMAGE
+    - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+##
+# Run the linter, tests, etc on the development Docker image.  We don't
+# need to pull down the code since the Docker image already has everything
+# it needs (i.e. GIT_STRATEGY: none).  Also note that by default GitLab
+# will default to the /build directory in the image so we need to switch to /app.
+##
 
 run-linter:
+  variables:
+    GIT_STRATEGY: none
   stage: run-linter
   image:
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   script:
+    - cd /app
     - rake standard
 
 run-type-checking:
+  variables:
+    GIT_STRATEGY: none
   stage: run-type-checking
   image: 
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   script:
+    - cd /app
     - srb tc
 
 run-tests:
+  variables:
+    GIT_STRATEGY: none
   stage: run-tests
   image: 
-    name: $CI_REGISTRY_IMAGE
+    name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   services:
@@ -52,6 +70,7 @@ run-tests:
       alias: db
 
   script:
-    - bundle exec rails db:create
-    - bundle exec rails db:schema:load RAILS_ENV=test
-    - bundle exec rails test
+    - cd /app
+    - RAILS_ENV=test rails db:create
+    - RAILS_ENV=test rails db:schema:load
+    - rails test
