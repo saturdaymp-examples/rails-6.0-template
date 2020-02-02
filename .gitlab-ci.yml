@@ -80,3 +80,4 @@ run-tests:
     - RAILS_ENV=test rails db:create
     - RAILS_ENV=test rails db:schema:load
     - rails test
+    - ls /app/tmp/coverage
