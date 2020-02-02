@@ -8322,6 +8322,12 @@ end
 class ActionView::AbstractRenderer
 end
 
+class ActionView::ActionViewError
+end
+
+class ActionView::ActionViewError
+end
+
 class ActionView::Base
   include ::ActionView::Context
   include ::ERB::Util
@@ -8751,6 +8757,12 @@ class ActionView::Digestor
   def self.logger(); end
 
   def self.tree(name, finder, partial=T.unsafe(nil), seen=T.unsafe(nil)); end
+end
+
+class ActionView::EncodingError
+end
+
+class ActionView::EncodingError
 end
 
 class ActionView::FallbackFileSystemResolver
@@ -9370,6 +9382,12 @@ module ActionView::Helpers::UrlHelper
 
   def button_to(name=T.unsafe(nil), options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 
+  def current_page?(options, check_parameters: T.unsafe(nil)); end
+
+  def link_to(name=T.unsafe(nil), options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
+
+  def link_to_if(condition, name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
+
   def link_to_unless(condition, name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
 
   def link_to_unless_current(name, options=T.unsafe(nil), html_options=T.unsafe(nil), &block); end
@@ -9560,6 +9578,11 @@ end
 
 class ActionView::MissingTemplate
   def initialize(paths, path, prefixes, partial, details, *_); end
+
+  def path(); end
+end
+
+class ActionView::MissingTemplate
 end
 
 module ActionView::ModelNaming
@@ -9961,6 +9984,9 @@ class ActionView::Template::Error
   SOURCE_CODE_RADIUS = ::T.let(nil, ::T.untyped)
 end
 
+class ActionView::Template::Error
+end
+
 class ActionView::Template::HTML
   def format(); end
 
@@ -10220,6 +10246,8 @@ class ActionView::Template
   def self.finalize_compiled_template_methods=(_); end
 end
 
+ActionView::TemplateError = ActionView::Template::Error
+
 class ActionView::TemplateRenderer
   def render(context, options); end
 end
@@ -10462,6 +10490,9 @@ end
 
 class ActionView::WrongEncodingError
   def initialize(string, encoding); end
+end
+
+class ActionView::WrongEncodingError
 end
 
 module ActionView
@@ -15598,6 +15629,7 @@ end
 
 class ActiveRecord::ExplainRegistry
   extend ::ActiveSupport::PerThreadRegistry
+  def self.collect?(*args, &block); end
 end
 
 class ActiveRecord::ExplainSubscriber
@@ -15667,6 +15699,191 @@ module ActiveRecord::FinderMethods
 end
 
 module ActiveRecord::FinderMethods
+end
+
+class ActiveRecord::Fixture
+  include ::Enumerable
+  def [](key); end
+
+  def class_name(); end
+
+  def each(&blk); end
+
+  def find(); end
+
+  def fixture(); end
+
+  def initialize(fixture, model_class); end
+
+  def model_class(); end
+
+  def to_hash(); end
+end
+
+class ActiveRecord::Fixture::FixtureError
+end
+
+class ActiveRecord::Fixture::FixtureError
+end
+
+class ActiveRecord::Fixture::FormatError
+end
+
+class ActiveRecord::Fixture::FormatError
+end
+
+class ActiveRecord::Fixture
+end
+
+class ActiveRecord::FixtureSet
+  def [](x); end
+
+  def []=(k, v); end
+
+  def all_loaded_fixtures(); end
+
+  def all_loaded_fixtures=(obj); end
+
+  def config(); end
+
+  def each(&block); end
+
+  def fixtures(); end
+
+  def initialize(_, name, class_name, path, config=T.unsafe(nil)); end
+
+  def model_class(); end
+
+  def name(); end
+
+  def size(); end
+
+  def table_name(); end
+
+  def table_rows(); end
+  MAX_ID = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveRecord::FixtureSet::ClassCache
+  def [](fs_name); end
+
+  def initialize(class_names, config); end
+end
+
+class ActiveRecord::FixtureSet::ClassCache
+end
+
+class ActiveRecord::FixtureSet::File
+  include ::Enumerable
+  def each(&block); end
+
+  def initialize(file); end
+
+  def model_class(); end
+end
+
+class ActiveRecord::FixtureSet::File
+  def self.open(file); end
+end
+
+class ActiveRecord::FixtureSet::ModelMetadata
+  def has_primary_key_column?(); end
+
+  def inheritance_column_name(); end
+
+  def initialize(model_class); end
+
+  def primary_key_name(); end
+
+  def primary_key_type(); end
+
+  def timestamp_column_names(); end
+end
+
+class ActiveRecord::FixtureSet::ModelMetadata
+end
+
+class ActiveRecord::FixtureSet::RenderContext
+end
+
+class ActiveRecord::FixtureSet::RenderContext
+  def self.create_subclass(); end
+end
+
+class ActiveRecord::FixtureSet::TableRow
+  def initialize(fixture, table_rows:, label:, now:); end
+
+  def to_hash(); end
+end
+
+class ActiveRecord::FixtureSet::TableRow::HasManyThroughProxy
+  def lhs_key(); end
+
+  def rhs_key(); end
+end
+
+class ActiveRecord::FixtureSet::TableRow::HasManyThroughProxy
+end
+
+class ActiveRecord::FixtureSet::TableRow::ReflectionProxy
+  def initialize(association); end
+
+  def join_table(); end
+
+  def name(); end
+
+  def primary_key_type(); end
+end
+
+class ActiveRecord::FixtureSet::TableRow::ReflectionProxy
+end
+
+class ActiveRecord::FixtureSet::TableRow
+end
+
+class ActiveRecord::FixtureSet::TableRows
+  def initialize(table_name, model_class:, fixtures:, config:); end
+
+  def model_class(); end
+
+  def model_metadata(); end
+
+  def tables(); end
+
+  def to_hash(); end
+end
+
+class ActiveRecord::FixtureSet::TableRows
+end
+
+class ActiveRecord::FixtureSet
+  def self.all_loaded_fixtures(); end
+
+  def self.all_loaded_fixtures=(obj); end
+
+  def self.cache_fixtures(connection, fixtures_map); end
+
+  def self.cache_for_connection(connection); end
+
+  def self.cached_fixtures(connection, keys_to_fetch=T.unsafe(nil)); end
+
+  def self.context_class(); end
+
+  def self.create_fixtures(fixtures_directory, fixture_set_names, class_names=T.unsafe(nil), config=T.unsafe(nil), &block); end
+
+  def self.default_fixture_model_name(fixture_set_name, config=T.unsafe(nil)); end
+
+  def self.default_fixture_table_name(fixture_set_name, config=T.unsafe(nil)); end
+
+  def self.fixture_is_cached?(connection, table_name); end
+
+  def self.identify(label, column_type=T.unsafe(nil)); end
+
+  def self.instantiate_all_loaded_fixtures(object, load_instances=T.unsafe(nil)); end
+
+  def self.instantiate_fixtures(object, fixture_set, load_instances=T.unsafe(nil)); end
+
+  def self.reset_cache(); end
 end
 
 class ActiveRecord::HasManyThroughAssociationNotFoundError
@@ -17292,8 +17509,6 @@ class ActiveRecord::Relation
 
   def alias_tracker(joins=T.unsafe(nil), aliases=T.unsafe(nil)); end
 
-  def any?(); end
-
   def arel_attribute(name); end
 
   def bind_attribute(name, value); end
@@ -17362,11 +17577,7 @@ class ActiveRecord::Relation
 
   def new(attributes=T.unsafe(nil), &block); end
 
-  def none?(); end
-
   def null_relation?(); end
-
-  def one?(); end
 
   def predicate_builder(); end
 
@@ -17389,8 +17600,6 @@ class ActiveRecord::Relation
   def skip_preloading_value=(skip_preloading_value); end
 
   def table(); end
-
-  def to_a(); end
 
   def to_ary(); end
 
@@ -17993,21 +18202,6 @@ module ActiveRecord::TestFixtures
   def teardown_fixtures(); end
 end
 
-module ActiveRecord::TestFixtures::ClassMethods
-  def fixtures(*fixture_set_names); end
-
-  def set_fixture_class(class_names=T.unsafe(nil)); end
-
-  def setup_fixture_accessors(fixture_set_names=T.unsafe(nil)); end
-
-  def uses_transaction(*methods); end
-
-  def uses_transaction?(method); end
-end
-
-module ActiveRecord::TestFixtures::ClassMethods
-end
-
 module ActiveRecord::TestFixtures
   extend ::ActiveSupport::Concern
 end
@@ -18310,6 +18504,10 @@ module ActiveRecord::VERSION
 end
 
 module ActiveRecord::Validations
+  def save(options=T.unsafe(nil)); end
+
+  def save!(options=T.unsafe(nil)); end
+
   def valid?(context=T.unsafe(nil)); end
 
   def validate(context=T.unsafe(nil)); end
@@ -21647,6 +21845,9 @@ class ActiveSupport::TestCase
   include ::ActiveSupport::Testing::Deprecation
   include ::ActiveSupport::Testing::TimeHelpers
   include ::ActiveSupport::Testing::FileFixtures
+  include ::ActiveRecord::TestDatabases
+  include ::ActiveRecord::TestFixtures
+  include ::Minitest::Parallel::Test
   include ::ActiveSupport::Testing::SetupAndTeardown
   def __callbacks(); end
 
@@ -21688,11 +21889,57 @@ class ActiveSupport::TestCase
 
   def assert_raise(*exp); end
 
+  def config(); end
+
+  def config=(val); end
+
+  def config?(); end
+
   def file_fixture_path(); end
 
   def file_fixture_path?(); end
 
+  def fixture_class_names(); end
+
+  def fixture_class_names=(val); end
+
+  def fixture_class_names?(); end
+
+  def fixture_path(); end
+
+  def fixture_path?(); end
+
+  def fixture_table_names(); end
+
+  def fixture_table_names=(val); end
+
+  def fixture_table_names?(); end
+
+  def lock_threads(); end
+
+  def lock_threads=(val); end
+
+  def lock_threads?(); end
+
   def method_name(); end
+
+  def pre_loaded_fixtures(); end
+
+  def pre_loaded_fixtures=(val); end
+
+  def pre_loaded_fixtures?(); end
+
+  def use_instantiated_fixtures(); end
+
+  def use_instantiated_fixtures=(val); end
+
+  def use_instantiated_fixtures?(); end
+
+  def use_transactional_tests(); end
+
+  def use_transactional_tests=(val); end
+
+  def use_transactional_tests?(); end
 end
 
 class ActiveSupport::TestCase
@@ -21713,11 +21960,41 @@ class ActiveSupport::TestCase
 
   def self._teardown_callbacks=(value); end
 
+  def self.config(); end
+
+  def self.config=(val); end
+
+  def self.config?(); end
+
   def self.file_fixture_path(); end
 
   def self.file_fixture_path=(val); end
 
   def self.file_fixture_path?(); end
+
+  def self.fixture_class_names(); end
+
+  def self.fixture_class_names=(val); end
+
+  def self.fixture_class_names?(); end
+
+  def self.fixture_path(); end
+
+  def self.fixture_path=(val); end
+
+  def self.fixture_path?(); end
+
+  def self.fixture_table_names(); end
+
+  def self.fixture_table_names=(val); end
+
+  def self.fixture_table_names?(); end
+
+  def self.lock_threads(); end
+
+  def self.lock_threads=(val); end
+
+  def self.lock_threads?(); end
 
   def self.parallelize(workers: T.unsafe(nil), with: T.unsafe(nil)); end
 
@@ -21725,7 +22002,25 @@ class ActiveSupport::TestCase
 
   def self.parallelize_teardown(&block); end
 
+  def self.pre_loaded_fixtures(); end
+
+  def self.pre_loaded_fixtures=(val); end
+
+  def self.pre_loaded_fixtures?(); end
+
   def self.test_order=(new_order); end
+
+  def self.use_instantiated_fixtures(); end
+
+  def self.use_instantiated_fixtures=(val); end
+
+  def self.use_instantiated_fixtures?(); end
+
+  def self.use_transactional_tests(); end
+
+  def self.use_transactional_tests=(val); end
+
+  def self.use_transactional_tests?(); end
 end
 
 module ActiveSupport::Testing
@@ -24391,13 +24686,9 @@ class Array
 
   def dig(*_); end
 
-  def filter!(); end
-
   def flatten!(*_); end
 
   def pack(*_); end
-
-  def quote(); end
 
   def replace(_); end
 
@@ -24479,10 +24770,6 @@ class Benchmark::Tms
   def total(); end
 
   def utime(); end
-end
-
-module Benchmark
-  def self.ms(); end
 end
 
 class BigDecimal
@@ -31642,9 +31929,9 @@ class Debase::CatchCommand
 end
 
 class Debase::Command
+  include ::Debase::FrameFunctions
   include ::Debase::EnableDisableFunctions
   include ::Debase::ParseFunctions
-  include ::Debase::FrameFunctions
   def debug_eval(str, b=T.unsafe(nil)); end
 
   def debug_silent_eval(str); end
@@ -32913,12 +33200,6 @@ end
 class DidYouMean::PlainFormatter
 end
 
-class DidYouMean::SpellChecker
-  def correct(input); end
-
-  def initialize(dictionary:); end
-end
-
 class DidYouMean::VariableNameChecker
   def corrections(); end
 
@@ -33131,8 +33412,6 @@ module Enumerable
 
   def excluding(*elements); end
 
-  def filter(); end
-
   def grep_v(_); end
 
   def including(*elements); end
@@ -33156,8 +33435,6 @@ module Enumerable
   def uniq(); end
 
   def without(*elements); end
-
-  def zip(*_); end
 end
 
 class Enumerator
@@ -33313,31 +33590,19 @@ class Etc::Group
 end
 
 class Etc::Passwd
-  def dir(); end
-
   def dir=(_); end
 
   def gecos(); end
 
   def gecos=(_); end
 
-  def gid(); end
-
   def gid=(_); end
-
-  def name(); end
 
   def name=(_); end
 
-  def passwd(); end
-
   def passwd=(_); end
 
-  def shell(); end
-
   def shell=(_); end
-
-  def uid(); end
 
   def uid=(_); end
 end
@@ -34859,12 +35124,6 @@ module Forwardable
   def self.debug=(debug); end
 end
 
-class FrozenError
-end
-
-class FrozenError
-end
-
 module GC
   def garbage_collect(*_); end
 end
@@ -35056,13 +35315,9 @@ class Hash
 
   def fetch_values(*_); end
 
-  def filter!(); end
-
   def flatten(*_); end
 
   def index(_); end
-
-  def merge!(*_); end
 
   def nested_under_indifferent_access(); end
 
@@ -40515,240 +40770,6 @@ module Mail
   def self.unregister_observer(observer); end
 end
 
-module MakeMakefile
-  def append_cflags(flags, *opts); end
-
-  def append_cppflags(flags, *opts); end
-
-  def append_ldflags(flags, *opts); end
-
-  def append_library(libs, lib); end
-
-  def arg_config(config, default=T.unsafe(nil), &block); end
-
-  def cc_command(opt=T.unsafe(nil)); end
-
-  def check_signedness(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def check_sizeof(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def checking_for(m, fmt=T.unsafe(nil)); end
-
-  def checking_message(target, place=T.unsafe(nil), opt=T.unsafe(nil)); end
-
-  def configuration(srcdir); end
-
-  def convertible_int(type, headers=T.unsafe(nil), opts=T.unsafe(nil), &b); end
-
-  def cpp_command(outfile, opt=T.unsafe(nil)); end
-
-  def cpp_include(header); end
-
-  def create_header(header=T.unsafe(nil)); end
-
-  def create_makefile(target, srcprefix=T.unsafe(nil)); end
-
-  def create_tmpsrc(src); end
-
-  def depend_rules(depend); end
-
-  def dir_config(target, idefault=T.unsafe(nil), ldefault=T.unsafe(nil)); end
-
-  def dummy_makefile(srcdir); end
-
-  def each_compile_rules(); end
-
-  def egrep_cpp(pat, src, opt=T.unsafe(nil), &b); end
-
-  def enable_config(config, default=T.unsafe(nil)); end
-
-  def find_executable(bin, path=T.unsafe(nil)); end
-
-  def find_executable0(bin, path=T.unsafe(nil)); end
-
-  def find_header(header, *paths); end
-
-  def find_library(lib, func, *paths, &b); end
-
-  def find_type(type, opt, *headers, &b); end
-
-  def have_const(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_devel?(); end
-
-  def have_framework(fw, &b); end
-
-  def have_func(func, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_header(header, preheaders=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_library(lib, func=T.unsafe(nil), headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_macro(macro, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_struct_member(type, member, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_type(type, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def have_typeof?(); end
-
-  def have_var(var, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def init_mkmf(config=T.unsafe(nil), rbconfig=T.unsafe(nil)); end
-
-  def install_dirs(target_prefix=T.unsafe(nil)); end
-
-  def install_files(mfile, ifiles, map=T.unsafe(nil), srcprefix=T.unsafe(nil)); end
-
-  def install_rb(mfile, dest, srcdir=T.unsafe(nil)); end
-
-  def libpath_env(); end
-
-  def libpathflag(libpath=T.unsafe(nil)); end
-
-  def link_command(ldflags, opt=T.unsafe(nil), libpath=T.unsafe(nil)); end
-
-  def log_src(src, heading=T.unsafe(nil)); end
-
-  def macro_defined?(macro, src, opt=T.unsafe(nil), &b); end
-
-  def map_dir(dir, map=T.unsafe(nil)); end
-
-  def merge_libs(*libs); end
-
-  def message(*s); end
-
-  def mkintpath(path); end
-
-  def mkmf_failed(path); end
-
-  def modified?(target, times); end
-
-  def pkg_config(pkg, option=T.unsafe(nil)); end
-
-  def relative_from(path, base); end
-
-  def scalar_ptr_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def scalar_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def split_libs(*strs); end
-
-  def timestamp_file(name, target_prefix=T.unsafe(nil)); end
-
-  def try_cflags(flags, opts=T.unsafe(nil)); end
-
-  def try_compile(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_const(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_constant(const, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_cpp(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_cppflags(flags, opts=T.unsafe(nil)); end
-
-  def try_do(src, command, *opts, &b); end
-
-  def try_func(func, libs, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_header(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_ldflags(flags, opts=T.unsafe(nil)); end
-
-  def try_link(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_link0(src, opt=T.unsafe(nil), *opts, &b); end
-
-  def try_run(src, opt=T.unsafe(nil), &b); end
-
-  def try_signedness(type, member, headers=T.unsafe(nil), opts=T.unsafe(nil)); end
-
-  def try_static_assert(expr, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_type(type, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def try_var(var, headers=T.unsafe(nil), opt=T.unsafe(nil), &b); end
-
-  def typedef_expr(type, headers); end
-
-  def what_type?(type, member=T.unsafe(nil), headers=T.unsafe(nil), &b); end
-
-  def winsep(s); end
-
-  def with_cflags(flags); end
-
-  def with_config(config, default=T.unsafe(nil)); end
-
-  def with_cppflags(flags); end
-
-  def with_destdir(dir); end
-
-  def with_ldflags(flags); end
-
-  def with_werror(opt, opts=T.unsafe(nil)); end
-
-  def xpopen(command, *mode, &block); end
-
-  def xsystem(command, opts=T.unsafe(nil)); end
-  ASSEMBLE_C = ::T.let(nil, ::T.untyped)
-  ASSEMBLE_CXX = ::T.let(nil, ::T.untyped)
-  CLEANINGS = ::T.let(nil, ::T.untyped)
-  COMMON_HEADERS = ::T.let(nil, ::T.untyped)
-  COMMON_LIBS = ::T.let(nil, ::T.untyped)
-  COMPILE_C = ::T.let(nil, ::T.untyped)
-  COMPILE_CXX = ::T.let(nil, ::T.untyped)
-  COMPILE_RULES = ::T.let(nil, ::T.untyped)
-  CONFIG = ::T.let(nil, ::T.untyped)
-  CONFTEST = ::T.let(nil, ::T.untyped)
-  CONFTEST_C = ::T.let(nil, ::T.untyped)
-  COUTFLAG = ::T.let(nil, ::T.untyped)
-  CPPOUTFILE = ::T.let(nil, ::T.untyped)
-  CSRCFLAG = ::T.let(nil, ::T.untyped)
-  CXX_EXT = ::T.let(nil, ::T.untyped)
-  C_EXT = ::T.let(nil, ::T.untyped)
-  EXPORT_PREFIX = ::T.let(nil, ::T.untyped)
-  FailedMessage = ::T.let(nil, ::T.untyped)
-  HDR_EXT = ::T.let(nil, ::T.untyped)
-  INSTALL_DIRS = ::T.let(nil, ::T.untyped)
-  LIBARG = ::T.let(nil, ::T.untyped)
-  LIBPATHFLAG = ::T.let(nil, ::T.untyped)
-  LINK_SO = ::T.let(nil, ::T.untyped)
-  MAIN_DOES_NOTHING = ::T.let(nil, ::T.untyped)
-  ORIG_LIBPATH = ::T.let(nil, ::T.untyped)
-  OUTFLAG = ::T.let(nil, ::T.untyped)
-  RPATHFLAG = ::T.let(nil, ::T.untyped)
-  RULE_SUBST = ::T.let(nil, ::T.untyped)
-  SRC_EXT = ::T.let(nil, ::T.untyped)
-  STRING_OR_FAILED_FORMAT = ::T.let(nil, ::T.untyped)
-  TRY_LINK = ::T.let(nil, ::T.untyped)
-  UNIVERSAL_INTS = ::T.let(nil, ::T.untyped)
-end
-
-module MakeMakefile::Logging
-end
-
-module MakeMakefile::Logging
-  def self.log_close(); end
-
-  def self.log_open(); end
-
-  def self.log_opened?(); end
-
-  def self.logfile(file); end
-
-  def self.open(); end
-
-  def self.postpone(); end
-
-  def self.quiet(); end
-
-  def self.quiet=(quiet); end
-end
-
-module MakeMakefile
-end
-
 module Marcel
   VERSION = ::T.let(nil, ::T.untyped)
 end
@@ -41670,15 +41691,6 @@ module Minitest::Parallel::Test
   def _synchronize(); end
 end
 
-module Minitest::Parallel::Test::ClassMethods
-  def run_one_method(klass, method_name, reporter); end
-
-  def test_order(); end
-end
-
-module Minitest::Parallel::Test::ClassMethods
-end
-
 module Minitest::Parallel::Test
 end
 
@@ -42178,9 +42190,13 @@ end
 class Net::HTTPAlreadyReported
 end
 
-Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
+class Net::HTTPClientError
+end
 
-Net::HTTPClientErrorCode = Net::HTTPClientError
+Net::HTTPClientErrorCode::EXCEPTION_TYPE = Net::HTTPServerException
+
+class Net::HTTPClientError
+end
 
 Net::HTTPClientException = Net::HTTPServerException
 
@@ -42254,7 +42270,13 @@ end
 class Net::HTTPRangeNotSatisfiable
 end
 
-Net::HTTPRedirectionCode = Net::HTTPRedirection
+class Net::HTTPRedirection
+end
+
+Net::HTTPRedirectionCode::EXCEPTION_TYPE = Net::HTTPRetriableError
+
+class Net::HTTPRedirection
+end
 
 class Net::HTTPRequestTimeout
   HAS_BODY = ::T.let(nil, ::T.untyped)
@@ -42273,17 +42295,15 @@ class Net::HTTPResponse
   def end_reading_body_hacked(); end
 end
 
-class Net::HTTPRedirection
+Net::HTTPRetriableCode = Net::HTTPRedirection
+
+class Net::HTTPServerError
 end
 
-Net::HTTPRetriableCode::EXCEPTION_TYPE = Net::HTTPRetriableError
+Net::HTTPServerErrorCode::EXCEPTION_TYPE = Net::HTTPFatalError
 
-class Net::HTTPRedirection
+class Net::HTTPServerError
 end
-
-Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
-
-Net::HTTPServerErrorCode = Net::HTTPServerError
 
 class Net::HTTP
 end
@@ -44381,7 +44401,6 @@ class Object
   include ::ActiveSupport::Dependencies::Loadable
   include ::ActiveSupport::Tryable
   include ::PP::ObjectMixin
-  include ::MakeMakefile
   include ::ActiveSupport::ToJsonWithActiveSupportEncoder
   include ::ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency
   def as_json(options=T.unsafe(nil)); end
@@ -47456,6 +47475,13 @@ end
 class Parlour::RbiGenerator::Constant
 end
 
+class Parlour::RbiGenerator::EnumClassNamespace
+  def enums(*args, &blk); end
+end
+
+class Parlour::RbiGenerator::EnumClassNamespace
+end
+
 class Parlour::RbiGenerator::Extend
   def ==(*args, &blk); end
 end
@@ -47476,6 +47502,8 @@ class Parlour::RbiGenerator::Method
   def abstract(*args, &blk); end
 
   def class_method(*args, &blk); end
+
+  def final(*args, &blk); end
 
   def implementation(*args, &blk); end
 
@@ -47523,6 +47551,8 @@ class Parlour::RbiGenerator::Namespace
 
   def create_constant(*args, &blk); end
 
+  def create_enum_class(*args, &blk); end
+
   def create_extend(*args, &blk); end
 
   def create_extends(*args, &blk); end
@@ -47535,7 +47565,11 @@ class Parlour::RbiGenerator::Namespace
 
   def create_module(*args, &blk); end
 
+  def create_type_alias(*args, &blk); end
+
   def extends(*args, &blk); end
+
+  def final(*args, &blk); end
 
   def includes(*args, &blk); end
 
@@ -51032,6 +51066,7 @@ module Puma::Const
   LOCALHOST_ADDR = ::T.let(nil, ::T.untyped)
   LOCALHOST_IP = ::T.let(nil, ::T.untyped)
   MAX_BODY = ::T.let(nil, ::T.untyped)
+  MAX_FAST_INLINE = ::T.let(nil, ::T.untyped)
   MAX_HEADER = ::T.let(nil, ::T.untyped)
   NEWLINE = ::T.let(nil, ::T.untyped)
   PATH_INFO = ::T.let(nil, ::T.untyped)
@@ -51889,1192 +51924,6 @@ module Puma
   def self.stats_object=(val); end
 
   def self.windows?(); end
-end
-
-module REXML
-  COPYRIGHT = ::T.let(nil, ::T.untyped)
-  Copyright = ::T.let(nil, ::T.untyped)
-  DATE = ::T.let(nil, ::T.untyped)
-  REVISION = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
-  Version = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::AttlistDecl
-  include ::Enumerable
-  def [](key); end
-
-  def each(&block); end
-
-  def element_name(); end
-
-  def include?(key); end
-
-  def initialize(source); end
-
-  def node_type(); end
-
-  def write(out, indent=T.unsafe(nil)); end
-end
-
-class REXML::AttlistDecl
-end
-
-class REXML::Attribute
-  include ::REXML::Node
-  include ::REXML::Namespace
-  include ::REXML::XMLTokens
-  def ==(other); end
-
-  def clone(); end
-
-  def doctype(); end
-
-  def element(); end
-
-  def element=(element); end
-
-  def initialize(first, second=T.unsafe(nil), parent=T.unsafe(nil)); end
-
-  def namespace(arg=T.unsafe(nil)); end
-
-  def node_type(); end
-
-  def normalized=(normalized); end
-
-  def remove(); end
-
-  def to_s(); end
-
-  def to_string(); end
-
-  def value(); end
-
-  def write(output, indent=T.unsafe(nil)); end
-
-  def xpath(); end
-  NEEDS_A_SECOND_CHECK = ::T.let(nil, ::T.untyped)
-  PATTERN = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Attribute
-end
-
-class REXML::Attributes
-  def <<(attribute); end
-
-  def [](name); end
-
-  def []=(name, value); end
-
-  def add(attribute); end
-
-  def delete(attribute); end
-
-  def delete_all(name); end
-
-  def each_attribute(); end
-
-  def get_attribute(name); end
-
-  def get_attribute_ns(namespace, name); end
-
-  def initialize(element); end
-
-  def namespaces(); end
-
-  def prefixes(); end
-end
-
-class REXML::Attributes
-end
-
-class REXML::CData
-  def initialize(first, whitespace=T.unsafe(nil), parent=T.unsafe(nil)); end
-
-  def write(output=T.unsafe(nil), indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-  ILLEGAL = ::T.let(nil, ::T.untyped)
-  START = ::T.let(nil, ::T.untyped)
-  STOP = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::CData
-end
-
-class REXML::Child
-  include ::REXML::Node
-  def bytes(); end
-
-  def document(); end
-
-  def initialize(parent=T.unsafe(nil)); end
-
-  def next_sibling(); end
-
-  def next_sibling=(other); end
-
-  def parent(); end
-
-  def parent=(other); end
-
-  def previous_sibling(); end
-
-  def previous_sibling=(other); end
-
-  def remove(); end
-
-  def replace_with(child); end
-end
-
-class REXML::Child
-end
-
-class REXML::Comment
-  include ::Comparable
-  def ==(other); end
-
-  def clone(); end
-
-  def initialize(first, second=T.unsafe(nil)); end
-
-  def node_type(); end
-
-  def string(); end
-
-  def string=(string); end
-
-  def to_s(); end
-
-  def write(output, indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-  START = ::T.let(nil, ::T.untyped)
-  STOP = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Comment
-end
-
-class REXML::Declaration
-  def initialize(src); end
-
-  def to_s(); end
-
-  def write(output, indent); end
-end
-
-class REXML::Declaration
-end
-
-class REXML::DocType
-  include ::REXML::XMLTokens
-  def add(child); end
-
-  def attribute_of(element, attribute); end
-
-  def attributes_of(element); end
-
-  def clone(); end
-
-  def context(); end
-
-  def entities(); end
-
-  def entity(name); end
-
-  def external_id(); end
-
-  def initialize(first, parent=T.unsafe(nil)); end
-
-  def name(); end
-
-  def namespaces(); end
-
-  def node_type(); end
-
-  def notation(name); end
-
-  def notations(); end
-
-  def public(); end
-
-  def system(); end
-
-  def write(output, indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-  DEFAULT_ENTITIES = ::T.let(nil, ::T.untyped)
-  PUBLIC = ::T.let(nil, ::T.untyped)
-  START = ::T.let(nil, ::T.untyped)
-  STOP = ::T.let(nil, ::T.untyped)
-  SYSTEM = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::DocType
-end
-
-class REXML::Document
-  def <<(child); end
-
-  def add(child); end
-
-  def add_element(arg=T.unsafe(nil), arg2=T.unsafe(nil)); end
-
-  def doctype(); end
-
-  def encoding(); end
-
-  def entity_expansion_count(); end
-
-  def initialize(source=T.unsafe(nil), context=T.unsafe(nil)); end
-
-  def record_entity_expansion(); end
-
-  def stand_alone?(); end
-
-  def version(); end
-
-  def write(*arguments); end
-
-  def xml_decl(); end
-  DECLARATION = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Document
-  def self.entity_expansion_limit(); end
-
-  def self.entity_expansion_limit=(val); end
-
-  def self.entity_expansion_text_limit(); end
-
-  def self.entity_expansion_text_limit=(val); end
-
-  def self.parse_stream(source, listener); end
-end
-
-class REXML::Element
-  include ::REXML::Namespace
-  include ::REXML::XMLTokens
-  def [](name_or_index); end
-
-  def add_attribute(key, value=T.unsafe(nil)); end
-
-  def add_attributes(hash); end
-
-  def add_element(element, attrs=T.unsafe(nil)); end
-
-  def add_namespace(prefix, uri=T.unsafe(nil)); end
-
-  def add_text(text); end
-
-  def attribute(name, namespace=T.unsafe(nil)); end
-
-  def attributes(); end
-
-  def cdatas(); end
-
-  def clone(); end
-
-  def comments(); end
-
-  def context(); end
-
-  def context=(context); end
-
-  def delete_attribute(key); end
-
-  def delete_element(element); end
-
-  def delete_namespace(namespace=T.unsafe(nil)); end
-
-  def each_element(xpath=T.unsafe(nil), &block); end
-
-  def each_element_with_attribute(key, value=T.unsafe(nil), max=T.unsafe(nil), name=T.unsafe(nil), &block); end
-
-  def each_element_with_text(text=T.unsafe(nil), max=T.unsafe(nil), name=T.unsafe(nil), &block); end
-
-  def elements(); end
-
-  def get_elements(xpath); end
-
-  def get_text(path=T.unsafe(nil)); end
-
-  def has_attributes?(); end
-
-  def has_elements?(); end
-
-  def has_text?(); end
-
-  def ignore_whitespace_nodes(); end
-
-  def initialize(arg=T.unsafe(nil), parent=T.unsafe(nil), context=T.unsafe(nil)); end
-
-  def instructions(); end
-
-  def namespace(prefix=T.unsafe(nil)); end
-
-  def namespaces(); end
-
-  def next_element(); end
-
-  def node_type(); end
-
-  def prefixes(); end
-
-  def previous_element(); end
-
-  def raw(); end
-
-  def root(); end
-
-  def root_node(); end
-
-  def text(path=T.unsafe(nil)); end
-
-  def text=(text); end
-
-  def texts(); end
-
-  def whitespace(); end
-
-  def write(output=T.unsafe(nil), indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-
-  def xpath(); end
-  UNDEFINED = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Element
-end
-
-class REXML::ElementDecl
-end
-
-class REXML::ElementDecl
-end
-
-class REXML::Elements
-  include ::Enumerable
-  def <<(element=T.unsafe(nil)); end
-
-  def [](index, name=T.unsafe(nil)); end
-
-  def []=(index, element); end
-
-  def add(element=T.unsafe(nil)); end
-
-  def collect(xpath=T.unsafe(nil)); end
-
-  def delete(element); end
-
-  def delete_all(xpath); end
-
-  def each(xpath=T.unsafe(nil), &blk); end
-
-  def empty?(); end
-
-  def index(element); end
-
-  def initialize(parent); end
-
-  def inject(xpath=T.unsafe(nil), initial=T.unsafe(nil)); end
-
-  def size(); end
-
-  def to_a(xpath=T.unsafe(nil)); end
-end
-
-class REXML::Elements
-end
-
-module REXML::Encoding
-  def decode(string); end
-
-  def encode(string); end
-
-  def encoding(); end
-
-  def encoding=(encoding); end
-end
-
-module REXML::Encoding
-end
-
-class REXML::Entity
-  include ::REXML::XMLTokens
-  def external(); end
-
-  def initialize(stream, value=T.unsafe(nil), parent=T.unsafe(nil), reference=T.unsafe(nil)); end
-
-  def name(); end
-
-  def ndata(); end
-
-  def normalized(); end
-
-  def pubid(); end
-
-  def ref(); end
-
-  def to_s(); end
-
-  def unnormalized(); end
-
-  def value(); end
-
-  def write(out, indent=T.unsafe(nil)); end
-  ENTITYDECL = ::T.let(nil, ::T.untyped)
-  ENTITYDEF = ::T.let(nil, ::T.untyped)
-  ENTITYVALUE = ::T.let(nil, ::T.untyped)
-  EXTERNALID = ::T.let(nil, ::T.untyped)
-  GEDECL = ::T.let(nil, ::T.untyped)
-  NDATADECL = ::T.let(nil, ::T.untyped)
-  PEDECL = ::T.let(nil, ::T.untyped)
-  PEDEF = ::T.let(nil, ::T.untyped)
-  PEREFERENCE = ::T.let(nil, ::T.untyped)
-  PEREFERENCE_RE = ::T.let(nil, ::T.untyped)
-  PUBIDCHAR = ::T.let(nil, ::T.untyped)
-  PUBIDLITERAL = ::T.let(nil, ::T.untyped)
-  SYSTEMLITERAL = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Entity
-  def self.matches?(string); end
-end
-
-module REXML::EntityConst
-  AMP = ::T.let(nil, ::T.untyped)
-  APOS = ::T.let(nil, ::T.untyped)
-  GT = ::T.let(nil, ::T.untyped)
-  LT = ::T.let(nil, ::T.untyped)
-  QUOT = ::T.let(nil, ::T.untyped)
-end
-
-module REXML::EntityConst
-end
-
-class REXML::ExternalEntity
-  def initialize(src); end
-
-  def to_s(); end
-
-  def write(output, indent); end
-end
-
-class REXML::ExternalEntity
-end
-
-module REXML::Formatters
-end
-
-class REXML::Formatters::Default
-  def initialize(ie_hack=T.unsafe(nil)); end
-
-  def write(node, output); end
-
-  def write_cdata(node, output); end
-
-  def write_comment(node, output); end
-
-  def write_document(node, output); end
-
-  def write_element(node, output); end
-
-  def write_instruction(node, output); end
-
-  def write_text(node, output); end
-end
-
-class REXML::Formatters::Default
-end
-
-class REXML::Formatters::Pretty
-  def compact(); end
-
-  def compact=(compact); end
-
-  def initialize(indentation=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-
-  def width(); end
-
-  def width=(width); end
-end
-
-class REXML::Formatters::Pretty
-end
-
-module REXML::Formatters
-end
-
-module REXML::Functions
-  INTERNAL_METHODS = ::T.let(nil, ::T.untyped)
-end
-
-module REXML::Functions
-  def self.boolean(object=T.unsafe(nil)); end
-
-  def self.ceiling(number); end
-
-  def self.compare_language(lang1, lang2); end
-
-  def self.concat(*objects); end
-
-  def self.contains(string, test); end
-
-  def self.context=(value); end
-
-  def self.count(node_set); end
-
-  def self.false(); end
-
-  def self.floor(number); end
-
-  def self.get_namespace(node_set=T.unsafe(nil)); end
-
-  def self.id(object); end
-
-  def self.lang(language); end
-
-  def self.last(); end
-
-  def self.local_name(node_set=T.unsafe(nil)); end
-
-  def self.name(node_set=T.unsafe(nil)); end
-
-  def self.namespace_context(); end
-
-  def self.namespace_context=(x); end
-
-  def self.namespace_uri(node_set=T.unsafe(nil)); end
-
-  def self.normalize_space(string=T.unsafe(nil)); end
-
-  def self.not(object); end
-
-  def self.number(object=T.unsafe(nil)); end
-
-  def self.position(); end
-
-  def self.processing_instruction(node); end
-
-  def self.round(number); end
-
-  def self.send(name, *args); end
-
-  def self.singleton_method_added(name); end
-
-  def self.starts_with(string, test); end
-
-  def self.string(object=T.unsafe(nil)); end
-
-  def self.string_length(string); end
-
-  def self.string_value(o); end
-
-  def self.substring(string, start, length=T.unsafe(nil)); end
-
-  def self.substring_after(string, test); end
-
-  def self.substring_before(string, test); end
-
-  def self.sum(nodes); end
-
-  def self.text(); end
-
-  def self.translate(string, tr1, tr2); end
-
-  def self.true(); end
-
-  def self.variables(); end
-
-  def self.variables=(x); end
-end
-
-class REXML::IOSource
-  def initialize(arg, block_size=T.unsafe(nil), encoding=T.unsafe(nil)); end
-end
-
-class REXML::IOSource
-end
-
-class REXML::Instruction
-  def ==(other); end
-
-  def clone(); end
-
-  def content(); end
-
-  def content=(content); end
-
-  def initialize(target, content=T.unsafe(nil)); end
-
-  def node_type(); end
-
-  def target(); end
-
-  def target=(target); end
-
-  def write(writer, indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-  START = ::T.let(nil, ::T.untyped)
-  STOP = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Instruction
-end
-
-module REXML::Namespace
-  include ::REXML::XMLTokens
-  def expanded_name(); end
-
-  def fully_expanded_name(); end
-
-  def has_name?(other, ns=T.unsafe(nil)); end
-
-  def local_name(); end
-
-  def name(); end
-
-  def name=(name); end
-
-  def prefix(); end
-
-  def prefix=(prefix); end
-  NAMESPLIT = ::T.let(nil, ::T.untyped)
-end
-
-module REXML::Namespace
-end
-
-module REXML::Node
-  def each_recursive(&block); end
-
-  def find_first_recursive(&block); end
-
-  def indent(to, ind); end
-
-  def index_in_parent(); end
-
-  def next_sibling_node(); end
-
-  def parent?(); end
-
-  def previous_sibling_node(); end
-
-  def to_s(indent=T.unsafe(nil)); end
-end
-
-module REXML::Node
-end
-
-class REXML::NotationDecl
-  def initialize(name, middle, pub, sys); end
-
-  def name(); end
-
-  def public(); end
-
-  def public=(public); end
-
-  def system(); end
-
-  def system=(system); end
-
-  def to_s(); end
-
-  def write(output, indent=T.unsafe(nil)); end
-end
-
-class REXML::NotationDecl
-end
-
-class REXML::Output
-  include ::REXML::Encoding
-  def <<(content); end
-
-  def initialize(real_IO, encd=T.unsafe(nil)); end
-end
-
-class REXML::Output
-end
-
-class REXML::Parent
-  include ::Enumerable
-  def <<(object); end
-
-  def [](index); end
-
-  def []=(*args); end
-
-  def add(object); end
-
-  def children(); end
-
-  def deep_clone(); end
-
-  def delete(object); end
-
-  def delete_at(index); end
-
-  def delete_if(&block); end
-
-  def each(&block); end
-
-  def each_child(&block); end
-
-  def each_index(&block); end
-
-  def index(child); end
-
-  def insert_after(child1, child2); end
-
-  def insert_before(child1, child2); end
-
-  def length(); end
-
-  def push(object); end
-
-  def replace_child(to_replace, replacement); end
-
-  def size(); end
-
-  def to_a(); end
-
-  def unshift(object); end
-end
-
-class REXML::Parent
-end
-
-class REXML::ParseException
-  def context(); end
-
-  def continued_exception(); end
-
-  def continued_exception=(continued_exception); end
-
-  def initialize(message, source=T.unsafe(nil), parser=T.unsafe(nil), exception=T.unsafe(nil)); end
-
-  def line(); end
-
-  def parser(); end
-
-  def parser=(parser); end
-
-  def position(); end
-
-  def source(); end
-
-  def source=(source); end
-end
-
-class REXML::ParseException
-end
-
-module REXML::Parsers
-end
-
-class REXML::Parsers::BaseParser
-  def add_listener(listener); end
-
-  def empty?(); end
-
-  def entity(reference, entities); end
-
-  def has_next?(); end
-
-  def initialize(source); end
-
-  def normalize(input, entities=T.unsafe(nil), entity_filter=T.unsafe(nil)); end
-
-  def peek(depth=T.unsafe(nil)); end
-
-  def position(); end
-
-  def pull(); end
-
-  def source(); end
-
-  def stream=(source); end
-
-  def unnormalize(string, entities=T.unsafe(nil), filter=T.unsafe(nil)); end
-
-  def unshift(token); end
-  ATTDEF = ::T.let(nil, ::T.untyped)
-  ATTDEF_RE = ::T.let(nil, ::T.untyped)
-  ATTLISTDECL_PATTERN = ::T.let(nil, ::T.untyped)
-  ATTLISTDECL_START = ::T.let(nil, ::T.untyped)
-  ATTRIBUTE_PATTERN = ::T.let(nil, ::T.untyped)
-  ATTTYPE = ::T.let(nil, ::T.untyped)
-  ATTVALUE = ::T.let(nil, ::T.untyped)
-  CDATA_END = ::T.let(nil, ::T.untyped)
-  CDATA_PATTERN = ::T.let(nil, ::T.untyped)
-  CDATA_START = ::T.let(nil, ::T.untyped)
-  CLOSE_MATCH = ::T.let(nil, ::T.untyped)
-  COMBININGCHAR = ::T.let(nil, ::T.untyped)
-  COMMENT_PATTERN = ::T.let(nil, ::T.untyped)
-  COMMENT_START = ::T.let(nil, ::T.untyped)
-  DEFAULTDECL = ::T.let(nil, ::T.untyped)
-  DEFAULT_ENTITIES = ::T.let(nil, ::T.untyped)
-  DIGIT = ::T.let(nil, ::T.untyped)
-  DOCTYPE_END = ::T.let(nil, ::T.untyped)
-  DOCTYPE_PATTERN = ::T.let(nil, ::T.untyped)
-  DOCTYPE_START = ::T.let(nil, ::T.untyped)
-  ELEMENTDECL_PATTERN = ::T.let(nil, ::T.untyped)
-  ELEMENTDECL_START = ::T.let(nil, ::T.untyped)
-  ENCODING = ::T.let(nil, ::T.untyped)
-  ENTITYDECL = ::T.let(nil, ::T.untyped)
-  ENTITYDEF = ::T.let(nil, ::T.untyped)
-  ENTITYVALUE = ::T.let(nil, ::T.untyped)
-  ENTITY_START = ::T.let(nil, ::T.untyped)
-  ENUMERATEDTYPE = ::T.let(nil, ::T.untyped)
-  ENUMERATION = ::T.let(nil, ::T.untyped)
-  EREFERENCE = ::T.let(nil, ::T.untyped)
-  EXTENDER = ::T.let(nil, ::T.untyped)
-  EXTERNALID = ::T.let(nil, ::T.untyped)
-  GEDECL = ::T.let(nil, ::T.untyped)
-  IDENTITY = ::T.let(nil, ::T.untyped)
-  INSTRUCTION_PATTERN = ::T.let(nil, ::T.untyped)
-  INSTRUCTION_START = ::T.let(nil, ::T.untyped)
-  LETTER = ::T.let(nil, ::T.untyped)
-  NAME = ::T.let(nil, ::T.untyped)
-  NAMECHAR = ::T.let(nil, ::T.untyped)
-  NCNAME_STR = ::T.let(nil, ::T.untyped)
-  NDATADECL = ::T.let(nil, ::T.untyped)
-  NMTOKEN = ::T.let(nil, ::T.untyped)
-  NMTOKENS = ::T.let(nil, ::T.untyped)
-  NOTATIONDECL_START = ::T.let(nil, ::T.untyped)
-  NOTATIONTYPE = ::T.let(nil, ::T.untyped)
-  PEDECL = ::T.let(nil, ::T.untyped)
-  PEDEF = ::T.let(nil, ::T.untyped)
-  PEREFERENCE = ::T.let(nil, ::T.untyped)
-  PUBIDCHAR = ::T.let(nil, ::T.untyped)
-  PUBIDLITERAL = ::T.let(nil, ::T.untyped)
-  PUBLIC = ::T.let(nil, ::T.untyped)
-  QNAME = ::T.let(nil, ::T.untyped)
-  QNAME_STR = ::T.let(nil, ::T.untyped)
-  REFERENCE = ::T.let(nil, ::T.untyped)
-  REFERENCE_RE = ::T.let(nil, ::T.untyped)
-  STANDALONE = ::T.let(nil, ::T.untyped)
-  SYSTEM = ::T.let(nil, ::T.untyped)
-  SYSTEMENTITY = ::T.let(nil, ::T.untyped)
-  SYSTEMLITERAL = ::T.let(nil, ::T.untyped)
-  TAG_MATCH = ::T.let(nil, ::T.untyped)
-  TEXT_PATTERN = ::T.let(nil, ::T.untyped)
-  UNAME_STR = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
-  XMLDECL_PATTERN = ::T.let(nil, ::T.untyped)
-  XMLDECL_START = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Parsers::BaseParser
-end
-
-class REXML::Parsers::StreamParser
-  def add_listener(listener); end
-
-  def initialize(source, listener); end
-
-  def parse(); end
-end
-
-class REXML::Parsers::StreamParser
-end
-
-class REXML::Parsers::TreeParser
-  def add_listener(listener); end
-
-  def initialize(source, build_context=T.unsafe(nil)); end
-
-  def parse(); end
-end
-
-class REXML::Parsers::TreeParser
-end
-
-class REXML::Parsers::XPathParser
-  include ::REXML::XMLTokens
-  def abbreviate(path); end
-
-  def expand(path); end
-
-  def namespaces=(namespaces); end
-
-  def parse(path); end
-
-  def predicate(path); end
-
-  def predicate_to_string(path, &block); end
-  AXIS = ::T.let(nil, ::T.untyped)
-  LITERAL = ::T.let(nil, ::T.untyped)
-  LOCAL_NAME_WILDCARD = ::T.let(nil, ::T.untyped)
-  NODE_TYPE = ::T.let(nil, ::T.untyped)
-  NT = ::T.let(nil, ::T.untyped)
-  NUMBER = ::T.let(nil, ::T.untyped)
-  PI = ::T.let(nil, ::T.untyped)
-  PREFIX_WILDCARD = ::T.let(nil, ::T.untyped)
-  QNAME = ::T.let(nil, ::T.untyped)
-  VARIABLE_REFERENCE = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Parsers::XPathParser
-end
-
-module REXML::Parsers
-end
-
-module REXML::Security
-end
-
-module REXML::Security
-  def self.entity_expansion_limit(); end
-
-  def self.entity_expansion_limit=(val); end
-
-  def self.entity_expansion_text_limit(); end
-
-  def self.entity_expansion_text_limit=(val); end
-end
-
-class REXML::Source
-  include ::REXML::Encoding
-  def buffer(); end
-
-  def consume(pattern); end
-
-  def current_line(); end
-
-  def empty?(); end
-
-  def encoding=(enc); end
-
-  def initialize(arg, encoding=T.unsafe(nil)); end
-
-  def line(); end
-
-  def match(pattern, cons=T.unsafe(nil)); end
-
-  def match_to(char, pattern); end
-
-  def match_to_consume(char, pattern); end
-
-  def position(); end
-
-  def read(); end
-
-  def scan(pattern, cons=T.unsafe(nil)); end
-end
-
-class REXML::Source
-end
-
-class REXML::SourceFactory
-end
-
-class REXML::SourceFactory
-  def self.create_from(arg); end
-end
-
-class REXML::SyncEnumerator
-  include ::Enumerable
-  def each(&blk); end
-
-  def initialize(*enums); end
-
-  def length(); end
-
-  def size(); end
-end
-
-class REXML::SyncEnumerator
-end
-
-class REXML::Text
-  include ::Comparable
-  def <<(to_append); end
-
-  def clone(); end
-
-  def doctype(); end
-
-  def empty?(); end
-
-  def indent_text(string, level=T.unsafe(nil), style=T.unsafe(nil), indentfirstline=T.unsafe(nil)); end
-
-  def initialize(arg, respect_whitespace=T.unsafe(nil), parent=T.unsafe(nil), raw=T.unsafe(nil), entity_filter=T.unsafe(nil), illegal=T.unsafe(nil)); end
-
-  def node_type(); end
-
-  def parent=(parent); end
-
-  def raw(); end
-
-  def raw=(raw); end
-
-  def to_s(); end
-
-  def value(); end
-
-  def value=(val); end
-
-  def wrap(string, width, addnewline=T.unsafe(nil)); end
-
-  def write(writer, indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-
-  def write_with_substitution(out, input); end
-
-  def xpath(); end
-  EREFERENCE = ::T.let(nil, ::T.untyped)
-  NEEDS_A_SECOND_CHECK = ::T.let(nil, ::T.untyped)
-  NUMERICENTITY = ::T.let(nil, ::T.untyped)
-  REFERENCE = ::T.let(nil, ::T.untyped)
-  SETUTITSBUS = ::T.let(nil, ::T.untyped)
-  SLAICEPS = ::T.let(nil, ::T.untyped)
-  SPECIALS = ::T.let(nil, ::T.untyped)
-  SUBSTITUTES = ::T.let(nil, ::T.untyped)
-  VALID_CHAR = ::T.let(nil, ::T.untyped)
-  VALID_XML_CHARS = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::Text
-  def self.check(string, pattern, doctype); end
-
-  def self.expand(ref, doctype, filter); end
-
-  def self.normalize(input, doctype=T.unsafe(nil), entity_filter=T.unsafe(nil)); end
-
-  def self.read_with_substitution(input, illegal=T.unsafe(nil)); end
-
-  def self.unnormalize(string, doctype=T.unsafe(nil), filter=T.unsafe(nil), illegal=T.unsafe(nil)); end
-end
-
-class REXML::UndefinedNamespaceException
-  def initialize(prefix, source, parser); end
-end
-
-class REXML::UndefinedNamespaceException
-end
-
-module REXML::Validation
-end
-
-class REXML::Validation::ValidationException
-  def initialize(msg); end
-end
-
-class REXML::Validation::ValidationException
-end
-
-module REXML::Validation
-end
-
-class REXML::XMLDecl
-  include ::REXML::Encoding
-  def ==(other); end
-
-  def clone(); end
-
-  def dowrite(); end
-
-  def encoding=(enc); end
-
-  def initialize(version=T.unsafe(nil), encoding=T.unsafe(nil), standalone=T.unsafe(nil)); end
-
-  def node_type(); end
-
-  def nowrite(); end
-
-  def old_enc=(encoding); end
-
-  def stand_alone?(); end
-
-  def standalone(); end
-
-  def standalone=(standalone); end
-
-  def version(); end
-
-  def version=(version); end
-
-  def write(writer, indent=T.unsafe(nil), transitive=T.unsafe(nil), ie_hack=T.unsafe(nil)); end
-
-  def writeencoding(); end
-
-  def writethis(); end
-
-  def xmldecl(version, encoding, standalone); end
-  DEFAULT_ENCODING = ::T.let(nil, ::T.untyped)
-  DEFAULT_STANDALONE = ::T.let(nil, ::T.untyped)
-  DEFAULT_VERSION = ::T.let(nil, ::T.untyped)
-  START = ::T.let(nil, ::T.untyped)
-  STOP = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::XMLDecl
-  def self.default(); end
-end
-
-module REXML::XMLTokens
-  NAME = ::T.let(nil, ::T.untyped)
-  NAMECHAR = ::T.let(nil, ::T.untyped)
-  NAME_CHAR = ::T.let(nil, ::T.untyped)
-  NAME_START_CHAR = ::T.let(nil, ::T.untyped)
-  NAME_STR = ::T.let(nil, ::T.untyped)
-  NCNAME_STR = ::T.let(nil, ::T.untyped)
-  NMTOKEN = ::T.let(nil, ::T.untyped)
-  NMTOKENS = ::T.let(nil, ::T.untyped)
-  REFERENCE = ::T.let(nil, ::T.untyped)
-end
-
-module REXML::XMLTokens
-end
-
-class REXML::XPath
-  include ::REXML::Functions
-  EMPTY_HASH = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::XPath
-  def self.each(element, path=T.unsafe(nil), namespaces=T.unsafe(nil), variables=T.unsafe(nil), options=T.unsafe(nil), &block); end
-
-  def self.first(element, path=T.unsafe(nil), namespaces=T.unsafe(nil), variables=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def self.match(element, path=T.unsafe(nil), namespaces=T.unsafe(nil), variables=T.unsafe(nil), options=T.unsafe(nil)); end
-end
-
-class REXML::XPathNode
-  def context(); end
-
-  def initialize(node, context=T.unsafe(nil)); end
-
-  def position(); end
-
-  def raw_node(); end
-end
-
-class REXML::XPathNode
-end
-
-class REXML::XPathParser
-  include ::REXML::XMLTokens
-  def []=(variable_name, value); end
-
-  def first(path_stack, node); end
-
-  def get_first(path, nodeset); end
-
-  def initialize(strict: T.unsafe(nil)); end
-
-  def match(path_stack, nodeset); end
-
-  def namespaces=(namespaces=T.unsafe(nil)); end
-
-  def parse(path, nodeset); end
-
-  def predicate(path, nodeset); end
-
-  def variables=(vars=T.unsafe(nil)); end
-  LITERAL = ::T.let(nil, ::T.untyped)
-end
-
-class REXML::XPathParser
-end
-
-module REXML
 end
 
 module Racc
@@ -54616,6 +53465,21 @@ end
 class Rack::Session::Abstract::Persisted
 end
 
+class Rack::Session::Abstract::PersistedSecure
+  def extract_session_id(*_); end
+
+  def generate_sid(*_); end
+end
+
+class Rack::Session::Abstract::PersistedSecure::SecureSessionHash
+end
+
+class Rack::Session::Abstract::PersistedSecure::SecureSessionHash
+end
+
+class Rack::Session::Abstract::PersistedSecure
+end
+
 class Rack::Session::Abstract::SessionHash
   include ::Enumerable
   def [](key); end
@@ -54721,6 +53585,15 @@ end
 class Rack::Session::Cookie::Identity
 end
 
+class Rack::Session::Cookie::SessionId
+  def cookie_value(); end
+
+  def initialize(session_id, cookie_value); end
+end
+
+class Rack::Session::Cookie::SessionId
+end
+
 class Rack::Session::Cookie
 end
 
@@ -54742,6 +53615,22 @@ class Rack::Session::Pool
 end
 
 class Rack::Session::Pool
+end
+
+class Rack::Session::SessionId
+  def cookie_value(); end
+
+  def empty?(); end
+
+  def initialize(public_id); end
+
+  def private_id(); end
+
+  def public_id(); end
+  ID_VERSION = ::T.let(nil, ::T.untyped)
+end
+
+class Rack::Session::SessionId
 end
 
 module Rack::Session
@@ -57029,7 +55918,6 @@ module Random::Formatter
 end
 
 class Random
-  extend ::Random::Formatter
   def self.bytes(_); end
 
   def self.urandom(_); end
@@ -59139,10 +58027,6 @@ class Regexp::Token
   def self.[](*_); end
 
   def self.members(); end
-end
-
-class Regexp
-  def self.union(*_); end
 end
 
 class Resolv::DNS
@@ -74029,7 +72913,6 @@ module SecureRandom
 end
 
 module SecureRandom
-  extend ::Random::Formatter
   def self.base36(n=T.unsafe(nil)); end
 
   def self.base58(n=T.unsafe(nil)); end
@@ -76950,8 +75833,6 @@ class Set
 
   def eql?(o); end
 
-  def filter!(&block); end
-
   def flatten_merge(set, seen=T.unsafe(nil)); end
 
   def pretty_print(pp); end
@@ -77843,6 +76724,8 @@ module Sorbet::Private::RealStdlib
   def self.real_instance_methods(mod, arg); end
 
   def self.real_is_a?(o, klass); end
+
+  def self.real_method(obj, sym); end
 
   def self.real_name(o); end
 
@@ -80021,8 +78904,6 @@ class String
 
   def ext(newext=T.unsafe(nil)); end
 
-  def funcall_style(); end
-
   def grapheme_clusters(); end
 
   def parse_csv(**options); end
@@ -80035,11 +78916,7 @@ class String
 
   def pathmap_replace(patterns, &block); end
 
-  def quote(); end
-
   def reverse!(); end
-
-  def sans_arguments(); end
 
   def shellescape(); end
 
@@ -80048,8 +78925,6 @@ class String
   def succ!(); end
 
   def to_d(); end
-
-  def tr_cpp(); end
 
   def truncate_bytes(truncate_at, omission: T.unsafe(nil)); end
 
@@ -80062,8 +78937,6 @@ class String
   def unicode_normalized?(*_); end
 
   def unpack1(_); end
-
-  def unspace(); end
   BLANK_RE = ::T.let(nil, ::T.untyped)
   ENCODED_BLANKS = ::T.let(nil, ::T.untyped)
 end
@@ -80971,6 +79844,8 @@ end
 
 class Tempfile::Remover
 end
+
+Test = Minitest::Parallel::Test
 
 class Thor
   include ::Thor::Base
@@ -82564,10 +81439,6 @@ class URI::GID
   def self.validate_app(app); end
 end
 
-class URI::HTTP
-  def request_uri(); end
-end
-
 class URI::LDAP
   def attributes(); end
 
@@ -82665,12 +81536,6 @@ end
 
 module URI
   extend ::URI::Escape
-  def self.decode_www_form(str, enc=T.unsafe(nil), separator: T.unsafe(nil), use__charset_: T.unsafe(nil), isindex: T.unsafe(nil)); end
-
-  def self.encode_www_form(enum, enc=T.unsafe(nil)); end
-
-  def self.encode_www_form_component(str, enc=T.unsafe(nil)); end
-
   def self.get_encoding(label); end
 
   def self.parser(); end
@@ -83049,237 +81914,6 @@ end
 module WebConsole
   extend ::ActiveSupport::Autoload
   def self.logger(); end
-end
-
-module Webdrivers
-  DEFAULT_CACHE_TIME = ::T.let(nil, ::T.untyped)
-  DEFAULT_INSTALL_DIR = ::T.let(nil, ::T.untyped)
-  VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class Webdrivers::BrowserNotFound
-end
-
-class Webdrivers::BrowserNotFound
-end
-
-class Webdrivers::ChromeFinder
-end
-
-class Webdrivers::ChromeFinder
-  def self.location(); end
-
-  def self.version(); end
-end
-
-class Webdrivers::Chromedriver
-end
-
-class Webdrivers::Chromedriver
-  def self.base_url(); end
-
-  def self.browser_version(); end
-
-  def self.chrome_version(); end
-
-  def self.current_version(); end
-
-  def self.latest_version(); end
-end
-
-class Webdrivers::Common
-end
-
-class Webdrivers::Common
-  def self.driver_path(); end
-
-  def self.remove(); end
-
-  def self.required_version(); end
-
-  def self.required_version=(required_version); end
-
-  def self.update(); end
-end
-
-class Webdrivers::ConnectionError
-end
-
-class Webdrivers::ConnectionError
-end
-
-class Webdrivers::EdgeFinder
-end
-
-class Webdrivers::EdgeFinder
-  def self.location(); end
-
-  def self.version(); end
-end
-
-class Webdrivers::Edgedriver
-end
-
-class Webdrivers::Edgedriver
-end
-
-class Webdrivers::Geckodriver
-end
-
-class Webdrivers::Geckodriver
-  def self.base_url(); end
-
-  def self.current_version(); end
-
-  def self.latest_version(); end
-end
-
-class Webdrivers::IEdriver
-end
-
-class Webdrivers::IEdriver
-  def self.base_url(); end
-
-  def self.current_version(); end
-
-  def self.latest_version(); end
-end
-
-class Webdrivers::Logger
-  include ::Logger::Severity
-  def debug(*args, &block); end
-
-  def debug?(*args, &block); end
-
-  def deprecate(old, new); end
-
-  def error(*args, &block); end
-
-  def error?(*args, &block); end
-
-  def fatal(*args, &block); end
-
-  def fatal?(*args, &block); end
-
-  def info(*args, &block); end
-
-  def info?(*args, &block); end
-
-  def io(); end
-
-  def level(*args, &block); end
-
-  def level=(severity); end
-
-  def output=(io); end
-
-  def warn(*args, &block); end
-
-  def warn?(*args, &block); end
-end
-
-class Webdrivers::Logger
-  extend ::Forwardable
-end
-
-class Webdrivers::Network
-end
-
-class Webdrivers::Network
-  def self.get(url, limit=T.unsafe(nil)); end
-
-  def self.get_response(url, limit=T.unsafe(nil)); end
-
-  def self.get_url(url, limit=T.unsafe(nil)); end
-
-  def self.http(); end
-
-  def self.using_proxy(); end
-end
-
-class Webdrivers::NetworkError
-end
-
-class Webdrivers::NetworkError
-end
-
-class Webdrivers::Railtie
-end
-
-class Webdrivers::Railtie
-end
-
-class Webdrivers::System
-end
-
-class Webdrivers::System
-  def self.bitsize(); end
-
-  def self.cache_version(file_name, version); end
-
-  def self.cached_version(file_name); end
-
-  def self.call(process, arg=T.unsafe(nil)); end
-
-  def self.decompress_file(tempfile, file_name, target); end
-
-  def self.delete(file); end
-
-  def self.download(url, target); end
-
-  def self.download_file(url, target); end
-
-  def self.exists?(file); end
-
-  def self.install_dir(); end
-
-  def self.platform(); end
-
-  def self.untarbz2_file(filename); end
-
-  def self.untargz_file(source, target); end
-
-  def self.unzip_file(filename, driver_name); end
-
-  def self.valid_cache?(file_name); end
-end
-
-class Webdrivers::VersionError
-end
-
-class Webdrivers::VersionError
-end
-
-module Webdrivers
-  def self.cache_time(); end
-
-  def self.cache_time=(cache_time); end
-
-  def self.configure(); end
-
-  def self.install_dir(); end
-
-  def self.install_dir=(install_dir); end
-
-  def self.logger(); end
-
-  def self.net_http_ssl_fix(); end
-
-  def self.proxy_addr(); end
-
-  def self.proxy_addr=(proxy_addr); end
-
-  def self.proxy_pass(); end
-
-  def self.proxy_pass=(proxy_pass); end
-
-  def self.proxy_port(); end
-
-  def self.proxy_port=(proxy_port); end
-
-  def self.proxy_user(); end
-
-  def self.proxy_user=(proxy_user); end
 end
 
 module Webpacker
