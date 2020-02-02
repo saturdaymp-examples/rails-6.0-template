@@ -73,7 +73,7 @@ run-tests:
 
   artifacts:
     paths:
-      - coverage/
+      - /app/coverage/
 
   script:
     - cd /app
