@@ -1,3 +1,6 @@
+##
+# Build the docker image then run all linter, test, etc in parallel steps.
+##
 stages:
   - build-docker-image
   - test-and-validate
@@ -31,7 +34,6 @@ build-dev-docker-image:
 # it needs (i.e. GIT_STRATEGY: none).  Also note that by default GitLab
 # will default to the /build directory in the image so we need to switch to /app.
 ##
-
 run-linter:
   variables:
     GIT_STRATEGY: none
