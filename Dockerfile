@@ -6,7 +6,7 @@
 # Note that rebuilding the container can result in a newer
 # version of apline.  For example you might have 3.10.0
 # then 3.10.1 in a future build.
-FROM ruby:2.6.5-alpine3.10
+FROM ruby:2.6.5-alpine3.11
 
 # Argument and envrionemnt so the environment
 # can be used when building the container and
