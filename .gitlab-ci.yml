@@ -1,13 +1,15 @@
+##
+# Build the docker image then run all linter, test, etc in parallel steps.
+##
 stages:
   - build-docker-image
-  - run-linter
-  - run-type-checking
-  - run-tests
+  - test-and-validate
+
 ##
 # Build a development version of the Docker image.  This image will
 # be used in later stages such as running tests, linter, etc.
 ##
-build-docker-image:
+build-dev-docker-image:
   stage: build-docker-image
   image: docker:18.09.7
 
@@ -32,11 +34,10 @@ build-docker-image:
 # it needs (i.e. GIT_STRATEGY: none).  Also note that by default GitLab
 # will default to the /build directory in the image so we need to switch to /app.
 ##
-
 run-linter:
   variables:
     GIT_STRATEGY: none
-  stage: run-linter
+  stage: test-and-validate
   image:
     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
@@ -48,7 +49,7 @@ run-linter:
 run-type-checking:
   variables:
     GIT_STRATEGY: none
-  stage: run-type-checking
+  stage: test-and-validate
   image: 
     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
@@ -60,7 +61,7 @@ run-type-checking:
 run-tests:
   variables:
     GIT_STRATEGY: none
-  stage: run-tests
+  stage: test-and-validate
   image: 
     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
