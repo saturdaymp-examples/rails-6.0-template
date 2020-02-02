@@ -58,6 +58,7 @@ run-type-checking:
     - cd /app
     - srb tc
 
+# Run the tests with coverage.
 run-tests:
   variables:
     GIT_STRATEGY: none
@@ -69,6 +70,10 @@ run-tests:
   services:
     - name: postgres:12
       alias: db
+
+  artifacts:
+    paths:
+      - coverage/
 
   script:
     - cd /app
