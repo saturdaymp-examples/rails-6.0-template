@@ -86,6 +86,10 @@ Ruby of version manager path: ruby
 
 Now you should be able to run/debug the application.  If something is not working let me know by opening and [issue](https://github.com/saturdaymp-examples/rails-6-template/issues).
 
+### Sorbet Init
+
+If you run into an issue about `libglib-2.0.so.0` when running `srb init` then you need to comment out the `webdrivers` gem in the Gemfile.
+
 ## CI
 
 There is a base GitLab automated build [script](.gitlab-ci.yml) and GitHub Actions [script](https://github.com/saturdaymp-examples/rails-templates/blob/master/.github/workflows/ci.yml) included in this template.  It will build the docker image, run the [Sorbet](https://sorbet.org/) type checker, then run the tests.  You can see the GitLab build in action [here](https://gitlab.com/saturdaymp/rails-templates/pipelines).
