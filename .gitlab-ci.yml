@@ -73,11 +73,14 @@ run-tests:
 
   artifacts:
     paths:
-      - /app/tmp/coverage/
+      - coverage/
 
+  # GitLab artifacts must exist under the /build/<Project> directory.
+  # Since we don't do a Git Clone because the code is already in the Docker
+  # image we need to move the coverage items.
   script:
     - cd /app
     - RAILS_ENV=test rails db:create
     - RAILS_ENV=test rails db:schema:load
     - rails test
-    - ls /app/tmp/coverage
+    - mv tmp/coverage $CI_PROJECT_DIR/coverage
