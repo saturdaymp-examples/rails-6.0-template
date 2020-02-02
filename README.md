@@ -3,7 +3,7 @@
 |  | Status |
 | --- | --- |
 | GitHub | ![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg) |
-| GitLab | [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-templates?label=CI&logo=GitLab)](https://gitlab.com/saturdaymp/rails-templates/pipelines) [![GitLab Coverage (master)](https://gitlab.com/gitlab-org/gitlab-foss/badges/master/coverage.svg?job=coverage)](https://gitlab.com/saturdaymp/rails-templates/commits/master) |
+| GitLab | [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-templates?label=CI&logo=GitLab)](https://gitlab.com/saturdaymp/rails-templates/pipelines) [![coverage report](https://gitlab.com/saturdaymp/rails-templates/badges/master/coverage.svg)](https://gitlab.com/saturdaymp/rails-templates/commits/master) |
 | Code Climate | [![Maintainability](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/maintainability)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/test_coverage)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/test_coverage) |
 | Linting | [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard) |
 
