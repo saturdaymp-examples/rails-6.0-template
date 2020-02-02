@@ -58,6 +58,7 @@ run-type-checking:
     - cd /app
     - srb tc
 
+# Run the tests with coverage.
 run-tests:
   variables:
     GIT_STRATEGY: none
@@ -70,8 +71,16 @@ run-tests:
     - name: postgres:12
       alias: db
 
+  artifacts:
+    paths:
+      - coverage/
+
+  # GitLab artifacts must exist under the /build/<Project> directory.
+  # Since we don't do a Git Clone because the code is already in the Docker
+  # image we need to move the coverage items.
   script:
     - cd /app
     - RAILS_ENV=test rails db:create
     - RAILS_ENV=test rails db:schema:load
     - rails test
+    - mv tmp/coverage $CI_PROJECT_DIR/coverage
