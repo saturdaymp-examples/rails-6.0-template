@@ -62,13 +62,14 @@ run-type-checking:
 run-tests:
   variables:
     GIT_STRATEGY: none
+    POSTGRES_PASSWORD: password1234
   stage: test-and-validate
   image: 
     name: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     entrypoint: [""]
 
   services:
-    - name: postgres:12
+    - name: postgres:12.1
       alias: db
 
   artifacts:
