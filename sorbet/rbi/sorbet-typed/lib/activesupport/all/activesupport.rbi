@@ -8,7 +8,7 @@
 # typed: strong
 
 module ActiveSupport
-  sig { params(kind: Symbol, blk: T.proc.bind(T.class_of(ActionController::Base)).void).void }
+  sig { params(kind: Symbol, blk: T.proc.bind(T.untyped).void).void }
   def self.on_load(kind, &blk); end
 end
 
@@ -126,7 +126,7 @@ class String
   sig { returns(String) }
   def classify; end
 
-  sig { returns(String) }
+  sig { returns(Module) }
   def constantize; end
 
   sig { returns(String) }
@@ -160,7 +160,8 @@ class String
   sig { params(capitalize: T::Boolean, keep_id_suffix: T::Boolean).returns(String) }
   def humanize(capitalize: true, keep_id_suffix: false); end
 
-  sig { params(zone: String).returns(T.any(Time, ActiveSupport::TimeWithZone)) }
+  # returns Time in the case zone is passed nil and ActiveSupport::TimeWithZone otherwise
+  sig { params(zone: T.nilable(T.any(String, ActiveSupport::TimeZone))).returns(T.any(ActiveSupport::TimeWithZone, Time)) }
   def in_time_zone(zone = ::Time.zone); end
 
   sig { params(amount: Integer, indent_string: T.nilable(String), indent_empty_lines: T::Boolean).returns(T.nilable(String)) }
@@ -606,7 +607,8 @@ class Time
   def at_middle_of_day; end
 
   # https://github.com/rails/rails/blob/v6.0.0/activesupport/lib/active_support/core_ext/date_and_time/zones.rb
-  sig { params(zone: String).returns(T.any(Time, ActiveSupport::TimeWithZone)) }
+  # returns Time in the case zone is passed nil and ActiveSupport::TimeWithZone otherwise
+  sig { params(zone: T.nilable(T.any(String, ActiveSupport::TimeZone))).returns(T.any(ActiveSupport::TimeWithZone, Time)) }
   def in_time_zone(zone = ::Time.zone); end
 
   # these are the sigs for Time- in the stdlib
@@ -733,6 +735,125 @@ class Numeric
 
   sig { returns(T.self_type) }
   def in_milliseconds; end
+
+  KILOBYTE = T.let(1024, Integer)
+  MEGABYTE = T.let(KILOBYTE * 1024, Integer)
+  GIGABYTE = T.let(MEGABYTE * 1024, Integer)
+  TERABYTE = T.let(GIGABYTE * 1024, Integer)
+  PETABYTE = T.let(TERABYTE * 1024, Integer)
+  EXABYTE  = T.let(PETABYTE * 1024, Integer)
+
+  # Enables the use of byte calculations and declarations, like 45.bytes + 2.6.megabytes
+  #
+  # ```ruby
+  # 2.bytes # => 2
+  # ```
+  sig { returns(T.self_type) }
+  def byte; end
+
+  # Enables the use of byte calculations and declarations, like 45.bytes + 2.6.megabytes
+  #
+  # ```ruby
+  # 2.bytes # => 2
+  # ```
+  sig { returns(T.self_type) }
+  def bytes; end
+
+  # Returns the number of bytes equivalent to the kilobytes provided.
+  #
+  # ```ruby
+  # 2.kilobytes # => 2048
+  # ```
+  sig { returns(T.self_type) }
+  def kilobyte; end
+
+  # Returns the number of bytes equivalent to the kilobytes provided.
+  #
+  # ```ruby
+  # 2.kilobytes # => 2048
+  # ```
+  sig { returns(T.self_type) }
+  def kilobytes; end
+
+  # Returns the number of bytes equivalent to the megabytes provided.
+  #
+  # ```ruby
+  # 2.megabytes # => 2_097_152
+  # ```
+  sig { returns(T.self_type) }
+  def megabyte; end
+
+  # Returns the number of bytes equivalent to the megabytes provided.
+  #
+  # ```ruby
+  # 2.megabytes # => 2_097_152
+  # ```
+  sig { returns(T.self_type) }
+  def megabytes; end
+
+  # Returns the number of bytes equivalent to the gigabytes provided.
+  #
+  # ```ruby
+  # 2.gigabytes # => 2_147_483_648
+  # ```
+  sig { returns(T.self_type) }
+  def gigabyte; end
+
+  # Returns the number of bytes equivalent to the gigabytes provided.
+  #
+  # ```ruby
+  # 2.gigabytes # => 2_147_483_648
+  # ```
+  sig { returns(T.self_type) }
+  def gigabytes; end
+
+  # Returns the number of bytes equivalent to the terabytes provided.
+  #
+  # ```ruby
+  # 2.terabytes # => 2_199_023_255_552
+  # ```
+  sig { returns(T.self_type) }
+  def terabyte; end
+
+  # Returns the number of bytes equivalent to the terabytes provided.
+  #
+  # ```ruby
+  # 2.terabytes # => 2_199_023_255_552
+  # ```
+  sig { returns(T.self_type) }
+  def terabytes; end
+
+  # Returns the number of bytes equivalent to the petabytes provided.
+  #
+  # ```ruby
+  # 2.petabytes # => 2_251_799_813_685_248
+  # ```
+  sig { returns(T.self_type) }
+  def petabyte; end
+
+  # Returns the number of bytes equivalent to the petabytes provided.
+  #
+  # ```ruby
+  # 2.petabytes # => 2_251_799_813_685_248
+  # ```
+  sig { returns(T.self_type) }
+  def petabytes; end
+
+  # Returns the number of bytes equivalent to the exabytes provided.
+  #
+  # ```ruby
+  # 2.exabytes # => 2_305_843_009_213_693_952
+  # ```
+  sig { returns(T.self_type) }
+  def exabyte; end
+
+  # Returns the number of bytes equivalent to the exabytes provided.
+  #
+  # ```ruby
+  # 2.exabytes # => 2_305_843_009_213_693_952
+  # ```
+  sig { returns(T.self_type) }
+  def exabytes; end
 end
 
 module Enumerable

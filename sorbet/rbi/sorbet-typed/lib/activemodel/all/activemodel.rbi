@@ -23,7 +23,23 @@ module ActiveModel::Dirty
 end
 
 module ActiveModel::Validations
-  mixes_in_class_methods(ClassMethods)
+  # Returns the `Errors` object that holds all information about attribute
+  # error messages.
+  #
+  # ```ruby
+  # class Person
+  #   include ActiveModel::Validations
+  #
+  #   attr_accessor :name
+  #   validates_presence_of :name
+  # end
+  #
+  # person = Person.new
+  # person.valid? # => false
+  # person.errors # => #<ActiveModel::Errors:0x007fe603816640 @messages={name:["can't be blank"]}>
+  # ```
+  sig { returns(ActiveModel::Errors) }
+  def errors; end
 
   module ClassMethods
     # https://github.com/rails/rails/blob/v5.2.3/activemodel/lib/active_model/validations.rb#L136-L154
@@ -31,7 +47,7 @@ module ActiveModel::Validations
       params(
         names: T.any(Symbol, String),
         if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-        on: T.any(Symbol, String),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
         prepend: T::Boolean,
         unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
       ).void
@@ -71,11 +87,12 @@ module ActiveModel::Validations
         length: T.any(T::Range[T.untyped], T::Hash[T.untyped, T.untyped]),
         numericality: T.any(T::Boolean, T::Hash[T.untyped, T.untyped]),
         on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
-        presence: T::Boolean,
+        presence: T.any(T::Boolean, T::Hash[T.untyped, T.untyped]),
         size: T.any(T::Boolean, T::Hash[T.untyped, T.untyped]),
         strict: T::Boolean,
         uniqueness: T.any(T::Boolean, T::Hash[T.untyped, T.untyped]),
         unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        kwargs: T.untyped
       ).void
     end
     def validates(
@@ -96,91 +113,41 @@ module ActiveModel::Validations
       size: false,
       strict: false,
       uniqueness: false,
-      unless: :_
+      unless: :_,
+      **kwargs
     )
     end
   end
+
+  mixes_in_class_methods(ClassMethods)
 end
 
-class ActiveModel::Type::Boolean
+class ActiveModel::Type::Value
+  extend T::Sig
+
+  sig { params(precision: T.untyped, limit: T.untyped, scale: T.untyped).void }
+  def initialize(precision: nil, limit: nil, scale: nil); end
+
+  sig { params(value: T.untyped).returns(T.untyped) }
+  def cast(value); end
+end
+
+class ActiveModel::Type::Boolean < ActiveModel::Type::Value
   sig { params(arg0: T.untyped).returns(T.nilable(T::Boolean))}
   def cast(arg0); end
 end
 
+class ActiveModel::Type::ImmutableString < ActiveModel::Type::Value
+  sig { params(arg0: T.untyped).returns(T.nilable(String))}
+  def cast(arg0); end
+end
+
+class ActiveModel::Type::String < ActiveModel::Type::ImmutableString
+  sig { params(arg0: T.untyped).returns(T.nilable(String))}
+  def cast(arg0); end
+end
+
 module ActiveModel::Validations::HelperMethods
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_absence_of(
-    *attr_names,
-    message: 'must be blank',
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
-
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      accept: T.untyped,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_acceptance_of(
-    *attr_names,
-    message: 'must be accepted',
-    accept: ['1', true],
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
-
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      case_sensitive: T::Boolean,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_confirmation_of(
-    *attr_names,
-    message: "doesn't match %{translated_attribute_name}",
-    case_sensitive: true,
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
-
   # A type alias for the in/within parameters on the
   # validates_(inclusion/exclusion)_of methods.
   InWithinType = T.type_alias do
@@ -195,231 +162,436 @@ module ActiveModel::Validations::HelperMethods
       )
     )
   end
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      in: InWithinType,
-      within: InWithinType,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_exclusion_of(
-    *attr_names,
-    message: 'is reserved',
-    in: nil,
-    within: nil,
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
 
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      with: T.untyped,
-      without: T.untyped,
-      multiline: T.untyped,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_format_of(
-    *attr_names,
-    message: 'is invalid',
-    with: nil,
-    without: nil,
-    multiline: nil,
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+  module ClassMethods
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_absence_of(
+      *attr_names,
+      message: 'must be blank',
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
 
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      in: InWithinType,
-      within: InWithinType,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_inclusion_of(
-    *attr_names,
-    message: 'is not included in the list',
-    in: nil,
-    within: nil,
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        accept: T.untyped,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_acceptance_of(
+      *attr_names,
+      message: 'must be accepted',
+      accept: ['1', true],
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
 
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: T.nilable(String),
-      minimum: T.nilable(Integer),
-      maximum: T.nilable(Integer),
-      is: T.nilable(Integer),
-      within: T.nilable(T::Range[Integer]),
-      in: T.nilable(T::Range[Integer]),
-      too_long: String,
-      too_short: String,
-      wrong_length: String,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_length_of(
-    *attr_names,
-    message: nil,
-    minimum: nil,
-    maximum: nil,
-    is: nil,
-    within: nil,
-    in: nil,
-    too_long: 'is too long (maximum is %{count} characters)',
-    too_short: 'is too short (minimum is %{count} characters)',
-    wrong_length: 'is the wrong length (should be %{count} characters)',
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        case_sensitive: T::Boolean,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_confirmation_of(
+      *attr_names,
+      message: "doesn't match %{translated_attribute_name}",
+      case_sensitive: true,
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
 
-  # validates_size_of is an alias of validates_length_of
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: T.nilable(String),
-      minimum: T.nilable(Integer),
-      maximum: T.nilable(Integer),
-      is: T.nilable(Integer),
-      within: T.nilable(T::Range[Integer]),
-      in: T.nilable(T::Range[Integer]),
-      too_long: String,
-      too_short: String,
-      wrong_length: String,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_size_of(
-    *attr_names,
-    message: nil,
-    minimum: nil,
-    maximum: nil,
-    is: nil,
-    within: nil,
-    in: nil,
-    too_long: 'is too long (maximum is %{count} characters)',
-    too_short: 'is too short (minimum is %{count} characters)',
-    wrong_length: 'is the wrong length (should be %{count} characters)',
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        in: InWithinType,
+        within: InWithinType,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_exclusion_of(
+      *attr_names,
+      message: 'is reserved',
+      in: nil,
+      within: nil,
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
 
-  # Create a type alias so we don't have to repeat this long type signature 6 times.
-  NumberComparatorType = T.type_alias {T.nilable(T.any(Integer, Float, T.proc.params(arg0: T.untyped).returns(T::Boolean), Symbol))}
-  sig do
-    params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      only_integer: T::Boolean,
-      greater_than: NumberComparatorType,
-      greater_than_or_equal_to: NumberComparatorType,
-      equal_to: NumberComparatorType,
-      less_than: NumberComparatorType,
-      less_than_or_equal_to: NumberComparatorType,
-      other_than: NumberComparatorType,
-      odd: T::Boolean,
-      even: T::Boolean,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
-  end
-  def validates_numericality_of(
-    *attr_names,
-    message: 'is not a number',
-    only_integer: false,
-    greater_than: nil,
-    greater_than_or_equal_to: nil,
-    equal_to: nil,
-    less_than: nil,
-    less_than_or_equal_to: nil,
-    other_than: nil,
-    odd: false,
-    even: false,
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        with: T.untyped,
+        without: T.untyped,
+        multiline: T.untyped,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_format_of(
+      *attr_names,
+      message: 'is invalid',
+      with: nil,
+      without: nil,
+      multiline: nil,
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
 
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        in: InWithinType,
+        within: InWithinType,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_inclusion_of(
+      *attr_names,
+      message: 'is not included in the list',
+      in: nil,
+      within: nil,
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
+
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: T.nilable(String),
+        minimum: T.nilable(Integer),
+        maximum: T.nilable(Integer),
+        is: T.nilable(Integer),
+        within: T.nilable(T::Range[Integer]),
+        in: T.nilable(T::Range[Integer]),
+        too_long: String,
+        too_short: String,
+        wrong_length: String,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_length_of(
+      *attr_names,
+      message: nil,
+      minimum: nil,
+      maximum: nil,
+      is: nil,
+      within: nil,
+      in: nil,
+      too_long: 'is too long (maximum is %{count} characters)',
+      too_short: 'is too short (minimum is %{count} characters)',
+      wrong_length: 'is the wrong length (should be %{count} characters)',
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
+
+    # validates_size_of is an alias of validates_length_of
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: T.nilable(String),
+        minimum: T.nilable(Integer),
+        maximum: T.nilable(Integer),
+        is: T.nilable(Integer),
+        within: T.nilable(T::Range[Integer]),
+        in: T.nilable(T::Range[Integer]),
+        too_long: String,
+        too_short: String,
+        wrong_length: String,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_size_of(
+      *attr_names,
+      message: nil,
+      minimum: nil,
+      maximum: nil,
+      is: nil,
+      within: nil,
+      in: nil,
+      too_long: 'is too long (maximum is %{count} characters)',
+      too_short: 'is too short (minimum is %{count} characters)',
+      wrong_length: 'is the wrong length (should be %{count} characters)',
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
+
+    # Create a type alias so we don't have to repeat this long type signature 6 times.
+    NumberComparatorType = T.type_alias {T.nilable(T.any(Integer, Float, T.proc.params(arg0: T.untyped).returns(T::Boolean), Symbol))}
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        only_integer: T::Boolean,
+        greater_than: NumberComparatorType,
+        greater_than_or_equal_to: NumberComparatorType,
+        equal_to: NumberComparatorType,
+        less_than: NumberComparatorType,
+        less_than_or_equal_to: NumberComparatorType,
+        other_than: NumberComparatorType,
+        odd: T::Boolean,
+        even: T::Boolean,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_numericality_of(
+      *attr_names,
+      message: 'is not a number',
+      only_integer: false,
+      greater_than: nil,
+      greater_than_or_equal_to: nil,
+      equal_to: nil,
+      less_than: nil,
+      less_than_or_equal_to: nil,
+      other_than: nil,
+      odd: false,
+      even: false,
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
+
+    sig do
+      params(
+        attr_names: T.any(String, Symbol),
+        message: String,
+        if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
+        on: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+        allow_nil: T::Boolean,
+        allow_blank: T::Boolean,
+        strict: T::Boolean
+      ).void
+    end
+    def validates_presence_of(
+      *attr_names,
+      message: "can't be blank",
+      if: nil,
+      unless: :_,
+      on: :_,
+      allow_nil: false,
+      allow_blank: false,
+      strict: false
+    ); end
+  end
+
+  mixes_in_class_methods(ClassMethods)
+end
+
+class ActiveModel::Errors
+  # Adds `message` to the error messages and used validator type to `details` on `attribute`.
+  # More than one error can be added to the same `attribute`.
+  # If no `message` is supplied, `:invalid` is assumed.
+  #
+  # ```ruby
+  # person.errors.add(:name)
+  # # => ["is invalid"]
+  # person.errors.add(:name, :not_implemented, message: "must be implemented")
+  # # => ["is invalid", "must be implemented"]
+  # ```
+  #
+  # ```ruby
+  # person.errors.messages
+  # # => {:name=>["is invalid", "must be implemented"]}
+  # ```
+  #
+  # ```ruby
+  # person.errors.details
+  # # => {:name=>[{error: :not_implemented}, {error: :invalid}]}
+  # ```
+  #
+  # If `message` is a symbol, it will be translated using the appropriate
+  # scope (see `generate_message`).
+  #
+  # If `message` is a proc, it will be called, allowing for things like
+  # `Time.now` to be used within an error.
+  #
+  # If the `:strict` option is set to `true`, it will raise
+  # ActiveModel::StrictValidationFailed instead of adding the error.
+  # `:strict` option can also be set to any other exception.
+  #
+  # ```ruby
+  # person.errors.add(:name, :invalid, strict: true)
+  # # => ActiveModel::StrictValidationFailed: Name is invalid
+  # person.errors.add(:name, :invalid, strict: NameIsInvalid)
+  # # => NameIsInvalid: Name is invalid
+  #
+  # person.errors.messages # => {}
+  # ```
+  #
+  # `attribute` should be set to `:base` if the error is not
+  # directly associated with a single attribute.
+  #
+  # ```ruby
+  # person.errors.add(:base, :name_or_email_blank,
+  #   message: "either name or email must be present")
+  # person.errors.messages
+  # # => {:base=>["either name or email must be present"]}
+  # person.errors.details
+  # # => {:base=>[{error: :name_or_email_blank}]}
+  # ```
   sig do
     params(
-      attr_names: T.any(String, Symbol),
-      message: String,
-      if: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      unless: T.any(Symbol, String, T.proc.params(arg0: T.untyped).returns(T::Boolean)),
-      on: T.any(Symbol, String),
-      allow_nil: T::Boolean,
-      allow_blank: T::Boolean,
-      strict: T::Boolean
-    ).void
+      attribute: Symbol,
+      message: T.any(String, Symbol),
+      options: T::Hash[T.untyped, T.untyped]
+    ).returns(T.untyped)
   end
-  def validates_presence_of(
-    *attr_names,
-    message: "can't be blank",
-    if: nil,
-    unless: :_,
-    on: :_,
-    allow_nil: false,
-    allow_blank: false,
-    strict: false
-  ); end
+  def add(attribute, message = :invalid, options = {}); end
+
+  # Returns `true` if an error on the attribute with the given message is
+  # present, or `false` otherwise. `message` is treated the same as for `add`.
+  #
+  # ```ruby
+  # person.errors.add :name, :blank
+  # person.errors.added? :name, :blank           # => true
+  # person.errors.added? :name, "can't be blank" # => true
+  # ```
+  #
+  # If the error message requires options, then it returns `true` with
+  # the correct options, or `false` with incorrect or missing options.
+  #
+  # ```ruby
+  # person.errors.add :name, :too_long, { count: 25 }
+  # person.errors.added? :name, :too_long, count: 25                     # => true
+  # person.errors.added? :name, "is too long (maximum is 25 characters)" # => true
+  # person.errors.added? :name, :too_long, count: 24                     # => false
+  # person.errors.added? :name, :too_long                                # => false
+  # person.errors.added? :name, "is too long"                            # => false
+  # ```
+  sig do
+    params(
+      attribute: Symbol,
+      message: T.any(String, Symbol),
+      options: T::Hash[T.untyped, T.untyped]
+    ).returns(T::Boolean)
+  end
+  def added?(attribute, message = :invalid, options = {}); end
+
+  # Returns `true` if an error on the attribute with the given message is
+  # present, or `false` otherwise. `message` is treated the same as for `add`.
+  #
+  # ```ruby
+  # person.errors.add :age
+  # person.errors.add :name, :too_long, { count: 25 }
+  # person.errors.of_kind? :age                                            # => true
+  # person.errors.of_kind? :name                                           # => false
+  # person.errors.of_kind? :name, :too_long                                # => true
+  # person.errors.of_kind? :name, "is too long (maximum is 25 characters)" # => true
+  # person.errors.of_kind? :name, :not_too_long                            # => false
+  # person.errors.of_kind? :name, "is too long"                            # => false
+  # ```
+  sig do
+    params(
+      attribute: Symbol,
+      message: T.any(String, Symbol)
+    ).returns(T::Boolean)
+  end
+  def of_kind?(attribute, message = :invalid); end
+
+  # Returns all the full error messages in an array.
+  #
+  # ```ruby
+  # class Person
+  #   validates_presence_of :name, :address, :email
+  #   validates_length_of :name, in: 5..30
+  # end
+  #
+  # person = Person.create(address: '123 First St.')
+  # person.errors.full_messages
+  # # => ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Email can't be blank"]
+  # ```
+  sig { returns(T::Array[String]) }
+  def full_messages; end
 end
