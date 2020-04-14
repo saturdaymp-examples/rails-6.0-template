@@ -5,7 +5,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/actionview/all/actionview.rbi
 #
-# typed: ignore
+# typed: strong
 
 module ActionView
   class ActionViewError < StandardError; end
@@ -296,9 +296,10 @@ end
 module ActionView::Layouts
   extend T::Helpers
 
-  module ClassMethods; end
-
   mixes_in_class_methods(ActionView::Layouts::ClassMethods)
+end
+
+module ActionView::Layouts::ClassMethods
 end
 
 module ActionView::Rendering
@@ -307,8 +308,14 @@ module ActionView::Rendering
   mixes_in_class_methods(ActionView::Rendering::ClassMethods)
 end
 
+module ActionView::Rendering::ClassMethods
+end
+
 module ActionView::ViewPaths
   extend T::Helpers
 
   mixes_in_class_methods(ActionView::ViewPaths::ClassMethods)
+end
+
+module ActionView::ViewPaths::ClassMethods
 end
