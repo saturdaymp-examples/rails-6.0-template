@@ -371,7 +371,7 @@ class ActiveRecord::Migration::Current < ActiveRecord::Migration
   sig do
     params(
       table_name: T.any(String, Symbol),
-      column_name: T.any(String, Symbol),
+      column_name: T.any(String, Symbol, T::Array[T.any(String, Symbol)]),
       options: T.untyped
     ).returns(T::Boolean)
   end
@@ -472,4 +472,12 @@ class ActiveRecord::Migration::Current < ActiveRecord::Migration
 
   sig { params(sql: String, name: T.nilable(String)).returns(T.untyped) }
   def execute(sql, name = nil); end
+end
+
+module ActiveRecord::Core
+  sig { returns(T::Boolean) }
+  def blank?; end
+
+  sig { returns(T::Boolean) }
+  def present?; end
 end
