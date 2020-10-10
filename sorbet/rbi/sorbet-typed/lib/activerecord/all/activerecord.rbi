@@ -40,7 +40,7 @@ module ActiveRecord::Associations::ClassMethods
       foreign_key: T.nilable(T.any(Symbol, String)),
       foreign_type: T.nilable(T.any(Symbol, String)),
       index_errors: T.nilable(T::Boolean),
-      inverse_of: T.nilable(T.any(Symbol, String)),
+      inverse_of: T.nilable(T.any(Symbol, String, FalseClass)),
       join_table: T.nilable(T.any(Symbol, String)),
       primary_key: T.nilable(T.any(Symbol, String)),
       source: T.nilable(T.any(Symbol, String)),
@@ -90,7 +90,7 @@ module ActiveRecord::Associations::ClassMethods
       dependent: T.nilable(T.any(Symbol, String)),
       foreign_key: T.nilable(T.any(Symbol, String)),
       foreign_type: T.nilable(T.any(Symbol, String)),
-      inverse_of: T.nilable(T.any(Symbol, String)),
+      inverse_of: T.nilable(T.any(Symbol, String, FalseClass)),
       primary_key: T.nilable(T.any(Symbol, String)),
       required: T.nilable(T::Boolean),
       source: T.nilable(T.any(Symbol, String)),
@@ -126,11 +126,11 @@ module ActiveRecord::Associations::ClassMethods
       scope: T.nilable(T.proc.void),
       autosave: T.nilable(T::Boolean),
       class_name: T.nilable(T.any(Symbol, String)),
-      counter_cache: T.nilable(T::Boolean),
+      counter_cache: T.nilable(T.any(Symbol, String, T::Boolean)),
       dependent: T.nilable(T.any(Symbol, String)),
       foreign_key: T.nilable(T.any(Symbol, String)),
       foreign_type: T.nilable(T.any(Symbol, String)),
-      inverse_of: T.nilable(T.any(Symbol, String)),
+      inverse_of: T.nilable(T.any(Symbol, String, FalseClass)),
       optional: T.nilable(T::Boolean),
       polymorphic: T.nilable(T::Boolean),
       primary_key: T.nilable(T.any(Symbol, String)),
@@ -267,6 +267,9 @@ class ActiveRecord::Base
   include ActiveRecord::Persistence
   include ActiveRecord::ReadonlyAttributes
   include ActiveRecord::ModelSchema
+  extend ActiveRecord::ModelSchema::ClassMethods # via ActiveRecord::ModelSchema concern inclusion
+  include ActiveRecord::Sanitization
+  extend ActiveRecord::Sanitization::ClassMethods # via ActiveRecord::Sanitization concern inclusion
   include ActiveRecord::Inheritance
   include ActiveRecord::Scoping
   include ActiveRecord::Scoping::Default # via ActiveRecord::Scoping#included hook
@@ -1445,3 +1448,7 @@ class ActiveRecord::Relation
   sig { returns(T::Boolean) }
   def many?; end
 end
+
+module ActiveRecord::Batches; end
+
+class ActiveRecord::Batches::BatchEnumerator; end
