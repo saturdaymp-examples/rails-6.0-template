@@ -6,7 +6,7 @@
 # Note that rebuilding the container can result in a newer
 # version of apline.  For example you might have 3.10.0
 # then 3.10.1 in a future build.
-FROM ruby:2.6.5-alpine3.11
+FROM ruby:2.6.6-alpine3.12
 
 # Argument and envrionemnt so the environment
 # can be used when building the container and
@@ -40,8 +40,8 @@ RUN apk update && \
                        "wget" \
                        "chromium" && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.30-r0/glibc-2.30-r0.apk && \
-    apk add --no-cache "glibc-2.30-r0.apk"
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk && \
+    apk add --no-cache "glibc-2.32-r0.apk"
 
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
