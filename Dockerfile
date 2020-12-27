@@ -6,7 +6,7 @@
 # Note that rebuilding the container can result in a newer
 # version of apline.  For example you might have 3.10.0
 # then 3.10.1 in a future build.
-FROM ruby:2.6.6-alpine3.12
+FROM ruby:2.7.2-alpine3.12
 
 # Argument and envrionemnt so the environment
 # can be used when building the container and
@@ -45,20 +45,20 @@ RUN apk update && \
 
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler -v 2.0.2
-RUN if [ "$RAILS_ENV" = "development" ] ; then \
-    bundle install ; \
-    else \
-    bundle install --without development test ; \
-    fi
+# RUN gem install bundler -v 2.2.3
+# RUN if [ "$RAILS_ENV" = "development" ] ; then \
+#     bundle install ; \
+#     else \
+#     bundle install --without development test ; \
+#     fi
 
 # Yarn packages.
 COPY package.json yarn.lock ./
-RUN if [ "$RAILS_ENV" = "development" ] ; then \
-    yarn install --check-files --frozen-lockfile ; \
-    else \
-    yarn install --check-files --frozen-lockfile --no-cache --production ; \
-    fi
+# RUN if [ "$RAILS_ENV" = "development" ] ; then \
+#     yarn install --check-files --frozen-lockfile ; \
+#     else \
+#     yarn install --check-files --frozen-lockfile --no-cache --production ; \
+#     fi
 
 # Add the code.
 COPY . .

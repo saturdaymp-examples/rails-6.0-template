@@ -2,7 +2,8 @@
 #   srb rbi todo
 
 # typed: strong
-module ActiveRecord::Delegation::DelegateCache; end
+module ActionController::RespondWith; end
+module ActionController::RespondWith::ClassMethods; end
 module T::InterfaceWrapper::Helpers; end
 module T::Private::Abstract::Hooks; end
 module T::Private::Methods::MethodHooks; end
