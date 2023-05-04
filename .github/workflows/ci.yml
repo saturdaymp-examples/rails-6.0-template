@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Build Docker Image Step
+      - name: Build Docker Image
         run: |
           docker version
           docker compose version
@@ -16,16 +16,16 @@ jobs:
           docker compose up -d
           docker ps
 
-      - name: Rubocop Standard
+      - name: Linting
         run: docker compose exec web standardrb
 
-      - name: Run Sorbet
+      - name: Type Checking
         run: docker compose exec web srb
 
-      - name: Test setup
+      - name: Test Setup
         run: |
           docker compose exec web bundle exec rails db:create RAILS_ENV=test
           docker compose exec web bundle exec rails db:schema:load RAILS_ENV=test
 
-      - name: Run tests
+      - name: Run Tests
         run: docker compose exec web bundle exec rails test
