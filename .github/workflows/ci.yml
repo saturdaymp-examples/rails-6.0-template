@@ -11,18 +11,18 @@ jobs:
       - name: Build Docker Image Step
         run: |
           docker compose build web
-          docker compose run --rm web echo "Installing gems and yarn files..."
+          docker compose up web
 
       - name: Rubocop Standard
-        run: docker compose run --rm web standardrb
+        run: docker compose exec web standardrb
 
       - name: Run Sorbet
-        run: docker compose run --rm web srb
+        run: docker compose exec web srb
 
       - name: Test setup
         run: |
-          docker compose run --rm web bundle exec rails db:create RAILS_ENV=test
-          docker compose run --rm web bundle exec rails db:schema:load RAILS_ENV=test
+          docker compose exec web bundle exec rails db:create RAILS_ENV=test
+          docker compose exec web bundle exec rails db:schema:load RAILS_ENV=test
 
       - name: Run tests
-        run: docker compose run --rm web bundle exec rails test
+        run: docker compose exec web bundle exec rails test
