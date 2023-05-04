@@ -31,7 +31,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 # Type checking
 gem "sorbet", group: :development
 gem "sorbet-runtime"
-gem "sorbet-rails"
+gem "tapioca", require: false, group: :development
 
 group :development, :test do
   # RubyMine debugging.

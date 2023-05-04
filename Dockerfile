@@ -45,7 +45,9 @@ RUN apk update && \
 
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler -v 2.2.3
+RUN gem install rubygems-update -v 3.4.12
+RUN update_rubygems
+RUN gem install bundler -v 2.4.12
 RUN if [ "$RAILS_ENV" != "development" ] ; then \
     bundle install --without development test ; \
     fi

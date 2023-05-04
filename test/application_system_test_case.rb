@@ -1,4 +1,5 @@
 # typed: strict
+
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
