@@ -10,8 +10,10 @@ jobs:
 
       - name: Build Docker Image Step
         run: |
-          docker compose build web
-          docker compose up -d web
+          docker version
+          docker compose version
+          docker compose up --build -d
+          docker ps
 
       - name: Rubocop Standard
         run: docker compose exec web standardrb
