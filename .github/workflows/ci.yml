@@ -12,7 +12,8 @@ jobs:
         run: |
           docker version
           docker compose version
-          docker compose up --build -d
+          docker compose run --rm web echo "Installing gems and node modules"
+          docker compose up -d
           docker ps
 
       - name: Rubocop Standard
