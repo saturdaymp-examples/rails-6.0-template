@@ -8,19 +8,24 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: Build Docker Image Step
-        run: docker-compose build web
-
-      - name: Rubocop Standard
-        run: docker-compose run web rake standard
-
-      - name: Run Sorbet
-        run: docker-compose run web srb tc
-
-      - name: Test setup
+      - name: Build Docker Image
         run: |
-          docker-compose run web bundle exec rails db:create RAILS_ENV=test
-          docker-compose run web bundle exec rails db:schema:load RAILS_ENV=test
+          docker version
+          docker compose version
+          docker compose run --rm web echo "Installing gems and node modules"
+          docker compose up -d
+          docker ps
 
-      - name: Run tests
-        run: docker-compose run web bundle exec rails test
+      - name: Linting
+        run: docker compose exec web standardrb
+
+      - name: Type Checking
+        run: docker compose exec web srb
+
+      - name: Test Setup
+        run: |
+          docker compose exec web bundle exec rails db:create RAILS_ENV=test
+          docker compose exec web bundle exec rails db:schema:load RAILS_ENV=test
+
+      - name: Run Tests
+        run: docker compose exec web bundle exec rails test

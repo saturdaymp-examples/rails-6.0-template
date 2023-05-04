@@ -46,17 +46,13 @@ RUN apk update && \
 # Install the gems.
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.2.3
-RUN if [ "$RAILS_ENV" = "development" ] ; then \
-    bundle install ; \
-    else \
+RUN if [ "$RAILS_ENV" != "development" ] ; then \
     bundle install --without development test ; \
     fi
 
 # Yarn packages.
 COPY package.json yarn.lock ./
-RUN if [ "$RAILS_ENV" = "development" ] ; then \
-    yarn install --check-files --frozen-lockfile ; \
-    else \
+RUN if [ "$RAILS_ENV" != "development" ] ; then \
     yarn install --check-files --frozen-lockfile --no-cache --production ; \
     fi
 
