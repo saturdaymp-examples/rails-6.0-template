@@ -4,8 +4,9 @@
 | --- | --- |
 | GitHub | ![](https://github.com/saturdaymp-examples/rails-templates/workflows/CI/badge.svg) |
 | GitLab | [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/saturdaymp/rails-templates?label=CI&logo=GitLab)](https://gitlab.com/saturdaymp/rails-templates/pipelines) [![coverage report](https://gitlab.com/saturdaymp/rails-templates/badges/master/coverage.svg)](https://gitlab.com/saturdaymp/rails-templates/commits/master) |
-| Code Climate | [![Maintainability](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/maintainability)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/test_coverage)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/test_coverage) |
+| Code Climate | [![Maintainability](https://api.codeclimate.com/v1/badges/0544e77a39fa76f33255/maintainability)](https://codeclimate.com/github/saturdaymp-examples/rails-templates/maintainability)
 | Linting | [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard) |
+| Sponsorship | [![GitHub Sponsors](https://img.shields.io/github/sponsors/saturdaymp?label=Sponsors&logo=githubsponsors&labelColor=3C444C)](https://github.com/sponsors/saturdaymp) |
 
 A template for starting a new Rails applications.  It includes:
  - [Rails](https://rubyonrails.org/) 6.0 application
